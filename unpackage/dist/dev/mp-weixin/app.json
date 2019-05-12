@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/feedback/feedback",
+    "pages/order/order",
+    "pages/orderDetails/orderDetails",
+    "pages/orderSuccess/orderSuccess",
+    "pages/foodDetail/foodDetail",
+    "pages/moreAssess/moreAssess"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#CCC",
+    "selectedColor": "blue",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "text": "就餐",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "text": "订单",
+        "pagePath": "pages/order/order"
+      },
+      {
+        "text": "反馈",
+        "pagePath": "pages/feedback/feedback"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

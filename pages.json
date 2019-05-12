@@ -1,0 +1,76 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "全部"
+			}
+		}
+	    ,{
+            "path" : "pages/feedback/feedback",
+            "style": {
+            	"navigationBarTitleText": "反馈"
+            }
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style": {
+            	"navigationBarTitleText": "订单"
+            }
+        }
+        ,{
+            "path" : "pages/orderDetails/orderDetails",
+            "style": {
+            	"navigationBarTitleText": "订单详情"
+            }
+        }
+        ,{
+            "path" : "pages/orderSuccess/orderSuccess",
+            "style" : {
+				"navigationBarTitleText": "预约成功"
+			}
+        }
+        ,{
+            "path" : "pages/foodDetail/foodDetail",
+             "style" : {
+            	"navigationBarTitleText": "商品详情"
+            }
+        }
+        ,{
+            "path" : "pages/moreAssess/moreAssess",
+            "style" : {
+				"navigationBarTitleText": "更多评价"
+			}
+        }
+    ],
+	"tabBar":{
+		"color": "#CCC",
+		"selectedColor":"blue",
+		"borderStyle": "black",
+		"backgroundColor":"#fff",
+		"list":[{
+			"text":"就餐",
+			// "iconPath":"static/menu1_1.png",
+			// "selectedIconPath":"static/menu1.png",
+	        "pagePath": "pages/index/index" //启动页面，必选
+	    },
+		{
+			"text":"订单",
+			// "iconPath":"static/menu2_1.png",
+			// "selectedIconPath":"static/menu2.png",
+			"pagePath" : "pages/order/order"
+		},
+		{
+			"text":"反馈",
+			// "iconPath":"static/menu4_1.png",
+			// "selectedIconPath":"static/menu4.png",
+			"pagePath" : "pages/feedback/feedback"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

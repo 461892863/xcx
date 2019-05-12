@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "全部",
+  "usingComponents": {
+    "shopcart": "/components/shopcart",
+    "cartcontrol": "/components/cartcontrol",
+    "m-search": "/components/mehaotian-search",
+    "uni-rate": "/components/uni-rate"
+  }
+}
