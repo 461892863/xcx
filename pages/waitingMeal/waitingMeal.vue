@@ -7,6 +7,14 @@
 			</view>
 		</view>
 		<view class="title">
+			<block v-if="type == 0">
+				<view class="left">
+					取消订单
+				</view>
+				<view class="right">
+					你的订单未完成
+				</view>
+			</block>
 			<block v-if="type == 2">
 				<view class="left">
 					等待取餐
@@ -33,6 +41,10 @@
 			</block>
 		</view>
 		<view class="btn">
+
+			<block v-if="type == 0">
+				<button type="primary" @tap="confirmMeal()">取消订单</button>
+			</block>
 			<block v-if="type == 2">
 				<button type="primary" @tap="confirmMeal()">确认取餐</button>
 			</block>
@@ -43,7 +55,7 @@
 				<button type="primary" @tap="confirmMeal()">订单已完成</button>
 			</block>
 		</view>
-		
+
 		<view class="orderDetail">
 			<view style="margin: 15upx 0 15upx 15upx;font-weight: bold;font-size: 0.8em;">菜品信息</view>
 			<view class="detail">
@@ -181,9 +193,9 @@
 			confirmMeal() { // 确认取餐
 				///foods/shopcar/accept
 				let that = this
-				if(this.type == 2){
+				if (this.type == 2) {
 					uni.request({
-						url: this.nowUrl + '/foods/shopcar/accept?id='+this.orderId,
+						url: this.nowUrl + '/foods/shopcar/accept?id=' + this.orderId,
 						method: 'POST',
 						header: {
 							"content-type": "application/json",
@@ -191,31 +203,59 @@
 						},
 						success: (res) => {
 							console.log(that.orderId)
-							if(res.data.code == 200){
+							if (res.data.code == 200) {
 								uni.navigateTo({
-									url: '../confirmMeal/confirmMeal?id='+ that.orderId,
+									url: '../confirmMeal/confirmMeal?id=' + that.orderId,
 									animationType: 'slide-in-right',
 									animationDuration: 200
 								});
-							}else{
+							} else {
 								uni.showToast({
-									title:res.data.msg,
-									icon:'none',
-									duration:1000
+									title: res.data.msg,
+									icon: 'none',
+									duration: 1000
 								})
 							}
 						}
 					})
-				}else if(this.type == 3){
+				} else if (this.type == 3) {
 					uni.navigateTo({
-						url: '../assess/assess?id='+ that.orderId,
+						url: '../assess/assess?id=' + that.orderId,
 						animationType: 'slide-in-right',
 						animationDuration: 200
 					});
-				}else if(this.type == 4){
+				} else if (this.type == 4) {
 					uni.switchTab({
 						url: '../order/order'
 					});
+				} else if (this.type == 0) {
+					uni.request({
+						url: this.nowUrl + '/foods/shopcar/remove?id=' + this.orderId,
+						header: {
+							'token': this.token
+						},
+						method: 'POST',
+						success(res) {
+							debugger
+							// console.log(res)
+							// uni.navigateTo({
+							// 	url: '../index/index'
+							// })
+							if (res.data.code == 200) {
+								uni.switchTab({
+									url: '../order/order'
+								});
+							}else{
+								uni.showToast('删除失败')
+							}
+
+							// uni.navigateTo({
+							// 	url: '../index/index',
+							// 	animationType: 'slide-in-right',
+							// 	animationDuration: 200
+							// });
+						}
+					})
 				}
 			},
 			//获取订单详情
@@ -235,7 +275,11 @@
 						this.userName = res.data.data.userName;
 						this.mobile = res.data.data.mobile;
 						this.orderNum = res.data.data.orderNum;
-						this.makeTime = res.data.data.makeTime;
+						if (res.data.data.makeTime) {
+							this.makeTime = res.data.data.makeTime;
+						} else {
+							this.makeTime = '! 订单未完成';
+						}
 						if (res.data.data.remarks) {
 							this.remarks = res.data.data.remarks;
 						}
@@ -335,3 +379,4 @@
 		text-overflow: ellipsis;
 	}
 </style>
+yle>

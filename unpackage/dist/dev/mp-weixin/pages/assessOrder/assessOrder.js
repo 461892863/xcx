@@ -1,9 +1,16 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["pages/assessOrder/assessOrder"],{
 
+<<<<<<< HEAD
 /***/ "../../../xcx/pages/assessOrder/assessOrder.vue":
 /*!****************************************************************************!*\
   !*** C:/Users/Administrator/Desktop/xcx/pages/assessOrder/assessOrder.vue ***!
   \****************************************************************************/
+=======
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue":
+/*!*********************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue ***!
+  \*********************************************************************/
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -90,15 +97,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../xcx/pages/assessOrder/assessOrder.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/Administrator/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib/index.js?!../../../../../../Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/vue-loader/lib??vue-loader-options!/Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniRate = function uniRate() {return __webpack_require__.e(/*! import() | components/uni-rate */ "components/uni-rate").then(__webpack_require__.bind(null, /*! ../../components/uni-rate.vue */ "../../../xcx/components/uni-rate.vue"));};var _default =
+=======
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniRate = function uniRate() {return __webpack_require__.e(/*! import() | components/uni-rate */ "components/uni-rate").then(__webpack_require__.bind(null, /*! ../../components/uni-rate.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/uni-rate.vue"));};var _default =
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 
 
 
@@ -165,10 +183,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../../../xcx/pages/assessOrder/assessOrder.vue?vue&type=style&index=0&lang=css&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/Administrator/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=style&index=0&lang=css& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!../../../../../../Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js??ref--6-oneOf-1-0!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--6-oneOf-1-1!./node_modules/css-loader??ref--6-oneOf-1-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-oneOf-1-3!./node_modules/vue-loader/lib??vue-loader-options!/Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -176,10 +201,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../xcx/pages/assessOrder/assessOrder.vue?vue&type=template&id=4bd3dd0c&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!C:/Users/Administrator/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=template&id=4bd3dd0c& ***!
   \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+=======
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader/index.js?!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib/index.js?!../../../../../../Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=template&id=31465096&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--17-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/vue-loader/lib??vue-loader-options!/Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue?vue&type=template&id=31465096& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -199,5 +231,9 @@ render._withStripped = true
 
 /***/ })
 
+<<<<<<< HEAD
 },[["../../../xcx/main.js?{\"page\":\"pages%2FassessOrder%2FassessOrder\"}","common/runtime","common/vendor"]]]);
+=======
+},[["../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FassessOrder%2FassessOrder\"}","common/runtime","common/vendor"]]]);
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pages/assessOrder/assessOrder.js.map

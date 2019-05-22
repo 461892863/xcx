@@ -131,8 +131,12 @@ var _public = _interopRequireDefault(__webpack_require__(/*! ../../common/public
 //
 //
 //
-var _default = { data: function data() {return { imgUrl: 'http://106.15.194.58/images/' //图片接口
-    };}, onShow: function onShow() {_public.default.delOrderType = false;}, methods: { toIndex: function toIndex() {_public.default.delOrderType = true;uni.switchTab({ url: '../index/index' });}, toOrder: function toOrder() {
+var _default = { data: function data() {return { theTime: '12:00', imgUrl: 'http://106.15.194.58/images/' //图片接口
+    };}, onShow: function onShow() {_public.default.delOrderType = false;}, onLoad: function onLoad(e) {this.theTime = e.theTime;}, methods: { toIndex: function toIndex() {_public.default.delOrderType = true;uni.switchTab({
+        url: '../index/index' });
+
+    },
+    toOrder: function toOrder() {
       _public.default.delOrderType = true;
       uni.switchTab({
         url: '../order/order' });

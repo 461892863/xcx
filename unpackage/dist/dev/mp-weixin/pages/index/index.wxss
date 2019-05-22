@@ -164,7 +164,7 @@
 	line-height: 1;
 	padding-top: 10rpx;
 	text-align: center;
-	position: fixed;
+	position: absolute;
 	left: 0;
 	z-index: 99;
 }
@@ -193,10 +193,10 @@
 	font-size: 0.7em;
 	color: #2e2e2e;
 }
-.histroyAdd{
-	display: inline-block;
+.histroyAdd {
+	/* display: inline-block;
 	position: absolute;
-	right: 5rpx;
-	bottom: 5rpx;
+	right: 5upx;
+	bottom: 5upx; */
 }
 

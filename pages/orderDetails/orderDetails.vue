@@ -26,7 +26,7 @@
 				</view>
 				<view class="list" style="flex:7;text-align:left;" @tap="write(list.type,_index)">
 					<block v-if="list.type == 1">
-						<input class="writeInput" type="text" placeholder="list.value" value="list.newValue" v-model="orderDetails[_index].newValue"/>
+						<input class="writeInput" type="text" placeholder="list.value" v-model="list.newValue"/>
 					</block>
 					<block v-else>
 						<text class="writeInput">{{list.value}}</text>
@@ -43,6 +43,7 @@
 	export default {
 		data() {
 			return {
+				theTime:'',
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				detailList: [],
 				money: '' ,
@@ -152,9 +153,10 @@
 					success(res) {
 						console.log(that.orderDetails[0].value, that.orderDetails[2].newValue, that.orderDetails[1].newValue, that.orderDetails[3].newValue, that.orderDetails[4].newValue)
 						// console.log(res)
+						debugger
 						if(res.data.code == 200){
 							uni.navigateTo({
-								url:'../orderSuccess/orderSuccess',
+								url:'../orderSuccess/orderSuccess?theTime='+res.data.data,
 								animationType:'slide-in-right',
 								animationDuration:200
 							})

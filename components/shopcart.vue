@@ -9,8 +9,8 @@
 				</view>
 			</view>
 			<view class="middle">
-				<text class="price" :class="getAllCount ?　'active': ''">￥{{getAllPrice}}</text>
-				<text class="deliveryPrice" style="font-size: 12px;">免配送费|支持自取</text>
+				<text class="price" :class="getAllCount ?　'active': ''">待支付￥{{getAllPrice}}</text>
+				<!-- <text class="deliveryPrice" style="font-size: 12px;">免配送费|支持自取</text> -->
 			</view>
 			<view class="BtnRight" @tap="toggleList">
 				<text>确认订单</text>
@@ -60,13 +60,27 @@
 				let result = [];
 				this.goods.forEach((good) => {
 					good.foods.forEach((food) => {
+						console.log(food);
 						if (food.count) {
 							result.push(food)
 							// console.log('res', JSON.stringify(result))
 						}
 					})
-				})
-				return result
+				});
+
+				var temp = []; //一个新的临时数组
+				var newArr = [];
+				for (var i = 0; i < result.length; i++) {
+					if (temp.indexOf(result[i].id) == -1) {
+						temp.push(result[i].id);
+						newArr.push(result[i]);
+					}
+				}
+				return newArr;
+				// console.log('aaa');
+				// console.log(result);
+				// console.log('aaa');
+				// return result
 			},
 			// 获得购物车所有商品数量
 			getAllCount() {
@@ -83,11 +97,16 @@
 			getAllPrice() {
 				let result = 0;
 				let result1 = 0;
-				this.goods.forEach((good) => {
-					good.foods.forEach((food) => {
-						result1 += this.accMul(food.count, food.price)
+				// this.goods.forEach((good) => {
+				// 	good.foods.forEach((food) => {
+				// 		deb
+				// 		result1 += this.accMul(food.count, food.price)
+				// 		result = result1.toFixed(2);
+				// 	})
+				// })
+				this.getList.forEach((food)=>{
+					result1 += this.accMul(food.count, food.price)
 						result = result1.toFixed(2);
-					})
 				})
 				return result
 			}
@@ -112,13 +131,16 @@
 
 				return Number(s1.replace('.', '')) * Number(s2.replace('.', '')) / Math.pow(10, m);
 			},
-			showCart(){
+			showCart() {
 				this.isShowList = !this.isShowList;
 			},
-			toggleList(){ // 提交订单
+			toggleList() { // 提交订单
 				let arr = []
-				this.getList.forEach(function(item){
-					arr.push({foodId: item.id,num:item.count})
+				this.getList.forEach(function(item) {
+					arr.push({
+						foodId: item.id,
+						num: item.count
+					})
 				})
 				let strData = JSON.stringify(arr)
 				// console.log(strData)
@@ -126,35 +148,35 @@
 					// this.isShowList = !this.isShowList;
 					uni.request({
 						url: this.nowUrl + '/foods/shopcar/build',
-						header:{
+						header: {
 							'token': this.token,
 							'content-type': 'application/json'
 						},
-						method:'POST',
+						method: 'POST',
 						data: strData,
 						success(res) {
 							// console.log(res.data.data)
 							let dataInfo = JSON.stringify(res.data.data)
-							if(res.data.code == 200){
+							if (res.data.code == 200) {
 								uni.navigateTo({
 									url: '../orderDetails/orderDetails?dataInfo=' + dataInfo,
 									animationDuration: 200,
 									animationType: "slide-in-right"
 								})
-							}else{
+							} else {
 								uni.showToast({
 									title: res.data.msg,
-									duration:1000,
-									icon:'none'
+									duration: 1000,
+									icon: 'none'
 								})
 								return false
 							}
 						}
 					})
-				}else{
+				} else {
 					uni.showToast({
 						title: '您的购物车空的',
-						duration:1000,
+						duration: 1000,
 						icon: 'none'
 					})
 				}
@@ -181,7 +203,7 @@
 
 	.shopcart .cartBottom {
 		position: fixed;
-		bottom: 0px; 
+		bottom: 0px;
 		left: 0;
 		right: 0;
 		height: 54px;
@@ -229,7 +251,7 @@
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 		color: #cccccc;
 		border-radius: 50%;
 	}
@@ -243,6 +265,8 @@
 		flex-direction: column;
 		flex: 2;
 		color: #ffffff;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.BtnRight {
@@ -295,7 +319,8 @@
 		opacity: 0.7;
 		background: #000;
 	}
-	.price{
+
+	.price {
 		margin-top: 10upx;
 	}
 </style>

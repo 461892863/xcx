@@ -4,7 +4,7 @@
 			<view class="image">
 			</view>
 			<view class="text">
-				<text>预计12:00准备完成</text>
+				<text>预计{{theTime}}准备完成</text>
 			</view>
 		</view>
 		<view class="btns">
@@ -19,11 +19,15 @@
 	export default {
 		data() {
 			return {
+				theTime:'12:00',
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 			}
 		},
 		onShow() {
 			orderType.delOrderType = false
+		},
+		onLoad(e) {
+			this.theTime = e.theTime;
 		},
 		methods: {
 			toIndex(){

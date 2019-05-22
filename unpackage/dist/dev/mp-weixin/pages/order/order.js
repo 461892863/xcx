@@ -141,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var _default =
 {
   data: function data() {
@@ -186,6 +187,9 @@ var _default =
           break;
         case 3:
           type = 4;
+          break;
+        case 4:
+          type = 0;
           break;}
 
       uni.showLoading({

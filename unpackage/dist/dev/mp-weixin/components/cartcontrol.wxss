@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 .food-control.data-v-2801d734 {
+=======
+.food-control.data-v-9e33c0d0 {
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -12,7 +16,11 @@
 	    -ms-flex-pack: distribute;
 	        justify-content: space-around;
 }
+<<<<<<< HEAD
 .cont.data-v-2801d734 {
+=======
+.cont.data-v-9e33c0d0 {
+>>>>>>> e074deab36d5af30515908d9a89f693051b89eca
 	width: 22px;
 	height: 22px;
 	-webkit-box-sizing: border-box;

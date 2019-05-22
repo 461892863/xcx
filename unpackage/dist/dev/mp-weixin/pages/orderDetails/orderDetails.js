@@ -179,8 +179,9 @@ var _public = _interopRequireDefault(__webpack_require__(/*! ../../common/public
 //
 //
 //
-var _default = { data: function data() {return { imgUrl: 'http://106.15.194.58/images/', //图片接口
-      detailList: [], money: '', orderDetails: [{ name: '订单号', value: '', newValue: '' }, { name: '用餐人数', value: '请输入用餐人数便于商家携带，默认1人', newValue: '', type: '1' }, { name: '姓名', value: '请填写您的姓名', newValue: '', type: '1' }, { name: '联系人号码', value: '请输入联系人号码', newValue: '', type: '1' }, { name: '订单备注', value: '请输入备注信息', newValue: '', type: '1' }], orderInfo: null };}, onLoad: function onLoad(e) {
+var _default = { data: function data() {return { theTime: '', imgUrl: 'http://106.15.194.58/images/', //图片接口
+      detailList: [], money: '', orderDetails: [{ name: '订单号', value: '', newValue: '' }, { name: '用餐人数', value: '请输入用餐人数便于商家携带，默认1人', newValue: '', type: '1' }, { name: '姓名', value: '请填写您的姓名', newValue: '', type: '1' }, { name: '联系人号码', value: '请输入联系人号码', newValue: '', type: '1' }, { name: '订单备注', value: '请输入备注信息', newValue: '', type: '1' }], orderInfo: null };},
+  onLoad: function onLoad(e) {
     this.orderInfo = JSON.parse(e.dataInfo);
     // console.log(this.orderInfo)
     this.req();
@@ -252,9 +253,10 @@ var _default = { data: function data() {return { imgUrl: 'http://106.15.194.58/i
         success: function success(res) {
           console.log(that.orderDetails[0].value, that.orderDetails[2].newValue, that.orderDetails[1].newValue, that.orderDetails[3].newValue, that.orderDetails[4].newValue);
           // console.log(res)
+          debugger;
           if (res.data.code == 200) {
             uni.navigateTo({
-              url: '../orderSuccess/orderSuccess',
+              url: '../orderSuccess/orderSuccess?theTime=' + res.data.data,
               animationType: 'slide-in-right',
               animationDuration: 200 });
 

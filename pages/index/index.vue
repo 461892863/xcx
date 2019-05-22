@@ -9,11 +9,12 @@
 		<view class="worship" style="width: 100vw;display: flex;height:auto;overflow: hidden;flex:none;">
 			<view class="day" :class="{dayActive: _index == dayCur}" v-for="(day, _index) in worship" :key="_index" @tap="setDay(_index, day.id)">{{day.name}}</view>
 		</view>
-		<view class="buyList" style="height: 110upx;border-bottom: 3px solid #f3f5f7;">
-			<scroll-view scroll-x='true' scroll-with-animation=true style="height: 100%;white-space: nowrap;padding-left: 55rpx;;">
-				<view class="buyLeft" style="white-space:normal;font-size: 0.8em;display: flex;flex-direction: column;">
-					买过的
-				</view>
+		<view class="buyList" style="height: 110upx;border-bottom: 3px solid #f3f5f7;padding-left: 55rpx;position: relative;">
+			<view class="buyLeft" style="white-space:normal;font-size: 0.8em;display: flex;flex-direction: column;">
+				买过的
+			</view>
+			<scroll-view scroll-x='true' scroll-with-animation=true style="height: 100%;white-space: nowrap;">
+
 				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)">
 					<text class="listName">{{list.name}}</text>
 					<text class="listMonney">￥{{list.price}}</text>
@@ -22,8 +23,8 @@
 				</view>
 			</scroll-view>
 		</view>
-		<view class="content" style="heig: 100%;overflow: hidden;">
-			<scroll-view class="menu-wrapper" scroll-y :style="'height:'+height  +'px;'+'border-right:1px solid #ddd;'">
+		<view class="content" style="height: 100%;overflow: hidden;">
+			<scroll-view class="menu-wrapper" scroll-y style="height:100%;border-right:1px solid #ddd;padding-bottom:54px;box-sizing: border-box;">
 				<view ref="menuWrapper">
 					<!--  :class="{'current': currentIndex == index}" @click="selectMenu(index,$event)" -->
 					<view style="position: relative;" v-for="(item,index) in category" :key="index" ref="menuList" @tap="select(index,item.categoryId)"
@@ -35,12 +36,14 @@
 				</view>
 			</scroll-view>
 			<!--  @scroll="scroll" -->
-			<scroll-view class="foods-wrapper" scroll-y :style="'height:'+height+'px'" :scroll-top="foodSTop">
-				<view ref="foodsWrapper" style="padding-bottom: 54px;height: 100%;overflow: auto;box-sizing: border-box;">
+			<scroll-view class="foods-wrapper" scroll-y style="height:100%;padding-bottom:54px;box-sizing: border-box;"
+			 :scroll-top="foodSTop" @scroll="setScrollIndex">
+				<view ref="foodsWrapper" style="height: 100%;overflow: auto;box-sizing: border-box;">
 					<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
 						<view class="food-title" style="background: #f3f5f7;color:#666;" v-if="item.foods.length>0">
-								{{item.name}}
-							</view>
+							{{item.name}}
+						</view>
+	
 						<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"
 						 :key="index" @tap="foodDetail(food.id)">
 							<image :src="imgUrl + food.thumbnails" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>
@@ -79,6 +82,7 @@
 	export default {
 		data() {
 			return {
+				joinTimes:0,
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				dayCur: -1, //日期选中状态
 				buyList: [], //历史购买
@@ -320,7 +324,6 @@
 							that.foodSTop = 0;
 						}
 						for (let i = 0; i < index; i++) {
-
 							height += parseInt(data[i].height);
 							// console.log('fh', foods);
 							that.foodSTop = height;
@@ -328,6 +331,9 @@
 						}
 					}).exec();
 				})
+			},
+			setScrollIndex() { //滚动事件
+				console.log(this.foodSTop)
 			},
 			foodDetail(id) { // 跳商品详情
 				// console.log(this.dayId)
@@ -530,7 +536,7 @@
 		line-height: 1;
 		padding-top: 10upx;
 		text-align: center;
-		position: fixed;
+		position: absolute;
 		left: 0;
 		z-index: 99;
 	}
@@ -563,11 +569,11 @@
 		font-size: 0.7em;
 		color: #2e2e2e;
 	}
-	.histroyAdd{
-		display: inline-block;
+
+	.histroyAdd {
+		/* display: inline-block;
 		position: absolute;
 		right: 5upx;
-		bottom: 5upx;
+		bottom: 5upx; */
 	}
 </style>
-le>
