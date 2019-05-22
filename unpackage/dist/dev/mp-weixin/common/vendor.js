@@ -1,9 +1,9 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
-/***/ "../../../xcx/common/base.js":
-/*!*********************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/common/base.js ***!
-  \*********************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/common/base.js":
+/*!**************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/common/base.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -63,18 +63,18 @@ exports.install = function (Vue) {
 
 /***/ }),
 
-/***/ "../../../xcx/main.js":
-/*!**************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js ***!
-  \**************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js":
+/*!*******************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../xcx/App.vue"));
-var _base = _interopRequireDefault(__webpack_require__(/*! ./common/base.js */ "../../../xcx/common/base.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../../../Users/huayecai/Desktop/xcx/App.vue"));
+var _base = _interopRequireDefault(__webpack_require__(/*! ./common/base.js */ "../../../../../../Users/huayecai/Desktop/xcx/common/base.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
 _vue.default.use(_base.default);
 _vue.default.config.productionTip = false;
 
@@ -88,282 +88,282 @@ createApp(app).$mount();
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FAssessSuccess%2FAssessSuccess\"}":
-/*!***************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FAssessSuccess%2FAssessSuccess"} ***!
-  \***************************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FAssessSuccess%2FAssessSuccess\"}":
+/*!********************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FAssessSuccess%2FAssessSuccess"} ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _AssessSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/AssessSuccess/AssessSuccess.vue */ "../../../xcx/pages/AssessSuccess/AssessSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _AssessSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/AssessSuccess/AssessSuccess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/AssessSuccess/AssessSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_AssessSuccess.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FaleadyPraise%2FaleadyPraise\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FaleadyPraise%2FaleadyPraise"} ***!
-  \*************************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FaleadyPraise%2FaleadyPraise\"}":
+/*!******************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FaleadyPraise%2FaleadyPraise"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _aleadyPraise = _interopRequireDefault(__webpack_require__(/*! ./pages/aleadyPraise/aleadyPraise.vue */ "../../../xcx/pages/aleadyPraise/aleadyPraise.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _aleadyPraise = _interopRequireDefault(__webpack_require__(/*! ./pages/aleadyPraise/aleadyPraise.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/aleadyPraise/aleadyPraise.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_aleadyPraise.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2Fassess%2Fassess\"}":
-/*!*************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Fassess%2Fassess"} ***!
-  \*************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Fassess%2Fassess\"}":
+/*!******************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Fassess%2Fassess"} ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _assess = _interopRequireDefault(__webpack_require__(/*! ./pages/assess/assess.vue */ "../../../xcx/pages/assess/assess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _assess = _interopRequireDefault(__webpack_require__(/*! ./pages/assess/assess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/assess/assess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_assess.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FassessOrder%2FassessOrder\"}":
-/*!***********************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FassessOrder%2FassessOrder"} ***!
-  \***********************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FassessOrder%2FassessOrder\"}":
+/*!****************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FassessOrder%2FassessOrder"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _assessOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/assessOrder/assessOrder.vue */ "../../../xcx/pages/assessOrder/assessOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _assessOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/assessOrder/assessOrder.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_assessOrder.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FconfirmMeal%2FconfirmMeal\"}":
-/*!***********************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FconfirmMeal%2FconfirmMeal"} ***!
-  \***********************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FconfirmMeal%2FconfirmMeal\"}":
+/*!****************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FconfirmMeal%2FconfirmMeal"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _confirmMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/confirmMeal/confirmMeal.vue */ "../../../xcx/pages/confirmMeal/confirmMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _confirmMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/confirmMeal/confirmMeal.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/confirmMeal/confirmMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_confirmMeal.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2Ffeedback%2Ffeedback\"}":
-/*!*****************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Ffeedback%2Ffeedback"} ***!
-  \*****************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Ffeedback%2Ffeedback\"}":
+/*!**********************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Ffeedback%2Ffeedback"} ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/feedback/feedback.vue */ "../../../xcx/pages/feedback/feedback.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/feedback/feedback.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/feedback/feedback.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_feedback.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FfoodDetail%2FfoodDetail\"}":
-/*!*********************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FfoodDetail%2FfoodDetail"} ***!
-  \*********************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FfoodDetail%2FfoodDetail\"}":
+/*!**************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FfoodDetail%2FfoodDetail"} ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _foodDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/foodDetail/foodDetail.vue */ "../../../xcx/pages/foodDetail/foodDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _foodDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/foodDetail/foodDetail.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/foodDetail/foodDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_foodDetail.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2Findex%2Findex\"}":
-/*!***********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \***********************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Findex%2Findex\"}":
+/*!****************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "../../../xcx/pages/index/index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/index/index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_index.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
-/*!***********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \***********************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
+/*!****************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../xcx/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_login.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FmoreAssess%2FmoreAssess\"}":
-/*!*********************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FmoreAssess%2FmoreAssess"} ***!
-  \*********************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FmoreAssess%2FmoreAssess\"}":
+/*!**************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FmoreAssess%2FmoreAssess"} ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _moreAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/moreAssess/moreAssess.vue */ "../../../xcx/pages/moreAssess/moreAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _moreAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/moreAssess/moreAssess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/moreAssess/moreAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_moreAssess.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FmyAssess%2FmyAssess\"}":
-/*!*****************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FmyAssess%2FmyAssess"} ***!
-  \*****************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FmyAssess%2FmyAssess\"}":
+/*!**********************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FmyAssess%2FmyAssess"} ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _myAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/myAssess/myAssess.vue */ "../../../xcx/pages/myAssess/myAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _myAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/myAssess/myAssess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/myAssess/myAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_myAssess.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2Forder%2Forder\"}":
-/*!***********************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Forder%2Forder"} ***!
-  \***********************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Forder%2Forder\"}":
+/*!****************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Forder%2Forder"} ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _order = _interopRequireDefault(__webpack_require__(/*! ./pages/order/order.vue */ "../../../xcx/pages/order/order.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _order = _interopRequireDefault(__webpack_require__(/*! ./pages/order/order.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/order/order.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_order.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2ForderDetails%2ForderDetails\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2ForderDetails%2ForderDetails"} ***!
-  \*************************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2ForderDetails%2ForderDetails\"}":
+/*!******************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2ForderDetails%2ForderDetails"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _orderDetails = _interopRequireDefault(__webpack_require__(/*! ./pages/orderDetails/orderDetails.vue */ "../../../xcx/pages/orderDetails/orderDetails.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _orderDetails = _interopRequireDefault(__webpack_require__(/*! ./pages/orderDetails/orderDetails.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/orderDetails/orderDetails.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_orderDetails.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2ForderSuccess%2ForderSuccess\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2ForderSuccess%2ForderSuccess"} ***!
-  \*************************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2ForderSuccess%2ForderSuccess\"}":
+/*!******************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2ForderSuccess%2ForderSuccess"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _orderSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/orderSuccess/orderSuccess.vue */ "../../../xcx/pages/orderSuccess/orderSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _orderSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/orderSuccess/orderSuccess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/orderSuccess/orderSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_orderSuccess.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FwaitingMeal%2FwaitingMeal\"}":
-/*!***********************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FwaitingMeal%2FwaitingMeal"} ***!
-  \***********************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FwaitingMeal%2FwaitingMeal\"}":
+/*!****************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FwaitingMeal%2FwaitingMeal"} ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _waitingMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingMeal/waitingMeal.vue */ "../../../xcx/pages/waitingMeal/waitingMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _waitingMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingMeal/waitingMeal.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/waitingMeal/waitingMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_waitingMeal.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/main.js?{\"page\":\"pages%2FwaitingOrder%2FwaitingOrder\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FwaitingOrder%2FwaitingOrder"} ***!
-  \*************************************************************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FwaitingOrder%2FwaitingOrder\"}":
+/*!******************************************************************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FwaitingOrder%2FwaitingOrder"} ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
 
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _waitingOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingOrder/waitingOrder.vue */ "../../../xcx/pages/waitingOrder/waitingOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _waitingOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingOrder/waitingOrder.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/waitingOrder/waitingOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_waitingOrder.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
 
 /***/ }),
 
-/***/ "../../../xcx/pages.json":
-/*!*****************************************************!*\
-  !*** C:/Users/Administrator/Desktop/xcx/pages.json ***!
-  \*****************************************************/
+/***/ "../../../../../../Users/huayecai/Desktop/xcx/pages.json":
+/*!**********************************************!*\
+  !*** /Users/huayecai/Desktop/xcx/pages.json ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -835,7 +835,7 @@ function getData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -6931,7 +6931,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -6952,14 +6952,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7028,7 +7028,7 @@ var patch = function(oldVnode, vnode) {
         });
         var diffData = diff(data, mpData);
         if (Object.keys(diffData).length) {
-            if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+            if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
                 console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
                     ']差量更新',
                     JSON.stringify(diffData));

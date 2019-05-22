@@ -1,12 +1,12 @@
 <template>
-	<view class="idnexBox" style="width: 100vw;height: 100vh;overflow: hidden;">
+	<view class="idnexBox" style="width: 100vw;height: 100vh;overflow: hidden;display: flex;flex-direction: column;">
 		<view class="" style="width: 100vw;height: 100upx;background: #f4f4f4;">
 			<mSearch :mode="2" button="inside" @search="search($event)"></mSearch>
 		</view>
 		<!-- <view class="" style="width: 100vw;height: 90upx;background: #fff;color: #2b2b2b;">
 			<text class="" style="">2017-08-08</text>至<text class="">2017-08-09</text>
 		</view> -->
-		<view class="worship" style="width: 100vw;display: flex;">
+		<view class="worship" style="width: 100vw;display: flex;height:5em;overflow: hidden;">
 			<view class="day" :class="{dayActive: _index == dayCur}" v-for="(day, _index) in worship" :key="_index" @tap="setDay(_index, day.id)">{{day.name}}</view>
 		</view>
 		<view class="buyList" style="height: 110upx;border-bottom: 3px solid #f3f5f7;">
@@ -22,7 +22,7 @@
 				</view>
 			</scroll-view>
 		</view>
-		<view class="content">
+		<view class="content" style="heig: 100%;overflow: hidden;">
 			<scroll-view class="menu-wrapper" scroll-y :style="'height:'+height  +'px;'+'border-right:1px solid #ddd;'">
 				<view ref="menuWrapper">
 					<!--  :class="{'current': currentIndex == index}" @click="selectMenu(index,$event)" -->
@@ -36,9 +36,9 @@
 			</scroll-view>
 			<!--  @scroll="scroll" -->
 			<!-- <scroll-view class="foods-wrapper" scroll-y :style="'height:'+height+'px'" :scroll-top="foodSTop"> -->
-			<view ref="foodsWrapper" style="width:78%;padding-bottom: 54px;">
+			<view ref="foodsWrapper" style="width:78%;padding-bottom: 54px;height: 100%;overflow: auto;box-sizing: border-box;">
 				<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
-					<view class="food-title" style="background: #f3f5f7" v-if="item.foods.length>0">
+					<view class="food-title" style="background: #f3f5f7;color:#666;" v-if="item.foods.length>0">
 							{{item.name}}
 						</view>
 					<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"

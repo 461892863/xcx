@@ -117,7 +117,7 @@
 	padding: 10upx 5upx;
 	position: absolute;
 	right: 15upx;
-	bottom: 138upx;
+	bottom: 160upx;
 	background: #007AFF;
 	color:#fff;
 	border-radius: 10upx;
