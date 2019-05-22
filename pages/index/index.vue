@@ -35,34 +35,34 @@
 				</view>
 			</scroll-view>
 			<!--  @scroll="scroll" -->
-			<!-- <scroll-view class="foods-wrapper" scroll-y :style="'height:'+height+'px'" :scroll-top="foodSTop"> -->
-			<view ref="foodsWrapper" style="width:78%;padding-bottom: 54px;">
-				<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
-					<view class="food-title" style="background: #f3f5f7" v-if="item.foods.length>0">
-							{{item.name}}
-						</view>
-					<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"
-					 :key="index" @tap="foodDetail(food.id)">
-						<image :src="imgUrl + food.thumbnails" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>
-						<view class="food-info">
-							<text style="font-size: 15px;margin-top: 2px;">{{food.name}} <text class="mark" v-if="food.sign">{{food.sign}}</text></text>
-							<uniRate :value="food.level" size="10" disabled="true">{{food.level}}</uniRate>
-							<!-- 加减 -->
-							<view>
-								<text class="remainder" style="font-size: 14px;margin: 2px 0 4px;">剩余 <text style="font-weight: bold;"><text
-										 style="color:red;font-size: 16px;"> {{food.limitNum-food.count}}</text></text>
-									{{food.unit}}</text>
-								<text style="font-size: 12px;margin: 2px 0 4px;">售出 <text>{{food.sellNum}}</text> {{food.unit}}</text>
+			<scroll-view class="foods-wrapper" scroll-y :style="'height:'+height+'px'" :scroll-top="foodSTop">
+				<view ref="foodsWrapper" style="padding-bottom: 54px;">
+					<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
+						<view class="food-title" style="background: #f3f5f7" v-if="item.foods.length>0">
+								{{item.name}}
 							</view>
-							<view class="food-btm">
-								<text class="food-price">￥{{food.price}}</text>
-								<cartcontrol :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
+						<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"
+						 :key="index" @tap="foodDetail(food.id)">
+							<image :src="imgUrl + food.thumbnails" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>
+							<view class="food-info">
+								<text style="font-size: 15px;margin-top: 2px;">{{food.name}} <text class="mark" v-if="food.sign">{{food.sign}}</text></text>
+								<uniRate :value="food.level" size="10" disabled="true">{{food.level}}</uniRate>
+								<!-- 加减 -->
+								<view>
+									<text class="remainder" style="font-size: 14px;margin: 2px 0 4px;">剩余 <text style="font-weight: bold;"><text
+											 style="color:red;font-size: 16px;"> {{food.limitNum-food.count}}</text></text>
+										{{food.unit}}</text>
+									<text style="font-size: 12px;margin: 2px 0 4px;">售出 <text>{{food.sellNum}}</text> {{food.unit}}</text>
+								</view>
+								<view class="food-btm">
+									<text class="food-price">￥{{food.price}}</text>
+									<cartcontrol :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
+								</view>
 							</view>
 						</view>
 					</view>
 				</view>
-			</view>
-			<!-- </scroll-view> -->
+			</scroll-view>
 			<shopcart :goods="goods" @add="addCart" @dec="decreaseCart" @delAll="delAll"></shopcart>
 		</view>
 	</view>
