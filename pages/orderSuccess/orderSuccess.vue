@@ -15,19 +15,25 @@
 </template>
 
 <script>
+	import orderType from '../../common/public.js'
 	export default {
 		data() {
 			return {
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 			}
 		},
+		onShow() {
+			orderType.delOrderType = false
+		},
 		methods: {
 			toIndex(){
+				orderType.delOrderType = true
 				uni.switchTab({
 					url:'../index/index'
 				})
 			},
 			toOrder(){
+				orderType.delOrderType = true
 				uni.switchTab({
 					url:'../order/order'
 				})

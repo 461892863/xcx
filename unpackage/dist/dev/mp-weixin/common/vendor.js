@@ -1,16 +1,395 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
 
-<<<<<<< HEAD
+/***/ "../../../xcx/common/base.js":
+/*!*********************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/common/base.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+ //获取url参数
+exports.install = function (Vue) {
+
+  Vue.prototype.GetQueryString = function (Paras) {
+    var url = window.location.href.split("#")[0];
+    var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+    var paraObj = {};
+    for (i = 0; j = paraString[i]; i++) {
+      paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+    }
+    var returnValue = paraObj[Paras.toLowerCase()];
+    if (typeof returnValue == "undefined") {
+      return "";
+    } else {
+      return returnValue;
+    }
+  };
+
+  Vue.prototype.GetUserId = function (code) {
+    var userId = "";
+    $.ajax({
+      url: this.url + "/api/UserBaseInfo/GetUserId",
+      async: false,
+      type: "Post",
+      data: {
+        code: code },
+
+      dataType: "json",
+      success: function success(msg) {
+        if (msg.returncode == 0) {
+          userId = msg.data;
+        }
+      },
+      error: function error() {
+        //alert("服务器错误");
+      },
+      complete: function complete() {
+      } });
+
+    return userId;
+  };
+
+  //域名参数
+  //   Vue.prototype.port = "http://139.199.63.146:6012/";  //接口域名
+  //   Vue.prototype.url = "http://139.199.63.146:6012";   //图片使用的
+  //   Vue.prototype.Crop_Id = 'ww275ee6863288fce6';  //快捷
+  //  let url = 'http://yanzhiyoudao.gkybi.com.cn' //ip
+  Vue.prototype.nowUrl = 'http://106.15.194.58:8093'; //接口ip
+  // Vue.prototype.nowUrl = 'https://result.eolinker.com';  //接口地址
+  Vue.prototype.token = '12366666666'; //接口地址
+  Vue.prototype.imgUrl = 'http://106.15.194.58/images/'; //图片接口
+};
+
+/***/ }),
+
+/***/ "../../../xcx/common/public.js":
+/*!***********************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/common/public.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var delOrderType = true; //订单是否可以删除
+var _default = {
+  delOrderType: delOrderType };exports.default = _default;
+
+/***/ }),
+
+/***/ "../../../xcx/main.js":
+/*!**************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../xcx/App.vue"));
+var _base = _interopRequireDefault(__webpack_require__(/*! ./common/base.js */ "../../../xcx/common/base.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+_vue.default.use(_base.default);
+_vue.default.config.productionTip = false;
+
+_App.default.mpType = 'app';
+
+var app = new _vue.default(_objectSpread({},
+_App.default));
+
+createApp(app).$mount();
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createApp"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FAssessSuccess%2FAssessSuccess\"}":
+/*!***************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FAssessSuccess%2FAssessSuccess"} ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _AssessSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/AssessSuccess/AssessSuccess.vue */ "../../../xcx/pages/AssessSuccess/AssessSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_AssessSuccess.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FaleadyPraise%2FaleadyPraise\"}":
+/*!*************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FaleadyPraise%2FaleadyPraise"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _aleadyPraise = _interopRequireDefault(__webpack_require__(/*! ./pages/aleadyPraise/aleadyPraise.vue */ "../../../xcx/pages/aleadyPraise/aleadyPraise.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_aleadyPraise.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2Fassess%2Fassess\"}":
+/*!*************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Fassess%2Fassess"} ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _assess = _interopRequireDefault(__webpack_require__(/*! ./pages/assess/assess.vue */ "../../../xcx/pages/assess/assess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_assess.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FassessOrder%2FassessOrder\"}":
+/*!***********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FassessOrder%2FassessOrder"} ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _assessOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/assessOrder/assessOrder.vue */ "../../../xcx/pages/assessOrder/assessOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_assessOrder.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FconfirmMeal%2FconfirmMeal\"}":
+/*!***********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FconfirmMeal%2FconfirmMeal"} ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _confirmMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/confirmMeal/confirmMeal.vue */ "../../../xcx/pages/confirmMeal/confirmMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_confirmMeal.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2Ffeedback%2Ffeedback\"}":
+/*!*****************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Ffeedback%2Ffeedback"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/feedback/feedback.vue */ "../../../xcx/pages/feedback/feedback.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_feedback.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FfoodDetail%2FfoodDetail\"}":
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FfoodDetail%2FfoodDetail"} ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _foodDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/foodDetail/foodDetail.vue */ "../../../xcx/pages/foodDetail/foodDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_foodDetail.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2Findex%2Findex\"}":
+/*!***********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Findex%2Findex"} ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "../../../xcx/pages/index/index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_index.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
+/*!***********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../xcx/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_login.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FmoreAssess%2FmoreAssess\"}":
+/*!*********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FmoreAssess%2FmoreAssess"} ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _moreAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/moreAssess/moreAssess.vue */ "../../../xcx/pages/moreAssess/moreAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_moreAssess.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FmyAssess%2FmyAssess\"}":
+/*!*****************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FmyAssess%2FmyAssess"} ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _myAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/myAssess/myAssess.vue */ "../../../xcx/pages/myAssess/myAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_myAssess.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2Forder%2Forder\"}":
+/*!***********************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2Forder%2Forder"} ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _order = _interopRequireDefault(__webpack_require__(/*! ./pages/order/order.vue */ "../../../xcx/pages/order/order.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_order.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2ForderDetails%2ForderDetails\"}":
+/*!*************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2ForderDetails%2ForderDetails"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _orderDetails = _interopRequireDefault(__webpack_require__(/*! ./pages/orderDetails/orderDetails.vue */ "../../../xcx/pages/orderDetails/orderDetails.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_orderDetails.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2ForderSuccess%2ForderSuccess\"}":
+/*!*************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2ForderSuccess%2ForderSuccess"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _orderSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/orderSuccess/orderSuccess.vue */ "../../../xcx/pages/orderSuccess/orderSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_orderSuccess.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FwaitingMeal%2FwaitingMeal\"}":
+/*!***********************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FwaitingMeal%2FwaitingMeal"} ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _waitingMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingMeal/waitingMeal.vue */ "../../../xcx/pages/waitingMeal/waitingMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_waitingMeal.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/main.js?{\"page\":\"pages%2FwaitingOrder%2FwaitingOrder\"}":
+/*!*************************************************************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/main.js?{"page":"pages%2FwaitingOrder%2FwaitingOrder"} ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../xcx/pages.json");
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
+var _waitingOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingOrder/waitingOrder.vue */ "../../../xcx/pages/waitingOrder/waitingOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+createPage(_waitingOrder.default);
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
+
+/***/ }),
+
+/***/ "../../../xcx/pages.json":
+/*!*****************************************************!*\
+  !*** C:/Users/Administrator/Desktop/xcx/pages.json ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
 /***/ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js":
 /*!************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js ***!
   \************************************************************/
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/common/base.js":
-/*!**************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/common/base.js ***!
-  \**************************************************/
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -59,26 +438,9 @@ var camelize = cached(function (str) {
 
 var SYNC_API_RE = /subNVue|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$/;
 
-<<<<<<< HEAD
 var CONTEXT_API_RE = /^create|Manager$/;
 
 var CALLBACK_API_RE = /^on/;
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js":
-/*!*******************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../../../../Users/huayecai/Desktop/xcx/App.vue"));
-var _base = _interopRequireDefault(__webpack_require__(/*! ./common/base.js */ "../../../../../../Users/huayecai/Desktop/xcx/common/base.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-_vue.default.use(_base.default);
-_vue.default.config.productionTip = false;
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 function isContextApi(name) {
   return CONTEXT_API_RE.test(name);
@@ -109,7 +471,6 @@ function shouldPromise(name) {
   return true;
 }
 
-<<<<<<< HEAD
 function promisify(name, api) {
   if (!shouldPromise(name)) {
     return api;
@@ -142,48 +503,14 @@ var BASE_DEVICE_WIDTH = 750;
 var isIOS = false;
 var deviceWidth = 0;
 var deviceDPR = 0;
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FAssessSuccess%2FAssessSuccess\"}":
-/*!********************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FAssessSuccess%2FAssessSuccess"} ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _AssessSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/AssessSuccess/AssessSuccess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/AssessSuccess/AssessSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_AssessSuccess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 function checkDeviceWidth() {var _wx$getSystemInfoSync =
 
-<<<<<<< HEAD
 
 
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FaleadyPraise%2FaleadyPraise\"}":
-/*!******************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FaleadyPraise%2FaleadyPraise"} ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _aleadyPraise = _interopRequireDefault(__webpack_require__(/*! ./pages/aleadyPraise/aleadyPraise.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/aleadyPraise/aleadyPraise.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_aleadyPraise.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
   wx.getSystemInfoSync(),platform = _wx$getSystemInfoSync.platform,pixelRatio = _wx$getSystemInfoSync.pixelRatio,windowWidth = _wx$getSystemInfoSync.windowWidth; // uni=>wx runtime 编译目标是 uni 对象，内部不允许直接使用 uni
 
-<<<<<<< HEAD
   deviceWidth = windowWidth;
   deviceDPR = pixelRatio;
   isIOS = platform === 'ios';
@@ -212,22 +539,6 @@ function upx2px(number, newDeviceWidth) {
   }
   return number < 0 ? -result : result;
 }
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Fassess%2Fassess\"}":
-/*!******************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Fassess%2Fassess"} ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _assess = _interopRequireDefault(__webpack_require__(/*! ./pages/assess/assess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/assess/assess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_assess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 var previewImage = {
   args: function args(fromArgs) {
@@ -253,7 +564,6 @@ var previewImage = {
       fromArgs.urls = urls.filter(
       function (item, index) {return index < currentIndex ? item !== urls[currentIndex] : true;});
 
-<<<<<<< HEAD
     } else {
       fromArgs.current = urls[0];
     }
@@ -263,27 +573,10 @@ var previewImage = {
 
   } };
 
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FassessOrder%2FassessOrder\"}":
-/*!****************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FassessOrder%2FassessOrder"} ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _assessOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/assessOrder/assessOrder.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/assessOrder/assessOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_assessOrder.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 var protocols = {
   previewImage: previewImage };
 
-<<<<<<< HEAD
 var todos = [];
 var canIUses = [];
 
@@ -294,22 +587,6 @@ function processCallback(methodName, method, returnValue) {
     return method(processReturnValue(methodName, res, returnValue));
   };
 }
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FconfirmMeal%2FconfirmMeal\"}":
-/*!****************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FconfirmMeal%2FconfirmMeal"} ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _confirmMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/confirmMeal/confirmMeal.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/confirmMeal/confirmMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_confirmMeal.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 function processArgs(methodName, fromArgs) {var argsOption = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};var returnValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};var keepFromArgs = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
   if (isPlainObject(fromArgs)) {// 一般 api 的参数解析
@@ -345,7 +622,6 @@ function processArgs(methodName, fromArgs) {var argsOption = arguments.length > 
   return fromArgs;
 }
 
-<<<<<<< HEAD
 function processReturnValue(methodName, res, returnValue) {var keepReturnValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
   if (isFn(protocols.returnValue)) {// 处理通用 returnValue
     res = protocols.returnValue(methodName, res);
@@ -368,22 +644,6 @@ function wrapper(methodName, method) {
       }
 
       arg1 = processArgs(methodName, arg1, options.args, options.returnValue);
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Ffeedback%2Ffeedback\"}":
-/*!**********************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Ffeedback%2Ffeedback"} ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/feedback/feedback.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/feedback/feedback.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_feedback.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
       var returnValue = wx[options.name || methodName](arg1, arg2);
       if (isSyncApi(methodName)) {// 同步 api
@@ -395,7 +655,6 @@ createPage(_feedback.default);
   return method;
 }
 
-<<<<<<< HEAD
 var todoApis = Object.create(null);
 
 var TODOS = [
@@ -405,27 +664,10 @@ var TODOS = [
 'offPush',
 'share'];
 
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FfoodDetail%2FfoodDetail\"}":
-/*!**************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FfoodDetail%2FfoodDetail"} ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _foodDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/foodDetail/foodDetail.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/foodDetail/foodDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_foodDetail.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 function createTodoApi(name) {
   return function todoApi(_ref)
 
-<<<<<<< HEAD
 
   {var fail = _ref.fail,complete = _ref.complete;
     var res = {
@@ -435,28 +677,11 @@ function createTodoApi(name) {
     isFn(complete) && complete(res);
   };
 }
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Findex%2Findex\"}":
-/*!****************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/index/index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_index.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 TODOS.forEach(function (name) {
   todoApis[name] = createTodoApi(name);
 });
 
-<<<<<<< HEAD
 var providers = {
   oauth: ['weixin'],
   share: ['weixin'],
@@ -465,25 +690,8 @@ var providers = {
 
 
 function getProvider(_ref2)
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
-/*!****************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/login/login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_login.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 
-<<<<<<< HEAD
 
 
 {var service = _ref2.service,success = _ref2.success,fail = _ref2.fail,complete = _ref2.complete;
@@ -493,29 +701,12 @@ createPage(_login.default);
       errMsg: 'getProvider:ok',
       service: service,
       provider: providers[service] };
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FmoreAssess%2FmoreAssess\"}":
-/*!**************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FmoreAssess%2FmoreAssess"} ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _moreAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/moreAssess/moreAssess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/moreAssess/moreAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_moreAssess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
     isFn(success) && success(res);
   } else {
     res = {
       errMsg: 'getProvider:fail:服务[' + service + ']不存在' };
 
-<<<<<<< HEAD
     isFn(fail) && fail(res);
   }
   isFn(complete) && complete(res);
@@ -524,47 +715,13 @@ createPage(_moreAssess.default);
 var extraApi = /*#__PURE__*/Object.freeze({
   getProvider: getProvider });
 
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FmyAssess%2FmyAssess\"}":
-/*!**********************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FmyAssess%2FmyAssess"} ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _myAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/myAssess/myAssess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/myAssess/myAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_myAssess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 
-<<<<<<< HEAD
 
 var api = /*#__PURE__*/Object.freeze({});
 
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2Forder%2Forder\"}":
-/*!****************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2Forder%2Forder"} ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _order = _interopRequireDefault(__webpack_require__(/*! ./pages/order/order.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/order/order.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_order.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 
-<<<<<<< HEAD
 var MPPage = Page;
 var MPComponent = Component;
 
@@ -573,22 +730,6 @@ var customizeRE = /:/g;
 var customize = cached(function (str) {
   return camelize(str.replace(customizeRE, '-'));
 });
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2ForderDetails%2ForderDetails\"}":
-/*!******************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2ForderDetails%2ForderDetails"} ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _orderDetails = _interopRequireDefault(__webpack_require__(/*! ./pages/orderDetails/orderDetails.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/orderDetails/orderDetails.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_orderDetails.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 function initTriggerEvent(mpInstance) {
   {
@@ -602,7 +743,6 @@ function initTriggerEvent(mpInstance) {
   };
 }
 
-<<<<<<< HEAD
 function initHook(name, options) {
   var oldHook = options[name];
   if (!oldHook) {
@@ -626,26 +766,9 @@ Component = function Component() {var options = arguments.length > 0 && argument
   initHook('created', options);
   return MPComponent(options);
 };
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2ForderSuccess%2ForderSuccess\"}":
-/*!******************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2ForderSuccess%2ForderSuccess"} ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _orderSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/orderSuccess/orderSuccess.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/orderSuccess/orderSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_orderSuccess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
 var mocks = ['__route__', '__wxExparserNodeId__', '__wxWebviewId__'];
 
-<<<<<<< HEAD
 function initPage(pageOptions) {
   return initComponent(pageOptions);
 }
@@ -656,73 +779,6 @@ function initComponent(componentOptions) {
 
 function initBehavior(options) {
   return Behavior(options);
-=======
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FwaitingMeal%2FwaitingMeal\"}":
-/*!****************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FwaitingMeal%2FwaitingMeal"} ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _waitingMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingMeal/waitingMeal.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/waitingMeal/waitingMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_waitingMeal.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/main.js?{\"page\":\"pages%2FwaitingOrder%2FwaitingOrder\"}":
-/*!******************************************************************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/main.js?{"page":"pages%2FwaitingOrder%2FwaitingOrder"} ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "../../../../../../Users/huayecai/Desktop/xcx/pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _waitingOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingOrder/waitingOrder.vue */ "../../../../../../Users/huayecai/Desktop/xcx/pages/waitingOrder/waitingOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_waitingOrder.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "../../../../../../Users/huayecai/Desktop/xcx/pages.json":
-/*!**********************************************!*\
-  !*** /Users/huayecai/Desktop/xcx/pages.json ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-/***/ }),
-
-/***/ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js":
-/*!************************************************************!*\
-  !*** ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createPage = createPage;exports.createComponent = createComponent;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-
-var _toString = Object.prototype.toString;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-function isFn(fn) {
-  return typeof fn === 'function';
-}
-
-function isStr(str) {
-  return typeof str === 'string';
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 }
 function initRefs(vm) {
   var mpInstance = vm.$scope;
@@ -759,7 +815,6 @@ function handleLink(event) {
       event.detail.$parent = this.$vm;
       event.detail.$parent.$children.push(event.detail);
 
-<<<<<<< HEAD
       event.detail.$root = this.$vm.$root;
     }
   } else {// vueOptions
@@ -776,38 +831,6 @@ function initMocks(vm, mocks$$1) {
       vm[mock] = mpInstance[mock];
     }
   });
-=======
-/**
-                    * Create a cached version of a pure function.
-                    */
-function cached(fn) {
-  var cache = Object.create(null);
-  return function cachedFn(str) {
-    var hit = cache[str];
-    return hit || (cache[str] = fn(str));
-  };
-}
-
-/**
-   * Camelize a hyphen-delimited string.
-   */
-var camelizeRE = /-(\w)/g;
-var camelize = cached(function (str) {
-  return str.replace(camelizeRE, function (_, c) {return c ? c.toUpperCase() : '';});
-});
-
-var SYNC_API_RE = /subNVue|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$/;
-
-var CONTEXT_API_RE = /^create|Manager$/;
-
-var CALLBACK_API_RE = /^on/;
-
-function isContextApi(name) {
-  return CONTEXT_API_RE.test(name);
-}
-function isSyncApi(name) {
-  return SYNC_API_RE.test(name);
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 }
 
 function initHooks(mpOptions, hooks) {
@@ -1172,7 +1195,6 @@ var hooks = [
 'onUniNViewMessage'];
 
 
-<<<<<<< HEAD
 function initVm(vm) {
   if (this.$vm) {// 百度竟然 onShow 在 onLaunch 之前？
     return;
@@ -1180,15 +1202,6 @@ function initVm(vm) {
   {
     if (!wx.canIUse('nextTick')) {// 事实 上2.2.3 即可，简单使用 2.3.0 的 nextTick 判断
       console.error('当前微信基础库版本过低，请将 微信开发者工具-详情-项目设置-调试基础库版本 更换为`2.3.0`以上');
-=======
-  if (typeof data === 'function') {
-    try {
-      data = data.call(context); // 支持 Vue.prototype 上挂的数据
-    } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
-        console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
-      }
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
     }
   }
 
@@ -1339,40 +1352,7 @@ function initVm$2(VueComponent) {
     return;
   }
 
-<<<<<<< HEAD
   var properties = this.properties;
-=======
-  if (Array.isArray(extra) && extra.length) {
-    /**
-                                                  *[
-                                                  *    ['data.items', 'data.id', item.data.id],
-                                                  *    ['metas', 'id', meta.id]
-                                                  *],
-                                                  *[
-                                                  *    ['data.items', 'data.id', item.data.id],
-                                                  *    ['metas', 'id', meta.id]
-                                                  *],
-                                                  *'test'
-                                                  */
-    extra.forEach(function (dataPath, index) {
-      if (typeof dataPath === 'string') {
-        if (!dataPath) {// model,prop.sync
-          extraObj['$' + index] = vm;
-        } else {
-          if (dataPath === '$event') {// $event
-            extraObj['$' + index] = event;
-          } else if (dataPath.indexOf('$event.') === 0) {// $event.target.value
-            extraObj['$' + index] = vm.__get_value(dataPath.replace('$event.', ''), event);
-          } else {
-            extraObj['$' + index] = vm.__get_value(dataPath);
-          }
-        }
-      } else {
-        extraObj['$' + index] = getExtraValue(vm, dataPath);
-      }
-    });
-  }
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
 
   var options = {
     mpType: 'component',
@@ -7540,378 +7520,6 @@ try {
 // easier to handle this case. if(!global) { ...}
 
 module.exports = g;
-
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\common\\base.js":
-/*!*********************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/common/base.js ***!
-  \*********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
- //获取url参数
-exports.install = function (Vue) {
-
-  Vue.prototype.GetQueryString = function (Paras) {
-    var url = window.location.href.split("#")[0];
-    var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
-    var paraObj = {};
-    for (i = 0; j = paraString[i]; i++) {
-      paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
-    }
-    var returnValue = paraObj[Paras.toLowerCase()];
-    if (typeof returnValue == "undefined") {
-      return "";
-    } else {
-      return returnValue;
-    }
-  };
-
-  Vue.prototype.GetUserId = function (code) {
-    var userId = "";
-    $.ajax({
-      url: this.url + "/api/UserBaseInfo/GetUserId",
-      async: false,
-      type: "Post",
-      data: {
-        code: code },
-
-      dataType: "json",
-      success: function success(msg) {
-        if (msg.returncode == 0) {
-          userId = msg.data;
-        }
-      },
-      error: function error() {
-        //alert("服务器错误");
-      },
-      complete: function complete() {
-      } });
-
-    return userId;
-  };
-
-  //域名参数
-  //   Vue.prototype.port = "http://139.199.63.146:6012/";  //接口域名
-  //   Vue.prototype.url = "http://139.199.63.146:6012";   //图片使用的
-  //   Vue.prototype.Crop_Id = 'ww275ee6863288fce6';  //快捷
-  //  let url = 'http://yanzhiyoudao.gkybi.com.cn' //ip
-  Vue.prototype.nowUrl = 'http://106.15.194.58:8093'; //接口ip
-  // Vue.prototype.nowUrl = 'https://result.eolinker.com';  //接口地址
-  Vue.prototype.token = '12366666666'; //接口地址
-  Vue.prototype.imgUrl = 'http://106.15.194.58/images/'; //图片接口
-};
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js":
-/*!**************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\App.vue"));
-var _base = _interopRequireDefault(__webpack_require__(/*! ./common/base.js */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\common\\base.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-_vue.default.use(_base.default);
-_vue.default.config.productionTip = false;
-
-_App.default.mpType = 'app';
-
-var app = new _vue.default(_objectSpread({},
-_App.default));
-
-createApp(app).$mount();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createApp"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FAssessSuccess%2FAssessSuccess\"}":
-/*!***************************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FAssessSuccess%2FAssessSuccess"} ***!
-  \***************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _AssessSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/AssessSuccess/AssessSuccess.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\AssessSuccess\\AssessSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_AssessSuccess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FaleadyPraise%2FaleadyPraise\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FaleadyPraise%2FaleadyPraise"} ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _aleadyPraise = _interopRequireDefault(__webpack_require__(/*! ./pages/aleadyPraise/aleadyPraise.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\aleadyPraise\\aleadyPraise.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_aleadyPraise.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2Fassess%2Fassess\"}":
-/*!*************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2Fassess%2Fassess"} ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _assess = _interopRequireDefault(__webpack_require__(/*! ./pages/assess/assess.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\assess\\assess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_assess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FassessOrder%2FassessOrder\"}":
-/*!***********************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FassessOrder%2FassessOrder"} ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _assessOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/assessOrder/assessOrder.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\assessOrder\\assessOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_assessOrder.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FconfirmMeal%2FconfirmMeal\"}":
-/*!***********************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FconfirmMeal%2FconfirmMeal"} ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _confirmMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/confirmMeal/confirmMeal.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\confirmMeal\\confirmMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_confirmMeal.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2Ffeedback%2Ffeedback\"}":
-/*!*****************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2Ffeedback%2Ffeedback"} ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _feedback = _interopRequireDefault(__webpack_require__(/*! ./pages/feedback/feedback.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\feedback\\feedback.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_feedback.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FfoodDetail%2FfoodDetail\"}":
-/*!*********************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FfoodDetail%2FfoodDetail"} ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _foodDetail = _interopRequireDefault(__webpack_require__(/*! ./pages/foodDetail/foodDetail.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\foodDetail\\foodDetail.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_foodDetail.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2Findex%2Findex\"}":
-/*!***********************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2Findex%2Findex"} ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/index/index.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\index\\index.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_index.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2Flogin%2Flogin\"}":
-/*!***********************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2Flogin%2Flogin"} ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _login = _interopRequireDefault(__webpack_require__(/*! ./pages/login/login.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\login\\login.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_login.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FmoreAssess%2FmoreAssess\"}":
-/*!*********************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FmoreAssess%2FmoreAssess"} ***!
-  \*********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _moreAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/moreAssess/moreAssess.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\moreAssess\\moreAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_moreAssess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FmyAssess%2FmyAssess\"}":
-/*!*****************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FmyAssess%2FmyAssess"} ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _myAssess = _interopRequireDefault(__webpack_require__(/*! ./pages/myAssess/myAssess.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\myAssess\\myAssess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_myAssess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2Forder%2Forder\"}":
-/*!***********************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2Forder%2Forder"} ***!
-  \***********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _order = _interopRequireDefault(__webpack_require__(/*! ./pages/order/order.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\order\\order.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_order.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2ForderDetails%2ForderDetails\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2ForderDetails%2ForderDetails"} ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _orderDetails = _interopRequireDefault(__webpack_require__(/*! ./pages/orderDetails/orderDetails.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\orderDetails\\orderDetails.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_orderDetails.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2ForderSuccess%2ForderSuccess\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2ForderSuccess%2ForderSuccess"} ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _orderSuccess = _interopRequireDefault(__webpack_require__(/*! ./pages/orderSuccess/orderSuccess.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\orderSuccess\\orderSuccess.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_orderSuccess.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FwaitingMeal%2FwaitingMeal\"}":
-/*!***********************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FwaitingMeal%2FwaitingMeal"} ***!
-  \***********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _waitingMeal = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingMeal/waitingMeal.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\waitingMeal\\waitingMeal.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_waitingMeal.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\main.js?{\"page\":\"pages%2FwaitingOrder%2FwaitingOrder\"}":
-/*!*************************************************************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/main.js?{"page":"pages%2FwaitingOrder%2FwaitingOrder"} ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json");
-
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));
-var _waitingOrder = _interopRequireDefault(__webpack_require__(/*! ./pages/waitingOrder/waitingOrder.vue */ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages\\waitingOrder\\waitingOrder.vue"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-createPage(_waitingOrder.default);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["createPage"]))
-
-/***/ }),
-
-/***/ "C:\\Users\\hzy0926\\Desktop\\xcx线上\\xcx\\pages.json":
-/*!*****************************************************!*\
-  !*** C:/Users/hzy0926/Desktop/xcx线上/xcx/pages.json ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 /***/ })

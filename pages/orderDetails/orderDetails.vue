@@ -39,6 +39,7 @@
 </template>
 
 <script>
+	import orderType from '../../common/public.js'
 	export default {
 		data() {
 			return {
@@ -86,16 +87,20 @@
 		},
 		onUnload() { //返回即删除订单
 			// console.log('1130076650701029376')
-			uni.request({
-				url:this.nowUrl + '/foods/shopcar/remove?id='+ this.orderInfo.orderNum,
-				header:{
-					'token':this.token
-				},
-				method: 'POST',
-				success(res) {
-					// console.log(res)
-				}
-			})
+			console.log(orderType.delOrderType)
+			if(orderType.delOrderType){
+				console.log(11)
+				uni.request({
+					url:this.nowUrl + '/foods/shopcar/remove?id='+ this.orderInfo.orderNum,
+					header:{
+						'token':this.token
+					},
+					method: 'POST',
+					success(res) {
+						// console.log(res)
+					}
+				})
+			}
 		},
 		methods: {
 			req(){

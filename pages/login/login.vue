@@ -2,7 +2,7 @@
 	<view style="width: 100vw;height: 100vh;overflow: hidden;position: relative;background: url(../../static/xiaomi.jpg) 0 0 no-repeat;background-size: 100% 100%;">
 		<view class="code" style="position: relative;">
 			<input type="number" class="phoneInput" value="phone" v-model="phone" placeholder="请输入手机号">
-			<input type="number" class="phoneInput" value="code" v-model="code" placeholder="请输入验证码"><button @tap="getCode" class="getCode">获取验证码</button>
+			<input type="number" class="phoneInput" value="code" v-model="code" placeholder="请输入验证码"><button open-type="getUserInfo" withCredentials="true" @getuserinfo="getCode" class="getCode">获取验证码</button>
 			<button type="primary" @tap="login" style="padding: 10upx 15upx;background: #007AFF;border-radius: 20upx;width: 100%;">开始点餐</button>
 		</view>
 	</view>
@@ -17,50 +17,21 @@
 			}
 		},
 		methods: {
-			login(){
-				// uni.request({ //注册登入
-				// 	
-				// })
-				if(this.phone == '' && this.code == ''){
-					uni.showToast({
-						title: "手机号码或验证码为空~",
-						duration:1000,
-						icon:'none'
-					})
-					return false
-				}
-				uni.switchTab({
-					url:'../index/index'
-				})
-			},
 			getCode(e){
+				let _this = this
 				let isPhone = (/^1(3|4|5|7|8)\d{9}$/.test(this.phone))
-				let that = this
-				//登录
-				uni.login({
-				  provider: 'weixin',
-				  success: function (loginRes) {
-					console.log(loginRes.code);
-					// 获取用户信息
-					uni.getUserInfo({
-					  provider: 'weixin',
-					  success: function (infoRes) {
-						console.log('用户昵称为：' + infoRes.userInfo.nickName);
-						console.log('用户头像为：' + infoRes.userInfo.avatarUrl);
-						console.log(infoRes);
-						uni.request({
-							url: that.nowUrl + '/wx/code2Session?code='+loginRes.code,
-							method:'POST',
-							header:{
-								'token':that.token
-							},
-							success(res) {
-								console.log(res)
-							}
-						})
-					  }
-					});
-				  }
+				//第一授权获取用户信息===》按钮触发
+				uni.getUserInfo({
+					provider: 'weixin',
+					success: function(infoRes) {
+						let nickName = infoRes.userInfo.nickName; //昵称
+						let avatarUrl = infoRes.userInfo.avatarUrl; //头像
+						try {
+							uni.setStorageSync('isCanUse', false);//记录是否第一次授权  false:表示不是第一次授权
+							_this.updateUserInfo();
+						} catch (e) {}
+					},
+					fail(res) {}
 				});
 				
 				if(this.phone == ''){
@@ -87,12 +58,88 @@
 						},
 						success: (res) => {
 							if(res.data.code == 200){
-								this.code = res.data.data
+								_this.code = res.data.data
 							}
 						}
 					})
 				}
-			}
+			},
+			//登录
+			login() {
+				let _this = this;
+				if(this.phone == '' && this.code == ''){
+					uni.showToast({
+						title: "手机号码或验证码为空~",
+						duration:1000,
+						icon:'none'
+					})
+					return false
+				}
+				uni.switchTab({
+					url:'../index/index'
+				})
+				uni.showLoading({
+					title: '登录中...'
+				});
+			   // 1.wx获取登录用户code
+				uni.login({
+					provider: 'weixin',
+					success: function(loginRes) {
+						let code = loginRes.code;
+						if (!_this.isCanUse) {
+							//非第一次授权获取用户信息
+							uni.getUserInfo({
+								provider: 'weixin',
+								success: function(infoRes) {
+　　　　　　　　　　　　　　　　　　　　//获取用户信息后向调用信息更新方法
+									let nickName = infoRes.userInfo.nickName; //昵称
+									let avatarUrl = infoRes.userInfo.avatarUrl; //头像
+									//	_this.updateUserInfo();//调用更新信息方法
+								}
+							});
+						}
+						console.log(code)
+						//2.将用户登录code传递到后台置换用户SessionKey、OpenId等信息
+						uni.request({
+							url: _this.nowUrl + '/wx/code2Session?code='+code,
+							header:{
+								'token':_this.token
+							},
+							method: 'POST',
+							success: (res) => {
+								console.log(res)
+								//openId、或SessionKdy存储//隐藏loading
+								uni.hideLoading();
+							}
+						});
+					},
+				});
+			},
+			//向后台更新信息
+            updateUserInfo() {
+                let _this = this;
+                uni.request({
+                    url:'url' ,//服务器端地址
+                    data: {
+                        appKey: this.$store.state.appKey,
+                        customerId: _this.customerId,
+                        nickName: _this.nickName,
+                        headUrl: _this.avatarUrl
+                    },
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/json'
+                    },
+                    success: (res) => {
+                        if (res.data.state == "success") {
+                            uni.reLaunch({//信息更新成功后跳转到小程序首页
+                                url: '/pages/index/index'
+                            });
+                        }
+                    }
+                   
+                });
+            }
 		}
 	}
 </script>

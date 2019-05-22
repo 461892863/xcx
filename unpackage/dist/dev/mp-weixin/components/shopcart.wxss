@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
-.list-text.data-v-452a1e17 {
-=======
-.list-text.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.list-text.data-v-9691fba2 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -14,11 +10,7 @@
 	    -ms-flex-direction: row;
 	        flex-direction: row;
 }
-<<<<<<< HEAD
-.shopcart .cartBottom.data-v-452a1e17 {
-=======
-.shopcart .cartBottom.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.shopcart .cartBottom.data-v-9691fba2 {
 	position: fixed;
 	bottom: 0px; 
 	left: 0;
@@ -31,21 +23,13 @@
 	display: flex;
 	background-color: #909090;
 }
-<<<<<<< HEAD
-.carIcon.data-v-452a1e17 {
-=======
-.carIcon.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.carIcon.data-v-9691fba2 {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;
 	        flex: 1;
 }
-<<<<<<< HEAD
-.iconBox.data-v-452a1e17 {
-=======
-.iconBox.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.iconBox.data-v-9691fba2 {
 	position: absolute;
 	bottom: 22px;
 	left: 18px;
@@ -57,11 +41,7 @@
 	line-height: 55px;
 	/* border: 6px solid #141d27; */
 }
-<<<<<<< HEAD
-.iconBox .allcount.data-v-452a1e17 {
-=======
-.iconBox .allcount.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.iconBox .allcount.data-v-9691fba2 {
 	position: absolute;
 	right: -6px;
 	top: 0;
@@ -75,11 +55,7 @@
 	color: #fff;
 	/* position: relative; */
 }
-<<<<<<< HEAD
-.img.data-v-452a1e17 {
-=======
-.img.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.img.data-v-9691fba2 {
 	font-size: 24px;
 	width: 30px;
 	height: 30px;
@@ -92,17 +68,10 @@
 	color: #cccccc;
 	border-radius: 50%;
 }
-<<<<<<< HEAD
-.carIcon .active.data-v-452a1e17 {
+.carIcon .active.data-v-9691fba2 {
 	background-color: #00a0dc;
 }
-.middle.data-v-452a1e17 {
-=======
-.carIcon .active.data-v-808b976a {
-	background-color: #00a0dc;
-}
-.middle.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.middle.data-v-9691fba2 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -118,11 +87,7 @@
 	        flex: 2;
 	color: #ffffff;
 }
-<<<<<<< HEAD
-.BtnRight.data-v-452a1e17 {
-=======
-.BtnRight.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.BtnRight.data-v-9691fba2 {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;
@@ -132,24 +97,15 @@
 	background: #000;
 	color: #ffffff;
 }
-<<<<<<< HEAD
-.cartList.data-v-452a1e17 {
-=======
-.cartList.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.cartList.data-v-9691fba2 {
 	position: fixed;
 	bottom: 54px;
 	left: 0;
 	right: 0;
 	z-index: 90;
 }
-<<<<<<< HEAD
-.cartList .title.data-v-452a1e17,
-.cartList .list-text.data-v-452a1e17 {
-=======
-.cartList .title.data-v-808b976a,
-.cartList .list-text.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.cartList .title.data-v-9691fba2,
+.cartList .list-text.data-v-9691fba2 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -160,11 +116,7 @@
 	    -ms-flex-direction: row;
 	        flex-direction: row;
 }
-<<<<<<< HEAD
-.cartList .title.data-v-452a1e17 {
-=======
-.cartList .title.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.cartList .title.data-v-9691fba2 {
 	background: #F3F5F7;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
@@ -172,29 +124,17 @@
 	        justify-content: space-between;
 	padding: 4px 8px;
 }
-<<<<<<< HEAD
-.cartList .list-text.data-v-452a1e17 {
+.cartList .list-text.data-v-9691fba2 {
 	padding: 10px 6px 10px 8px;
 	text-align: center;
 }
-.list.data-v-452a1e17 {
-=======
-.cartList .list-text.data-v-808b976a {
-	padding: 10px 6px 10px 8px;
-	text-align: center;
-}
-.list.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.list.data-v-9691fba2 {
 	background: #F8F8F8;
 	padding-bottom: 10px;
 }
 
 /* 遮布 */
-<<<<<<< HEAD
-.listMask.data-v-452a1e17 {
-=======
-.listMask.data-v-808b976a {
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.listMask.data-v-9691fba2 {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -204,11 +144,7 @@
 	opacity: 0.7;
 	background: #000;
 }
-<<<<<<< HEAD
-.price.data-v-452a1e17{
-=======
-.price.data-v-808b976a{
->>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
+.price.data-v-9691fba2{
 	margin-top: 10rpx;
 }
 
