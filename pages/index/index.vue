@@ -43,6 +43,7 @@
 						<view class="food-title" style="background: #f3f5f7;color:#666;" v-if="item.foods.length>0">
 							{{item.name}}
 						</view>
+	
 						<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"
 						 :key="index" @tap="foodDetail(food.id)">
 							<image :src="imgUrl + food.thumbnails" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>

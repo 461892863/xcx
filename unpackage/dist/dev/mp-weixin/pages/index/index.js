@@ -175,6 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var shopcart = function shopcart() {return __webpack_require__.e(/*! import() | components/shopcart */ "components/shopcart").then(__webpack_require__.bind(null, /*! @/components/shopcart.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/shopcart.vue"));};var cartcontrol = function cartcontrol() {return __webpack_require__.e(/*! import() | components/cartcontrol */ "components/cartcontrol").then(__webpack_require__.bind(null, /*! @/components/cartcontrol.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/cartcontrol.vue"));};var mSearch = function mSearch() {return __webpack_require__.e(/*! import() | components/mehaotian-search */ "components/mehaotian-search").then(__webpack_require__.bind(null, /*! ../../components/mehaotian-search.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/mehaotian-search.vue"));};var uniRate = function uniRate() {return __webpack_require__.e(/*! import() | components/uni-rate */ "components/uni-rate").then(__webpack_require__.bind(null, /*! ../../components/uni-rate.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/uni-rate.vue"));};
 // import BScroll from 'better-scroll'
 var _default =
