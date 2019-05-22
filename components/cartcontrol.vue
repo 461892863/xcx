@@ -1,10 +1,10 @@
 <template>
 	<view style="display: flex;flex-direction: row;height: 27px;">
 		<view class="food-control">
-			<view class="cont" style="margin-top: 2px;" @tap.stop="decreaseCart(food)" v-show="food.count>0">
+			<view class="cont" style="margin-top: 2px;" @tap.stop="decreaseCart(food)" v-show="food.count > 0">
 				<image src="/static/des.png" mode="" style="width: 45upx;height: 45upx;"></image>
 			</view>
-			<text style="padding: 0 4px;" v-show="food.count>0">{{food.count}}</text>
+			<text style="padding: 0 4px;" v-show=" food.count > 0">{{food.count}}</text>
 		</view>
 		<view style="flex: 1;margin-top: 2px; " class="cont" @tap.stop="addCart(food)">
 			<image src="/static/add2.png" style="width: 45upx;height:45upx;color: #CCCCCC;" mode=""></image>

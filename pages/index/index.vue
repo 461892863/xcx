@@ -1,5 +1,5 @@
 <template>
-	<view class="idnexBox" style="width: 100vw;height: 100vh;overflow: hidden;display: flex;flex-direction: column;">
+	<view class="idnexBox" style="width: 100vw;height: 100vh;overflow: hidden;">
 		<view class="" style="width: 100vw;height: 100upx;background: #f4f4f4;">
 			<mSearch :mode="2" button="inside" @search="search($event)"></mSearch>
 		</view>
@@ -9,15 +9,15 @@
 		<view class="worship" style="width: 100vw;display: flex;">
 			<view class="day" :class="{dayActive: _index == dayCur}" v-for="(day, _index) in worship" :key="_index" @tap="setDay(_index, day.id)">{{day.name}}</view>
 		</view>
-		<view class="buyList" style="height: 50px;border-bottom: 3px solid #f3f5f7;">
-			<scroll-view scroll-x='true' scroll-with-animation=true style="height: 100%;white-space: nowrap;padding-left: 55rxpx;">
-				<view class="buyLeft" style="white-space:normal;font-size: 12px;display: flex;flex-direction: column;">
+		<view class="buyList" style="height: 110upx;border-bottom: 3px solid #f3f5f7;">
+			<scroll-view scroll-x='true' scroll-with-animation=true style="height: 100%;white-space: nowrap;padding-left: 55rpx;;">
+				<view class="buyLeft" style="white-space:normal;font-size: 0.8em;display: flex;flex-direction: column;">
 					买过的
 				</view>
 				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)">
 					<text class="listName">{{list.name}}</text>
 					<text class="listMonney">￥{{list.price}}</text>
-					<cartcontrol style="display: inline-block;" :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
+					<cartcontrol class="histroyAdd" :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
 					<!-- <image src="../../static/add2.png" mode="aspectFit" @tap.stop="addCart"></image> -->
 				</view>
 			</scroll-view>
@@ -38,9 +38,9 @@
 			<!-- <scroll-view class="foods-wrapper" scroll-y :style="'height:'+height+'px'" :scroll-top="foodSTop"> -->
 			<view ref="foodsWrapper" style="width:78%;padding-bottom: 54px;">
 				<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
-					<view class="food-title" style="background: #f3f5f7;color:#666;" v-if="item.foods.length>0">
-						{{item.name}}
-					</view>
+					<view class="food-title" style="background: #f3f5f7" v-if="item.foods.length>0">
+							{{item.name}}
+						</view>
 					<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"
 					 :key="index" @tap="foodDetail(food.id)">
 						<image :src="imgUrl + food.thumbnails" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>
@@ -63,7 +63,7 @@
 				</view>
 			</view>
 			<!-- </scroll-view> -->
-			<!-- <shopcart :goods="goods" @add="addCart" @dec="decreaseCart" @delAll="delAll"></shopcart> -->
+			<shopcart :goods="goods" @add="addCart" @dec="decreaseCart" @delAll="delAll"></shopcart>
 		</view>
 	</view>
 </template>
@@ -398,7 +398,6 @@
 		bottom: 55px;
 		width: 100%;
 		overflow: hidden;
-		height: 100%;
 	}
 
 	.current {
@@ -563,6 +562,12 @@
 		top: 45upx;
 		font-size: 0.7em;
 		color: #2e2e2e;
+	}
+	.histroyAdd{
+		display: inline-block;
+		position: absolute;
+		right: 5upx;
+		bottom: 5upx;
 	}
 </style>
 le>

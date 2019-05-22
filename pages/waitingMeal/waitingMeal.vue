@@ -7,16 +7,43 @@
 			</view>
 		</view>
 		<view class="title">
-			<view class="left">
-				等待取餐
-			</view>
-			<view class="right">
-				菜单已准备完成,请尽快前去取餐
-			</view>
+			<block v-if="type == 2">
+				<view class="left">
+					等待取餐
+				</view>
+				<view class="right">
+					菜单已准备完成,请尽快前去取餐
+				</view>
+			</block>
+			<block v-if="type == 3">
+				<view class="left">
+					已取餐
+				</view>
+				<view class="right">
+					已取餐成功,您还可以去评价
+				</view>
+			</block>
+			<block v-if="type == 4">
+				<view class="left">
+					订单已完成
+				</view>
+				<view class="right">
+					订单已完成,欢迎下次光临
+				</view>
+			</block>
 		</view>
 		<view class="btn">
-			<button type="primary" @tap="confirmMeal()">确认取餐</button>
+			<block v-if="type == 2">
+				<button type="primary" @tap="confirmMeal()">确认取餐</button>
+			</block>
+			<block v-if="type == 3">
+				<button type="primary" @tap="confirmMeal()">去评价</button>
+			</block>
+			<block v-if="type == 4">
+				<button type="primary" @tap="confirmMeal()">订单已完成</button>
+			</block>
 		</view>
+		
 		<view class="orderDetail">
 			<view style="margin: 15upx 0 15upx 15upx;font-weight: bold;font-size: 0.8em;">菜品信息</view>
 			<view class="detail">
@@ -79,6 +106,8 @@
 	export default {
 		data() {
 			return {
+				type: '',
+				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				detailList: [{
 						name: '西红柿炒蛋',
 						num: 2,
@@ -144,40 +173,50 @@
 		},
 		onLoad(e) {
 			this.orderId = e.id;
-			// console.log()
+			console.log(e)
+			this.type = e.type
 			this.getOrderDetail(e.id);
 		},
 		methods: {
 			confirmMeal() { // 确认取餐
 				///foods/shopcar/accept
 				let that = this
-				uni.request({
-					url: this.nowUrl + '/foods/shopcar/accept?id='+this.orderId,
-					method: 'POST',
-					header: {
-						"content-type": "application/json",
-						"token": this.token
-					},
-					success: (res) => {
-						console.log(that.orderId)
-						if(res.data.code == 200){
-							uni.navigateTo({
-								url: '../confirmMeal/confirmMeal?id='+ that.orderId,
-								animationType: 'slide-in-right',
-								animationDuration: 200
-							});
-						}else{
-							uni.showToast({
-								title:res.data.msg,
-								icon:'none',
-								duration:1000
-							})
+				if(this.type == 2){
+					uni.request({
+						url: this.nowUrl + '/foods/shopcar/accept?id='+this.orderId,
+						method: 'POST',
+						header: {
+							"content-type": "application/json",
+							"token": this.token
+						},
+						success: (res) => {
+							console.log(that.orderId)
+							if(res.data.code == 200){
+								uni.navigateTo({
+									url: '../confirmMeal/confirmMeal?id='+ that.orderId,
+									animationType: 'slide-in-right',
+									animationDuration: 200
+								});
+							}else{
+								uni.showToast({
+									title:res.data.msg,
+									icon:'none',
+									duration:1000
+								})
+							}
 						}
-						
-						
-					}
-				})
-
+					})
+				}else if(this.type == 3){
+					uni.navigateTo({
+						url: '../assess/assess?id='+ that.orderId,
+						animationType: 'slide-in-right',
+						animationDuration: 200
+					});
+				}else if(this.type == 4){
+					uni.switchTab({
+						url: '../order/order'
+					});
+				}
 			},
 			//获取订单详情
 			getOrderDetail(id) {

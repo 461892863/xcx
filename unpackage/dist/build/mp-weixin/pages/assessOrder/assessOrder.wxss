@@ -155,6 +155,7 @@
 }
 .df_1{
   margin-left: 32rpx;
+	width: 100%;
 }
 .tab-left view {
   text-align: center;

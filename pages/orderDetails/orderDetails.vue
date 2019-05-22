@@ -26,7 +26,7 @@
 				</view>
 				<view class="list" style="flex:7;text-align:left;" @tap="write(list.type,_index)">
 					<block v-if="list.type == 1">
-						<input class="writeInput" type="text" :placeholder="list.value" value="list.newValue" v-model="orderDetails[_index].newValue"/>
+						<input class="writeInput" type="text" placeholder="list.value" value="list.newValue" v-model="orderDetails[_index].newValue"/>
 					</block>
 					<block v-else>
 						<text class="writeInput">{{list.value}}</text>
@@ -49,6 +49,7 @@
 					{
 						name: '订单号',
 						value: '',
+						newValue: ''
 					},
 					{
 						name: '用餐人数',

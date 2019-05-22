@@ -14,14 +14,13 @@
     "pages/AssessSuccess/AssessSuccess",
     "pages/waitingOrder/waitingOrder",
     "pages/assessOrder/assessOrder",
-    "pages/assessOrderDetail/assessOrderDetail",
     "pages/myAssess/myAssess",
     "pages/aleadyPraise/aleadyPraise"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "开始点餐",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },

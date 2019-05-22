@@ -108,18 +108,23 @@
 	color: #f01414;
 	font-size: 16px;
 }
-.day{
+.day {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	    -ms-flex: 1;
-	        flex: 1;text-align: center;padding: 5rpx 0;margin: 0 5rpx 5rpx;
-	border-radius: 10rpx;border: 1rpx #ccc solid;
+	        flex: 1;
+	text-align: center;
+	padding: 15rpx 0;
+	margin: 0 5rpx 5rpx;
+	border-radius: 10rpx;
+	border: 1rpx #ccc solid;
+	font-size: 0.8em;
 }
-.dayActive{
+.dayActive {
 	background: #767676;
 	color: #fff;
 }
-.listData{
+.listData {
 	display: inline-block;
 	width: 180rpx;
 	height: 100rpx;
@@ -130,38 +135,40 @@
 	        box-sizing: border-box;
 	position: relative;
 	color: #000;
-	font-size: 0.7em;
+	font-size: 12px;
+	z-index: 1;
 }
-.listName{
+.listName {
 	position: absolute;
 	top: 5rpx;
 	left: 15rpx;
 }
-.listMonney{
+.listMonney {
 	position: absolute;
 	bottom: 5rpx;
 	left: 15rpx;
 }
-.listData image{
+.listData image {
 	position: absolute;
 	width: 30rpx;
 	height: 30rpx;
 	bottom: 10rpx;
 	right: 10rpx;
 }
-.buyLeft{
+.buyLeft {
 	width: 50rpx;
 	height: 100rpx;
 	font-size: 0.7em;
-	background: #000;
+	background: #FE4E37;
 	color: #fff;
 	line-height: 1;
 	padding-top: 10rpx;
 	text-align: center;
 	position: fixed;
 	left: 0;
+	z-index: 99;
 }
-.mark{
+.mark {
 	padding: 4rpx 6rpx;
 	background: #5d5d5d;
 	color: #fff;
@@ -169,21 +176,27 @@
 	margin-left: 15rpx;
 	border-radius: 15rpx;
 }
-.menu-item{
+.menu-item {
 	font-size: 0.8em;
 }
-.remainder{
+.remainder {
 	position: absolute;
 	right: 20rpx;
 	bottom: 55rpx;
 	font-size: 0.7em;
 	color: #2e2e2e;
 }
-.remainder1{
+.remainder1 {
 	position: absolute;
 	right: 20rpx;
 	top: 45rpx;
 	font-size: 0.7em;
 	color: #2e2e2e;
+}
+.histroyAdd{
+	display: inline-block;
+	position: absolute;
+	right: 5rpx;
+	bottom: 5rpx;
 }
 

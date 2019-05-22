@@ -11,7 +11,6 @@
 	bottom: 55px;
 	width: 100%;
 	overflow: hidden;
-	height: 100%;
 }
 .current {
 	position: relative;
@@ -193,5 +192,11 @@
 	top: 45rpx;
 	font-size: 0.7em;
 	color: #2e2e2e;
+}
+.histroyAdd{
+	display: inline-block;
+	position: absolute;
+	right: 5rpx;
+	bottom: 5rpx;
 }
 

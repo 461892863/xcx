@@ -45,9 +45,11 @@
 	export default {
 		data() {
 			return {
+				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				curHdIndex: '0',
 				orderId: '',
-				orderList: []
+				orderList: [],
+				type: 2,
 				// orderList:[]
 			}
 		},
@@ -63,7 +65,7 @@
 			},
 			waitingMeal(type,orderId) { //跳待取餐
 				uni.navigateTo({
-					url: '../waitingMeal/waitingMeal?id='+orderId,
+					url: '../waitingMeal/waitingMeal?id='+orderId+'&type='+this.type,
 					animationType: 'slide-in-right',
 					animationDuration: 200
 				})
@@ -77,7 +79,7 @@
 				let type = ''
 				switch (index){
 					case 1:
-					type = 1
+					type = 2
 					break
 					case 2:
 					type = 3
@@ -89,7 +91,8 @@
 				uni.showLoading({
 					mask: true
 				})
-				console.log(type)
+				// console.log(type)
+				this.type = type
 				uni.request({
 					url: this.nowUrl + '/foods/myOrder/query',
 					method: 'get',

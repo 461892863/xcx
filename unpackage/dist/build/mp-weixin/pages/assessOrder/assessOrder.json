@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "已评价订单",
-  "usingComponents": {}
+  "usingComponents": {
+    "uni-rate": "/components/uni-rate"
+  }
 }

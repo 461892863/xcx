@@ -3,6 +3,9 @@
 	width: 100vw;
 	padding: 15rpx;border-bottom: 1rpx solid #888888;
 }
+.right .zanActive{
+	color:rgb(255, 202, 62)
+}
 .left{
 	-webkit-box-flex: 4;
 	-webkit-flex: 4;
@@ -26,7 +29,7 @@
 	margin-top: 15rpx;
 }
 .right text{
-	color: #ccc;
+	color: rgb(236, 236, 236);
 }
 .btns{
 	text-align: center;

@@ -71,6 +71,7 @@
 	export default {
 		data() {
 			return {
+				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				detailList: [{
 						name: '西红柿炒蛋',
 						num: 2,
