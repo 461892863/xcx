@@ -24,7 +24,11 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+<<<<<<< HEAD
 .search.data-v-b92f5394 {
+=======
+.search.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -37,7 +41,11 @@
   font-size: 28rpx;
   background: #fff;
 }
+<<<<<<< HEAD
 .search .content.data-v-b92f5394 {
+=======
+.search .content.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -56,7 +64,11 @@
     transition: all 0.2s linear;
     border-radius: 30px;
 }
+<<<<<<< HEAD
 .search .content .content-box.data-v-b92f5394 {
+=======
+.search .content .content-box.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
       width: 100%;
       display: -webkit-box;
       display: -webkit-flex;
@@ -67,12 +79,17 @@
           -ms-flex-align: center;
               align-items: center;
 }
+<<<<<<< HEAD
 .search .content .content-box.center.data-v-b92f5394 {
+=======
+.search .content .content-box.center.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
         -webkit-box-pack: center;
         -webkit-justify-content: center;
             -ms-flex-pack: center;
                 justify-content: center;
 }
+<<<<<<< HEAD
 .search .content .content-box .icon.data-v-b92f5394 {
         padding: 0 15rpx;
 }
@@ -80,6 +97,15 @@
           font-size: 38rpx;
 }
 .search .content .content-box .input.data-v-b92f5394 {
+=======
+.search .content .content-box .icon.data-v-e52e0f2c {
+        padding: 0 15rpx;
+}
+.search .content .content-box .icon.icon-del.data-v-e52e0f2c {
+          font-size: 38rpx;
+}
+.search .content .content-box .input.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
         width: 100%;
         max-width: 100%;
         line-height: 60rpx;
@@ -88,6 +114,7 @@
         -o-transition: all 0.2s linear;
         transition: all 0.2s linear;
 }
+<<<<<<< HEAD
 .search .content .content-box .input.center.data-v-b92f5394 {
           width: 200rpx;
 }
@@ -96,6 +123,16 @@
           color: grey;
 }
 .search .content .searchBtn.data-v-b92f5394 {
+=======
+.search .content .content-box .input.center.data-v-e52e0f2c {
+          width: 200rpx;
+}
+.search .content .content-box .input.sub.data-v-e52e0f2c {
+          width: auto;
+          color: grey;
+}
+.search .content .searchBtn.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
       height: 100%;
       -webkit-flex-shrink: 0;
           -ms-flex-negative: 0;
@@ -109,7 +146,11 @@
       -o-transition: all 0.3s;
       transition: all 0.3s;
 }
+<<<<<<< HEAD
 .search .button.data-v-b92f5394 {
+=======
+.search .button.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -133,7 +174,11 @@
     white-space: nowrap;
     overflow: hidden;
 }
+<<<<<<< HEAD
 .search .button.active.data-v-b92f5394 {
+=======
+.search .button.active.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
       padding-left: 15rpx;
       width: 100rpx;
 }
@@ -141,7 +186,11 @@
   font-family: 'iconfont';
   src: url("https://at.alicdn.com/t/font_989023_efq0mtli526.ttf") format("truetype");
 }
+<<<<<<< HEAD
 .icon.data-v-b92f5394 {
+=======
+.icon.data-v-e52e0f2c {
+>>>>>>> e31af654e780579ca47737ce1f2ebe7651f74a66
   font-family: iconfont;
   font-size: 32rpx;
   font-style: normal;
