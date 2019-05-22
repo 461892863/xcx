@@ -7,6 +7,7 @@
 				<view :class="['swiper-tab-list',{'active': curHdIndex=='0'}]" @tap="tabFun(1)" id="tab-hd01">待取餐</view>
 				<view :class="['swiper-tab-list',{'active': curHdIndex=='1'}]" @tap="tabFun(2)" id="tab-hd03">待评价</view>
 				<view :class="['swiper-tab-list',{'active': curHdIndex=='2'}]" @tap="tabFun(3)" id="tab-hd04">已完成</view>
+				<view :class="['swiper-tab-list',{'active': curHdIndex=='3'}]" @tap="tabFun(4)" id="tab-hd04">待提交</view>
 			</view>
 		</view>
 		<!-- 正常订单 -->
@@ -25,7 +26,7 @@
 				<view class="df_1" style="padding-top: 10px;box-sizing: border-box;">
 					<view class="" style="width: 50%;float: left;">
 						<view class="sp_text">
-							<view class="sp_tit ovh1">{{item.time}}</view>
+							<view class="sp_tit ovh1">{{item.time?item.time:'订单未提交'}}</view>
 						</view>
 						<view class="sp_neb">
 							{{item.descript}}
@@ -86,6 +87,9 @@
 					break
 					case 3:
 					type = 4
+					break
+					case 4:
+					type = 0
 					break
 				}
 				uni.showLoading({

@@ -160,13 +160,27 @@ var _default = {
       var result = [];
       this.goods.forEach(function (good) {
         good.foods.forEach(function (food) {
+          console.log(food);
           if (food.count) {
             result.push(food);
             // console.log('res', JSON.stringify(result))
           }
         });
       });
-      return result;
+
+      var temp = []; //一个新的临时数组
+      var newArr = [];
+      for (var i = 0; i < result.length; i++) {
+        if (temp.indexOf(result[i].id) == -1) {
+          temp.push(result[i].id);
+          newArr.push(result[i]);
+        }
+      }
+      return newArr;
+      // console.log('aaa');
+      // console.log(result);
+      // console.log('aaa');
+      // return result
     },
     // 获得购物车所有商品数量
     getAllCount: function getAllCount() {
@@ -183,11 +197,16 @@ var _default = {
     getAllPrice: function getAllPrice() {var _this = this;
       var result = 0;
       var result1 = 0;
-      this.goods.forEach(function (good) {
-        good.foods.forEach(function (food) {
-          result1 += _this.accMul(food.count, food.price);
-          result = result1.toFixed(2);
-        });
+      // this.goods.forEach((good) => {
+      // 	good.foods.forEach((food) => {
+      // 		deb
+      // 		result1 += this.accMul(food.count, food.price)
+      // 		result = result1.toFixed(2);
+      // 	})
+      // })
+      this.getList.forEach(function (food) {
+        result1 += _this.accMul(food.count, food.price);
+        result = result1.toFixed(2);
       });
       return result;
     } },
@@ -218,7 +237,10 @@ var _default = {
     toggleList: function toggleList() {// 提交订单
       var arr = [];
       this.getList.forEach(function (item) {
-        arr.push({ foodId: item.id, num: item.count });
+        arr.push({
+          foodId: item.id,
+          num: item.count });
+
       });
       var strData = JSON.stringify(arr);
       // console.log(strData)

@@ -173,12 +173,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ "./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var shopcart = function shopcart() {return __webpack_require__.e(/*! import() | components/shopcart */ "components/shopcart").then(__webpack_require__.bind(null, /*! @/components/shopcart.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/shopcart.vue"));};var cartcontrol = function cartcontrol() {return __webpack_require__.e(/*! import() | components/cartcontrol */ "components/cartcontrol").then(__webpack_require__.bind(null, /*! @/components/cartcontrol.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/cartcontrol.vue"));};var mSearch = function mSearch() {return __webpack_require__.e(/*! import() | components/mehaotian-search */ "components/mehaotian-search").then(__webpack_require__.bind(null, /*! ../../components/mehaotian-search.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/mehaotian-search.vue"));};var uniRate = function uniRate() {return __webpack_require__.e(/*! import() | components/uni-rate */ "components/uni-rate").then(__webpack_require__.bind(null, /*! ../../components/uni-rate.vue */ "../../../../../../Users/huayecai/Desktop/xcx/components/uni-rate.vue"));};
 // import BScroll from 'better-scroll'
 var _default =
 {
   data: function data() {
     return {
+      joinTimes: 0,
       imgUrl: 'http://106.15.194.58/images/', //图片接口
       dayCur: -1, //日期选中状态
       buyList: [], //历史购买
@@ -420,7 +423,6 @@ var _default =
             that.foodSTop = 0;
           }
           for (var i = 0; i < index; i++) {
-
             height += parseInt(data[i].height);
             // console.log('fh', foods);
             that.foodSTop = height;
@@ -428,6 +430,9 @@ var _default =
           }
         }).exec();
       });
+    },
+    setScrollIndex: function setScrollIndex() {//滚动事件
+      console.log(this.foodSTop);
     },
     foodDetail: function foodDetail(id) {// 跳商品详情
       // console.log(this.dayId)

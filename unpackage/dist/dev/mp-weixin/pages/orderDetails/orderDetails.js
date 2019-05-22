@@ -142,6 +142,7 @@ var _default =
 {
   data: function data() {
     return {
+      theTime: '',
       imgUrl: 'http://106.15.194.58/images/', //图片接口
       detailList: [],
       money: '',
@@ -193,6 +194,7 @@ var _default =
 
       method: 'POST',
       success: function success(res) {
+        debugger;
         // console.log(res)
       } });
 
@@ -247,9 +249,10 @@ var _default =
         success: function success(res) {
           console.log(that.orderDetails[0].value, that.orderDetails[2].newValue, that.orderDetails[1].newValue, that.orderDetails[3].newValue, that.orderDetails[4].newValue);
           // console.log(res)
+          debugger;
           if (res.data.code == 200) {
             uni.navigateTo({
-              url: '../orderSuccess/orderSuccess',
+              url: '../orderSuccess/orderSuccess?theTime=' + res.data.data,
               animationType: 'slide-in-right',
               animationDuration: 200 });
 

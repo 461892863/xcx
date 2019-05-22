@@ -202,6 +202,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -316,6 +328,34 @@ var _default =
         uni.switchTab({
           url: '../order/order' });
 
+      } else if (this.type == 0) {
+        uni.request({
+          url: this.nowUrl + '/foods/shopcar/remove?id=' + this.orderId,
+          header: {
+            'token': this.token },
+
+          method: 'POST',
+          success: function success(res) {
+            debugger;
+            // console.log(res)
+            // uni.navigateTo({
+            // 	url: '../index/index'
+            // })
+            if (res.data.code == 200) {
+              uni.switchTab({
+                url: '../order/order' });
+
+            } else {
+              uni.showToast('删除失败');
+            }
+
+            // uni.navigateTo({
+            // 	url: '../index/index',
+            // 	animationType: 'slide-in-right',
+            // 	animationDuration: 200
+            // });
+          } });
+
       }
     },
     //获取订单详情
@@ -335,7 +375,11 @@ var _default =
           _this.userName = res.data.data.userName;
           _this.mobile = res.data.data.mobile;
           _this.orderNum = res.data.data.orderNum;
-          _this.makeTime = res.data.data.makeTime;
+          if (res.data.data.makeTime) {
+            _this.makeTime = res.data.data.makeTime;
+          } else {
+            _this.makeTime = '! 订单未完成';
+          }
           if (res.data.data.remarks) {
             _this.remarks = res.data.data.remarks;
           }

@@ -118,8 +118,12 @@ var _default =
 {
   data: function data() {
     return {
+      theTime: '12:00',
       imgUrl: 'http://106.15.194.58/images/' //图片接口
     };
+  },
+  onLoad: function onLoad(e) {
+    this.theTime = e.theTime;
   },
   methods: {
     toIndex: function toIndex() {
