@@ -1,0 +1,189 @@
+
+.content {
+	/* text-align: center; */
+	/* height: 400upx; */
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	/* position: absolute; */
+	top: 0;
+	bottom: 55px;
+	width: 100%;
+	overflow: hidden;
+}
+.current {
+	position: relative;
+	z-index: 0;
+	background-color: #fff;
+	color: #00A0DC;
+}
+.menu-wrapper {
+	text-align: center;
+	width: 22%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	background: #f3f5f7;
+}
+.menu-item {
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	height: 50px;
+}
+.allcount {
+	position: absolute;
+	right: 6px;
+	top: 8px;
+	display: inline-block;
+	padding: 0 4px;
+	font-size: 9px;
+	line-height: 16px;
+	font-weight: 400;
+	border-radius: 50%;
+	background-color: #f01414;
+	color: #ffffff;
+}
+.foods-wrapper {
+	margin-left: 4px;
+	width: 78%;
+}
+.food,
+.food-btm,
+.content {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+}
+.food-title {
+	padding: 2px 0;
+}
+.food-info {
+	margin-left: 10px;
+	margin-right: 16px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-flex: 2;
+	-webkit-flex: 2;
+	    -ms-flex: 2;
+	        flex: 2;
+}
+.food-btm {
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.food-price {
+	color: #f01414;
+	font-size: 16px;
+}
+.day{
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;text-align: center;padding: 5rpx 0;margin: 0 5rpx 5rpx;
+	border-radius: 10rpx;border: 1rpx #ccc solid;
+}
+.dayActive{
+	background: #767676;
+	color: #fff;
+}
+.listData{
+	display: inline-block;
+	width: 180rpx;
+	height: 100rpx;
+	border: 1rpx solid #ccc;
+	border-radius: 10rpx;
+	margin: 5rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	position: relative;
+	color: #000;
+	font-size: 0.7em;
+}
+.listName{
+	position: absolute;
+	top: 5rpx;
+	left: 15rpx;
+}
+.listMonney{
+	position: absolute;
+	bottom: 5rpx;
+	left: 15rpx;
+}
+.listData image{
+	position: absolute;
+	width: 30rpx;
+	height: 30rpx;
+	bottom: 10rpx;
+	right: 10rpx;
+}
+.buyLeft{
+	width: 50rpx;
+	height: 100rpx;
+	font-size: 0.7em;
+	background: #000;
+	color: #fff;
+	line-height: 1;
+	padding-top: 10rpx;
+	text-align: center;
+	position: fixed;
+	left: 0;
+}
+.mark{
+	padding: 4rpx 6rpx;
+	background: #5d5d5d;
+	color: #fff;
+	font-size: 0.85em;
+	margin-left: 15rpx;
+	border-radius: 15rpx;
+}
+.menu-item{
+	font-size: 0.8em;
+}
+.remainder{
+	position: absolute;
+	right: 20rpx;
+	bottom: 55rpx;
+	font-size: 0.7em;
+	color: #2e2e2e;
+}
+.remainder1{
+	position: absolute;
+	right: 20rpx;
+	top: 45rpx;
+	font-size: 0.7em;
+	color: #2e2e2e;
+}
+

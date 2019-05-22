@@ -48,6 +48,10 @@
 			disabled: { //是否可点击
 				type: [Boolean, String],
 				default: false
+			},
+			index: {
+				type: Number,
+				default: 0
 			}
 		},
 		data() {
@@ -55,6 +59,11 @@
 			return {
 				maxSync: this.max,
 				valueSync: this.value
+			}
+		},
+		watch: {
+			value(newValue, oldValue) {
+				console.log(newValue)
 			}
 		},
 		computed: {
@@ -89,7 +98,8 @@
 				}
 				this.valueSync = index + 1
 				this.$emit('change', {
-					value: this.valueSync
+					value: this.valueSync,
+					index: this.index
 				})
 			}
 		}

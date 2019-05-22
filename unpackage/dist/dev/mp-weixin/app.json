@@ -6,18 +6,26 @@
     "pages/orderDetails/orderDetails",
     "pages/orderSuccess/orderSuccess",
     "pages/foodDetail/foodDetail",
-    "pages/moreAssess/moreAssess"
+    "pages/moreAssess/moreAssess",
+    "pages/waitingMeal/waitingMeal",
+    "pages/confirmMeal/confirmMeal",
+    "pages/assess/assess",
+    "pages/AssessSuccess/AssessSuccess",
+    "pages/waitingOrder/waitingOrder",
+    "pages/assessOrder/assessOrder",
+    "pages/myAssess/myAssess",
+    "pages/aleadyPraise/aleadyPraise"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "开始点餐",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#CCC",
-    "selectedColor": "blue",
+    "color": "#000",
+    "selectedColor": "#8A6DE9",
     "borderStyle": "black",
     "backgroundColor": "#fff",
     "list": [
@@ -35,5 +43,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

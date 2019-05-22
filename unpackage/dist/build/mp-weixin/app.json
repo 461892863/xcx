@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/feedback/feedback",
+    "pages/order/order",
+    "pages/orderDetails/orderDetails",
+    "pages/orderSuccess/orderSuccess",
+    "pages/foodDetail/foodDetail",
+    "pages/moreAssess/moreAssess",
+    "pages/waitingMeal/waitingMeal",
+    "pages/confirmMeal/confirmMeal",
+    "pages/assess/assess",
+    "pages/AssessSuccess/AssessSuccess",
+    "pages/waitingOrder/waitingOrder",
+    "pages/assessOrder/assessOrder",
+    "pages/assessOrderDetail/assessOrderDetail",
+    "pages/myAssess/myAssess",
+    "pages/aleadyPraise/aleadyPraise"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#8A6DE9",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "text": "就餐",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "text": "订单",
+        "pagePath": "pages/order/order"
+      },
+      {
+        "text": "反馈",
+        "pagePath": "pages/feedback/feedback"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

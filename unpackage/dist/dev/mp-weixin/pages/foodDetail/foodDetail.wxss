@@ -1,15 +1,15 @@
 
-.footImg{
+.footImg {
 	width: 100vw;
 }
-.swiper{
+.swiper {
 	height: 50vh;
 }
-.swiper image{
+.swiper image {
 	width: 100%;
 	height: 100%;
 }
-.mark{
+.mark {
 	padding: 4rpx 6rpx;
 	background: #5d5d5d;
 	color: #fff;
@@ -20,32 +20,36 @@
 	left: 25rpx;
 	bottom: 7rpx;
 }
-.footDetail{font-size: 0.8em; overflow: hidden; border-bottom: 2rpx solid rgb(173,173,173);}
-.footDetail .name{
+.footDetail {
+	font-size: 0.8em;
+	overflow: hidden;
+	border-bottom: 2rpx solid rgb(173, 173, 173);
+}
+.footDetail .name {
 	font-weight: bold;
 	margin: 15rpx 30rpx;
 }
-.footDetail .sellCount{
+.footDetail .sellCount {
 	font-size: 0.7em;
 	color: #c6c6c6;
 	margin: 0rpx 30rpx;
 }
-.footDetail .score{
+.footDetail .score {
 	margin: 0rpx 30rpx 20rpx;
 	line-height: 1;
 }
-.footDetail .score text{
+.footDetail .score text {
 	font-size: 0.7em;
 	position: relative;
 	top: 10rpx;
 	left: 20rpx;
 }
-.footDetail .price{
+.footDetail .price {
 	margin: 0rpx 30rpx;
 }
-.introduction{
+.introduction {
 	font-size: 0.9em;
-	color: rgb(138,138,138);
+	color: rgb(138, 138, 138);
 	margin: 20rpx 10%;
 }
 .uni-padding-wrap {
@@ -141,7 +145,8 @@ view {
 	line-height: 1.6em;
 	font-size: 28rpx;
 	padding: 8rpx 0;
-	float: right;
+	float: left;
+	margin-bottom: 15rpx;
 }
 .uni-comment-replay-btn {
 	background: #FFF;
@@ -152,13 +157,33 @@ view {
 	color: #333 !important;
 	margin: 0 10rpx;
 }
-.assess{
+.assess {
 	padding: 0 20rpx;
 }
-.moreAssess{
+.moreAssess {
 	margin-top: 15rpx;
 	float: right;
-	color: rgb(188,188,188);
+	color: rgb(188, 188, 188);
 	font-size: 0.8em;
+}
+.sjhf {
+	padding: 15rpx;
+	background: #ccc;
+	clear: both;
+	border-radius: 5rpx;
+	position: relative;
+}
+.sjhf text {
+	color: #007AFF;
+}
+.sjhf:after {
+	content: "";
+	position: absolute;
+	top: -15rpx;
+	left: 15rpx;
+	border: 20rpx solid transparent;
+	border-bottom-color: #ccc;
+	border-top: 0;
+	margin: 0 0 0rpx 0px;
 }
 

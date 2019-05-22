@@ -105,7 +105,7 @@ view {
 	line-height: 1.6em;
 	font-size: 28rpx;
 	padding: 8rpx 0;
-	float: right;
+	float: left;
 	margin-bottom: 15rpx;
 }
 .uni-comment-replay-btn {

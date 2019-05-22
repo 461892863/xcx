@@ -1,67 +1,69 @@
 <template>
-	<view class="idnexBox" style="width: 100vw;height: 100vh;overflow: hidden;">
-		<view class="" style="width: 100vw;height: 90upx;background: #f4f4f4;">
+	<view class="idnexBox" style="width: 100vw;height: 100vh;overflow: hidden;display: flex;flex-direction: column;">
+		<view class="" style="width: 100vw;height: 100upx;background: #f4f4f4;">
 			<mSearch :mode="2" button="inside" @search="search($event)"></mSearch>
 		</view>
 		<!-- <view class="" style="width: 100vw;height: 90upx;background: #fff;color: #2b2b2b;">
 			<text class="" style="">2017-08-08</text>至<text class="">2017-08-09</text>
 		</view> -->
 		<view class="worship" style="width: 100vw;display: flex;">
-			<view class="day" :class="{dayActive: _index == dayCur}" v-for="(day, _index) in worship" :key="_index">{{day.name}}</view>
+			<view class="day" :class="{dayActive: _index == dayCur}" v-for="(day, _index) in worship" :key="_index" @tap="setDay(_index, day.id)">{{day.name}}</view>
 		</view>
-		<view class="buyList" style="height: 120upx;">
-			<scroll-view scroll-x = 'true' scroll-with-animation=true style="height: 100%;position: relative;white-space: nowrap;">
-					<view class="buyLeft" style="white-space:normal">
-						买过的
-					</view>
-					<view class="listData" style="width: 50upx;border: 0;"></view>
-					<view class="listData" v-for="(list, index_) in buyList" :key="index_">
-						<text class="listName">{{list.name}}</text>
-						<text class="listMonney">￥{{list.monney}}</text>
-						<image src="../../static/add2.png" mode="aspectFit"></image>
-					</view>
+		<view class="buyList" style="height: 50px;border-bottom: 3px solid #f3f5f7;">
+			<scroll-view scroll-x='true' scroll-with-animation=true style="height: 100%;white-space: nowrap;padding-left: 55rxpx;">
+				<view class="buyLeft" style="white-space:normal;font-size: 12px;display: flex;flex-direction: column;">
+					买过的
+				</view>
+				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)">
+					<text class="listName">{{list.name}}</text>
+					<text class="listMonney">￥{{list.price}}</text>
+					<cartcontrol style="display: inline-block;" :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
+					<!-- <image src="../../static/add2.png" mode="aspectFit" @tap.stop="addCart"></image> -->
+				</view>
 			</scroll-view>
 		</view>
 		<view class="content">
-			<scroll-view class="menu-wrapper" scroll-y :style="'height:'+height  +'px'">
+			<scroll-view class="menu-wrapper" scroll-y :style="'height:'+height  +'px;'+'border-right:1px solid #ddd;'">
 				<view ref="menuWrapper">
 					<!--  :class="{'current': currentIndex == index}" @click="selectMenu(index,$event)" -->
-					<view style="position: relative;" v-for="(item,index) in goods" :key="index" ref="menuList" @tap="select(index)"
+					<view style="position: relative;" v-for="(item,index) in category" :key="index" ref="menuList" @tap="select(index,item.categoryId)"
 					 :class="{'current': currentIndex == index}">
-		
-						<view class="menu-item">{{item.name}}</view>
+						<view class="menu-item">{{item.categoryName}}</view>
 						<text class="allcount" v-if="getAllCount>=item.count&&item.count>0">{{item.count}}</text>
 						<!-- <text class="allcount">1</text> -->
 					</view>
 				</view>
 			</scroll-view>
 			<!--  @scroll="scroll" -->
-			<scroll-view class="foods-wrapper" scroll-y :style="'height:'+height+'px'" :scroll-top="foodSTop">
-				<view ref="foodsWrapper">
-					<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
-		
-						<view class="food-title" style="background: #f3f5f7">
-							{{item.name}}
-						</view>
-						<view class="food" style="position: relative;" v-for="(food, index) in item.foods" :key="index" @tap="foodDetail()">
-							<image :src="food.img" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>
-							<view class="food-info">
-								<text style="font-size: 15px;margin-top: 2px;">{{food.name}} <text class="mark">推荐</text></text>
-								<text style="font-size: 13px;margin: 2px 0;">{{food.description}}</text>
-								<text style="font-size: 13px;margin: 2px 0 4px;">月售{{food.sellCount}}</text>
-								<uniRate value="2" size="10" disabled="true"></uniRate>
-								<!-- 加减 -->
-								<text class="remainder">剩余 <text style="font-weight: bold;">30</text> 份</text>
-								<view class="food-btm">
-									<text class="food-price">￥{{food.price}}</text>
-									<cartcontrol :food="food" @add="addCart()" @dec="decreaseCart"></cartcontrol>
-								</view>
+			<!-- <scroll-view class="foods-wrapper" scroll-y :style="'height:'+height+'px'" :scroll-top="foodSTop"> -->
+			<view ref="foodsWrapper" style="width:78%;padding-bottom: 54px;">
+				<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
+					<view class="food-title" style="background: #f3f5f7;color:#666;" v-if="item.foods.length>0">
+						{{item.name}}
+					</view>
+					<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"
+					 :key="index" @tap="foodDetail(food.id)">
+						<image :src="imgUrl + food.thumbnails" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>
+						<view class="food-info">
+							<text style="font-size: 15px;margin-top: 2px;">{{food.name}} <text class="mark" v-if="food.sign">{{food.sign}}</text></text>
+							<uniRate :value="food.level" size="10" disabled="true">{{food.level}}</uniRate>
+							<!-- 加减 -->
+							<view>
+								<text class="remainder" style="font-size: 14px;margin: 2px 0 4px;">剩余 <text style="font-weight: bold;"><text
+										 style="color:red;font-size: 16px;"> {{food.limitNum-food.count}}</text></text>
+									{{food.unit}}</text>
+								<text style="font-size: 12px;margin: 2px 0 4px;">售出 <text>{{food.sellNum}}</text> {{food.unit}}</text>
+							</view>
+							<view class="food-btm">
+								<text class="food-price">￥{{food.price}}</text>
+								<cartcontrol :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
 							</view>
 						</view>
 					</view>
 				</view>
-			</scroll-view>
-			<shopcart :goods="goods" @add="addCart" @dec="decreaseCart" @delAll="delAll"></shopcart>
+			</view>
+			<!-- </scroll-view> -->
+			<!-- <shopcart :goods="goods" @add="addCart" @dec="decreaseCart" @delAll="delAll"></shopcart> -->
 		</view>
 	</view>
 </template>
@@ -77,354 +79,30 @@
 	export default {
 		data() {
 			return {
-				dayCur: 0, //日期选中状态
-				buyList: [
-					{
-						name: '梅菜扣肉',
-						monney: 15
-					},
-					{
-						name: '梅菜扣肉',
-						monney: 15
-					},
-					{
-						name: '梅菜扣肉',
-						monney: 15
-					},
-					{
-						name: '梅菜扣肉',
-						monney: 15
-					},
-					{
-						name: '梅菜扣肉',
-						monney: 15
-					},
-					{
-						name: '梅菜扣肉',
-						monney: 15
-					},
-					{
-						name: '梅菜扣肉',
-						monney: 15
-					}
-				],
+				imgUrl: 'http://106.15.194.58/images/', //图片接口
+				dayCur: -1, //日期选中状态
+				buyList: [], //历史购买
 				worship: [ //礼拜天数
 					{
-						name: '周一'
+						name: "星期一"
 					},
 					{
-						name: '周二'
+						name: "星期二"
 					},
 					{
-						name: '周三'
+						name: "星期三"
 					},
 					{
-						name: '周四'
+						name: "星期四"
 					},
 					{
-						name: '周五'
+						name: "星期五"
 					}
 				],
-				goods: [{
-						"name": "热销",
-						"foods": [{
-								
-								"name": "南瓜粥",
-								"price": 9.22,
-								"oldPrice": "",
-								"description": "食材：大米，南瓜",
-								"sellCount": 229,
-								"img": '../../static/nanguaz.jpg'
-
-							}, {
-								"name": "小米粥",
-								"price": 9.8,
-								"oldPrice": "",
-								"description": "食材：小米",
-								"sellCount": 239,
-								"img": '../../static/xiaomi.jpg'
-
-							},
-							{
-								"name": "油条",
-								"price": 1.88,
-								"oldPrice": "",
-								"description": "食材：油条",
-								"sellCount": 229,
-								"img": '../../static/youtiao.jpg'
-
-							}
-						]
-					},
-					{
-						"name": "折扣",
-						"foods": [{
-							"name": "油条1只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "套餐",
-						"foods": [{
-							"name": "油条2只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥2",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "套餐2",
-						"foods": [{
-							"name": "油条3只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥3",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "热销2",
-						"foods": [{
-							"name": "南瓜粥1",
-							"price": 9.22,
-							"oldPrice": "",
-							"description": "食材：大米，南瓜",
-							"sellCount": 229,
-							"img": '../../static/nanguaz.jpg'
-
-						}, {
-							"name": "小米粥1",
-							"price": 9.8,
-							"oldPrice": "",
-							"description": "食材：小米",
-							"sellCount": 239,
-							"img": '../../static/xiaomi.jpg'
-
-						}]
-					},
-					{
-						"name": "折扣2",
-						"foods": [{
-							"name": "油条4只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥4",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "套餐3",
-						"foods": [{
-							"name": "油条5只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥5",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "套餐4",
-						"foods": [{
-							"name": "油条6只",
-							"price": 1.81,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥6",
-							"price": 9.91,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "热销3",
-						"foods": [{
-							"name": "南瓜粥3",
-							"price": 9.21,
-							"oldPrice": "",
-							"description": "食材：大米，南瓜",
-							"sellCount": 229,
-							"img": '../../static/nanguaz.jpg'
-
-						}, {
-							"name": "小米粥3",
-							"price": 9.78,
-							"oldPrice": "",
-							"description": "食材：小米",
-							"sellCount": 239,
-							"img": '../../static/xiaomi.jpg'
-
-						}]
-					},
-					{
-						"name": "折扣3",
-						"foods": [{
-							"name": "油条7只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥7",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "套餐6",
-						"foods": [{
-							"name": "油条8只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥8",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "套餐7",
-						"foods": [{
-							"name": "油条9只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥9",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-
-						}],
-
-					},
-					{
-						"name": "热销4",
-						"foods": [{
-							"name": "南瓜粥4",
-							"price": 9.22,
-							"oldPrice": "",
-							"description": "食材：大米，南瓜",
-							"sellCount": 229,
-							"img": '../../static/nanguaz.jpg'
-
-						}, {
-							"name": "小米粥4",
-							"price": 9.8,
-							"oldPrice": "",
-							"description": "食材：小米",
-							"sellCount": 239,
-							"img": '../../static/xiaomi.jpg'
-
-						}]
-					},
-					{
-						"name": "折扣4",
-						"foods": [{
-							"name": "油条10只",
-							"price": 1.88,
-							"oldPrice": "",
-							"description": "食材：油条",
-							"sellCount": 229,
-							"img": '../../static/youtiao.jpg'
-
-						}, {
-							"name": "艇仔粥10",
-							"price": 9.9,
-							"oldPrice": "",
-							"description": "食材：瘦肉，干贝，花生等",
-							"sellCount": 239,
-							"img": '../../static/tingzaiz.jpg'
-						}],
-					},
-				],
+				dataId: '', // 日期id
+				category: [], //左侧菜单类别
+				goods: [], //合并后总数据
+				// foods: [],  //右侧数据
 				height: 0,
 				foodSTop: 0,
 				currentIndex: 0
@@ -437,17 +115,27 @@
 			uniRate
 		},
 		onLoad() {
+			let that = this
 			this.height = Number(uni.getSystemInfoSync().windowHeight) - 210;
 			// console.log(uni.getSystemInfoSync().windowHeight)
+			// uni.setStorage({
+			// 	key: 'token',
+			// 	data: '12366666666'
+			// });
+			// uni.getStorage({
+			// 	key: 'token',
+			// 	success: function (res) {
+			// 		console.log(res.data); //12366666666
+			// 		that.token = res.data
+			// 	}
+			// });
+
 		},
-	
 		computed: {
 			getList() {
 				let result = [];
 				this.goods.forEach((good) => {
-
 					good.foods.forEach((food) => {
-
 						if (food.count) {
 							result.push(food)
 						}
@@ -484,26 +172,138 @@
 				// console.log('result', count);
 				return count;
 			},
-
+		},
+		onShow() {
+			this.getDay()
 		},
 		methods: {
-			foodDetail(){ // 跳商品详情
-				uni.navigateTo({
-					url: '../foodDetail/foodDetail',
-					animationType:'slide-in-right',
-					animationDuration: 200
+			getDay() { //礼拜
+				let that = this
+				var d = new Date();
+				var ye = d.getFullYear();
+				var mo = (d.getMonth() + 1).toString().padStart(2, '0');
+				var da = d.getDate().toString().padStart(2, '0');
+				var time = ye + '-' + mo + '-' + da;
+				uni.request({
+					url: this.nowUrl + '/foods/index/queryWeek',
+					header: {
+						'token': this.token
+					},
+					data: {
+						date: time
+					},
+					success: (res) => {
+						that.worship = res.data.data
+						that.worship.forEach(function(item, i) {
+							if (item.code == time) {
+								that.dayCur = i
+								that.dataId = item.id
+								that.getHistory(item.id)
+								that.getCategory(item.id)
+							}
+						})
+					}
 				})
 			},
-			search(e){ // 搜索
-				console.log(e);
+			getHistory(id) { // 历史购买
+				let that = this
+				that.dayId = id
+				uni.showLoading({
+					mask: true
+				})
+				uni.request({
+					url: this.nowUrl + '/foods/index/queryHistory',
+					header: {
+						'token': this.token
+					},
+					data: {
+						id: id
+					},
+					success: (res) => {
+						that.buyList = res.data.data
+						for (let i = 0; i < that.buyList.length; i++) {
+							that.buyList[i].count = 0;
+						}
+						uni.hideLoading()
+					}
+				})
+			},
+			getCategory(id, value = "") { //菜单类别
+				let that = this
+				uni.showLoading({
+					mask: true
+				})
+				uni.request({
+					url: this.nowUrl + '/foods/index/queryCategory',
+					header: {
+						'token': this.token
+					},
+					data: {
+						id: id
+					},
+					success: (res) => {
+						that.category = res.data.data
+
+						//	console.log(that.category, id)
+						for (let i = 0, len = that.category.length; i < len; i++) {
+							// console.log(res.data.data[i].categoryName)
+							that.goods.push({
+								name: res.data.data[i].categoryName,
+								foods: []
+							}) //合并数据
+							that.getFoods(id, i, that.category[i].categoryId, value)
+						}
+						// console.log(that.foods)
+						uni.hideLoading()
+					}
+				})
+			},
+			search(value) {
+				this.getCategory(this.dataId, value)
+			},
+			getFoods(id, i, categoryId, value) {
+				let that = this
+				uni.request({
+					url: this.nowUrl + '/foods/index/queryTableFoods',
+					header: {
+						'token': this.token
+					},
+					data: {
+						dateId: id,
+						categoryId: categoryId,
+						foodName: value //搜索值
+					},
+					success(res) {
+						// console.log(res)
+						for (let j = 0, len = res.data.data.length; j < res.data.data.length; j++) {
+							res.data.data[j].count = 0
+						}
+						that.goods[i].foods = res.data.data
+						// console.log(that.goods)
+					}
+				})
+			},
+			setDay(index, id) { //切换日期
+				this.dayCur = index
+				this.goods = []
+				this.getHistory(id)
+				this.getCategory(id)
 			},
 			// 点击侧边栏
 			select(index) {
-				this.currentIndex = index;
+				if (this.goods[index].foods.length == 0) {
+					uni.showToast({
+						title: '暂无' + this.goods[index].name + '菜品',
+						mask: true,
+						icon: 'none',
+						duration: 1000
+					})
+				} else {
+					this.currentIndex = index;
+				}
+				// console.log(this.goods[index].foods)
 				this.setScrollH(index);
-
 			},
-
 			// 设置点击侧边栏右边滚动的高度
 			setScrollH: function(index) {
 				var that = this;
@@ -512,7 +312,6 @@
 				// console.log('query',query);
 				let foods = query.selectAll('.foods');
 				// console.log('foods', foods);
-
 				this.$nextTick(function() {
 					foods.fields({
 						size: true
@@ -527,12 +326,17 @@
 							that.foodSTop = height;
 							// console.log(that.foodSTop)
 						}
-
 					}).exec();
 				})
-
 			},
-			
+			foodDetail(id) { // 跳商品详情
+				// console.log(this.dayId)
+				uni.navigateTo({
+					url: '../foodDetail/foodDetail?id=' + id + '&dayId=' + this.dayId,
+					animationType: 'slide-in-right',
+					animationDuration: 200
+				})
+			},
 			addCart: function(item) { // 加
 				// console.log('ev', JSON.stringify(item))
 				if (item.count >= 0) {
@@ -546,7 +350,7 @@
 					// console.log('c++', JSON.stringify(item))
 
 				} else {
-				//	console.log('add')
+					//	console.log('add')
 					this.goods.forEach((good) => {
 						good.foods.forEach((food) => {
 							if (item.name == food.name)
@@ -556,7 +360,6 @@
 						})
 					})
 				}
-
 			},
 			decreaseCart(item) { //减
 				if (item.count) {
@@ -595,6 +398,7 @@
 		bottom: 55px;
 		width: 100%;
 		overflow: hidden;
+		height: 100%;
 	}
 
 	.current {
@@ -668,15 +472,23 @@
 		color: #f01414;
 		font-size: 16px;
 	}
-	.day{
-		flex: 1;text-align: center;padding: 5upx 0;margin: 0 5upx 5upx;
-		border-radius: 10upx;border: 1upx #ccc solid;
+
+	.day {
+		flex: 1;
+		text-align: center;
+		padding: 15upx 0;
+		margin: 0 5upx 5upx;
+		border-radius: 10upx;
+		border: 1upx #ccc solid;
+		font-size: 0.8em;
 	}
-	.dayActive{
+
+	.dayActive {
 		background: #767676;
 		color: #fff;
 	}
-	.listData{
+
+	.listData {
 		display: inline-block;
 		width: 180upx;
 		height: 100upx;
@@ -686,38 +498,45 @@
 		box-sizing: border-box;
 		position: relative;
 		color: #000;
-		font-size: 0.7em;
+		font-size: 12px;
+		z-index: 1;
 	}
-	.listName{
+
+	.listName {
 		position: absolute;
 		top: 5upx;
 		left: 15upx;
 	}
-	.listMonney{
+
+	.listMonney {
 		position: absolute;
 		bottom: 5upx;
 		left: 15upx;
 	}
-	.listData image{
+
+	.listData image {
 		position: absolute;
 		width: 30upx;
 		height: 30upx;
 		bottom: 10upx;
 		right: 10upx;
 	}
-	.buyLeft{
+
+	.buyLeft {
 		width: 50upx;
 		height: 100upx;
 		font-size: 0.7em;
-		background: #000;
+		background: #FE4E37;
 		color: #fff;
 		line-height: 1;
 		padding-top: 10upx;
 		text-align: center;
 		position: fixed;
 		left: 0;
+		z-index: 99;
 	}
-	.mark{
+
+	.mark {
 		padding: 4upx 6upx;
 		background: #5d5d5d;
 		color: #fff;
@@ -725,14 +544,25 @@
 		margin-left: 15upx;
 		border-radius: 15upx;
 	}
-	.menu-item{
+
+	.menu-item {
 		font-size: 0.8em;
 	}
-	.remainder{
+
+	.remainder {
 		position: absolute;
 		right: 20upx;
 		bottom: 55upx;
 		font-size: 0.7em;
 		color: #2e2e2e;
 	}
+
+	.remainder1 {
+		position: absolute;
+		right: 20upx;
+		top: 45upx;
+		font-size: 0.7em;
+		color: #2e2e2e;
+	}
 </style>
+le>

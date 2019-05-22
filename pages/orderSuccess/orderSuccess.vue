@@ -8,8 +8,8 @@
 			</view>
 		</view>
 		<view class="btns">
-			<button type="primary">返回首页</button>
-			<button type="primary">查看订单</button>
+			<button type="primary" @tap="toIndex">返回首页</button>
+			<button type="primary" @tap="toOrder">查看订单</button>
 		</view>
 	</view>
 </template>
@@ -22,7 +22,16 @@
 			}
 		},
 		methods: {
-			
+			toIndex(){
+				uni.switchTab({
+					url:'../index/index'
+				})
+			},
+			toOrder(){
+				uni.switchTab({
+					url:'../order/order'
+				})
+			}
 		}
 	}
 </script>

@@ -42,10 +42,52 @@
 				"navigationBarTitleText": "更多评价"
 			}
         }
+        ,{
+            "path" : "pages/waitingMeal/waitingMeal",
+            "style" : {
+            	"navigationBarTitleText": "待取餐"
+            }
+        }
+        ,{
+            "path" : "pages/confirmMeal/confirmMeal",
+            "style" : {
+				"navigationBarTitleText": "取餐成功"
+			}
+        }
+        ,{
+            "path" : "pages/assess/assess",
+            "style" : {"navigationBarTitleText": "商品评价"}
+        }
+        ,{
+            "path" : "pages/AssessSuccess/AssessSuccess",
+             "style" : {"navigationBarTitleText": "评价成功"}
+        }
+        ,{
+            "path" : "pages/waitingOrder/waitingOrder",
+            "style" : {
+				"navigationBarTitleText": "等待接单"
+			}
+        }
+        ,{
+            "path" : "pages/assessOrder/assessOrder",
+            "style" : {
+				"navigationBarTitleText": "已评价订单"
+			}
+        }
+        ,{
+            "path" : "pages/myAssess/myAssess",
+            "style" : {
+            	"navigationBarTitleText": "我的评价"
+            }
+        }
+        ,{
+            "path" : "pages/aleadyPraise/aleadyPraise",
+            "style" : {}
+        }
     ],
 	"tabBar":{
-		"color": "#CCC",
-		"selectedColor":"blue",
+		"color": "#000",
+		"selectedColor":"#8A6DE9",
 		"borderStyle": "black",
 		"backgroundColor":"#fff",
 		"list":[{
@@ -69,7 +111,7 @@
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "开始点餐",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}

@@ -11,7 +11,7 @@
 					x{{list.num}}
 				</view>
 				<view class="list">
-					￥{{list.cash}}
+					￥{{list.price}}
 				</view>
 			</view>
 		</view>
@@ -19,19 +19,14 @@
 			合计：￥{{money}}
 		</view>
 		<view style="margin: 15upx 0 15upx 15upx;font-weight: bold;font-size: 0.8em;">订单信息</view>
-		<view class="detail" style="border: 0;max-height: 25vh;">
+		<view class="detail" style="border: 0;max-height: 35vh;">
 			<view class="detailList" :class="{toRight:list.type == 1}" v-for="(list, _index) in orderDetails" :key="_index" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
-				<view class="list" style="flex: 4;text-align: left;">
+				<view class="list" style="flex: 3;text-align: left;">
 					<text style="display:block">{{list.name}}</text>
 				</view>
-				<view class="list" style="flex:6;text-align:left;" @tap="write(list.type,_index)">
+				<view class="list" style="flex:7;text-align:left;" @tap="write(list.type,_index)">
 					<block v-if="list.type == 1">
-						<block v-if="list.newValue">
-							<input class="writeInput" type="text" :placeholder="list.value" value="list.newValue" v-model="list.newValue"/>
-						</block>
-						<block v-else>
-							<input class="writeInput" type="text" :placeholder="list.value"/>
-						</block>
+						<input class="writeInput" type="text" :placeholder="list.value" value="list.newValue" v-model="orderDetails[_index].newValue"/>
 					</block>
 					<block v-else>
 						<text class="writeInput">{{list.value}}</text>
@@ -47,81 +42,125 @@
 	export default {
 		data() {
 			return {
-				detailList: [
-					{
-						name: '西红柿炒蛋',
-						num: 2,
-						cash: 15
-					},
-					{
-						name: '西红柿炒蛋',
-						num: 2,
-						cash: 15
-					},
-					{
-						name: '西红柿炒蛋',
-						num: 2,
-						cash: 15
-					},
-					{
-						name: '西红柿炒蛋',
-						num: 2,
-						cash: 15
-					},
-					{
-						name: '西红柿炒蛋',
-						num: 2,
-						cash: 15
-					},
-					{
-						name: '西红柿炒蛋',
-						num: 2,
-						cash: 15
-					},
-					{
-						name: '西红柿炒蛋',
-						num: 2,
-						cash: 15
-					}
-				],
-				money: 99,
+				imgUrl: 'http://106.15.194.58/images/', //图片接口
+				detailList: [],
+				money: '' ,
 				orderDetails: [
 					{
 						name: '订单号',
-						value: '1321 1478 1478 4874 788'
+						value: '',
 					},
 					{
 						name: '用餐人数',
-						value: '便于商家携带',
+						value: '请输入用餐人数便于商家携带，默认1人',
+						newValue: '',
 						type: '1'
 					},
 					{
-						name: '联系人',
-						value: '张女士 13656564898',
+						name: '姓名',
+						value: '请填写您的姓名',
+						newValue: '',
+						type: '1'
+					},
+					{
+						name: '联系人号码',
+						value: '请输入联系人号码',
+						newValue: '',
 						type: '1'
 					},
 					{
 						name: '订单备注',
-						value: '多放辣椒少放盐多放辣椒少放盐多放辣椒少放盐多放辣椒少放盐',
+						value: '请输入备注信息',
+						newValue: '',
 						type: '1'
 					}
-				]
+				],
+				orderInfo: null
 			}
 		},
-		onShow() {
-			
+		onLoad(e) {
+			this.orderInfo = JSON.parse(e.dataInfo)
+			// console.log(this.orderInfo)
+			this.req()
+		},
+		onUnload() { //返回即删除订单
+			// console.log('1130076650701029376')
+			uni.request({
+				url:this.nowUrl + '/foods/shopcar/remove?id='+ this.orderInfo.orderNum,
+				header:{
+					'token':this.token
+				},
+				method: 'POST',
+				success(res) {
+					// console.log(res)
+				}
+			})
 		},
 		methods: {
+			req(){
+				let that = this
+				uni.request({
+					url: this.nowUrl + '/foods/myOrder/find',
+					header:{
+						'token':this.token
+					},
+					method: 'GET',
+					data:{
+						id: this.orderInfo.orderNum
+					},
+					success(res) {
+						// console.log(res.data.data.foods)
+						that.detailList = res.data.data.foods
+						that.money =  res.data.data.priceAll
+						that.orderDetails[0].value = res.data.data.orderNum //订单号
+						that.orderDetails[1].newValue = 1 //人数
+						that.orderDetails[2].newValue = res.data.data.userName //xingming
+						that.orderDetails[3].newValue = res.data.data.mobile // 联系号码
+					}
+				})
+			},
 			write(type, index){ //输入框
+				let that = this
 				if(type == 1) {
 					console.log(index)
+				//	that.orderDetails[index].newValue
+					// console.log(that.orderDetails)
 				}
 			},
 			success(){ // 成功即跳转
-				uni.navigateTo({
-					url:'../orderSuccess/orderSuccess',
-					animationType:'slide-in-right',
-					animationDuration:200
+				// console.log(this.orderDetails)
+				let that = this
+				uni.request({
+					url:this.nowUrl + '/foods/shopcar/save',
+					header:{
+						'token':this.token
+					},
+					method:'POST',
+					data:{
+						orderNum: that.orderDetails[0].value,
+						userName: that.orderDetails[2].newValue,
+						peopleNum: that.orderDetails[1].newValue ,
+						mobile: that.orderDetails[3].newValue,
+						remarks:  that.orderDetails[4].newValue
+					},
+					success(res) {
+						console.log(that.orderDetails[0].value, that.orderDetails[2].newValue, that.orderDetails[1].newValue, that.orderDetails[3].newValue, that.orderDetails[4].newValue)
+						// console.log(res)
+						if(res.data.code == 200){
+							uni.navigateTo({
+								url:'../orderSuccess/orderSuccess',
+								animationType:'slide-in-right',
+								animationDuration:200
+							})
+						}else{
+							uni.showToast({
+								title: res.data.msg,
+								icon: 'none',
+								duration:1000
+							})
+							return false
+						}
+					}
 				})
 			}
 		}
@@ -165,6 +204,6 @@
 	margin-top: 50upx;
 }
 .writeInput{
-	display: block;width: 350upx;color:#7f7f7f;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
+	display: block;width: 400upx;color:#7f7f7f;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
 }
 </style>

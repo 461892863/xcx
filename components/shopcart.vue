@@ -1,8 +1,8 @@
 <template>
 	<view class="shopcart">
 		<!-- @click="toggleList" -->
-		<view class="cartBottom" @click="toggleList">
-			<view class="carIcon">
+		<view class="cartBottom">
+			<view class="carIcon" @tap="showCart">
 				<view class="iconBox" :class="getAllCount ? 'active' : '' ">
 					<text class="allcount" v-if="getAllCount">{{getAllCount}}</text>
 					<image src="/static/cart.png" mode="" class="img"></image>
@@ -12,7 +12,7 @@
 				<text class="price" :class="getAllCount ?　'active': ''">￥{{getAllPrice}}</text>
 				<text class="deliveryPrice" style="font-size: 12px;">免配送费|支持自取</text>
 			</view>
-			<view class="BtnRight">
+			<view class="BtnRight" @tap="toggleList">
 				<text>确认订单</text>
 			</view>
 		</view>
@@ -34,7 +34,7 @@
 				</view>
 			</scroll-view>
 		</view>
-		<view class="listMask" v-show="isShowList && getList.length" @click="toggleList"></view>
+		<view class="listMask" v-show="isShowList && getList.length"></view>
 	</view>
 </template>
 
@@ -112,14 +112,44 @@
 
 				return Number(s1.replace('.', '')) * Number(s2.replace('.', '')) / Math.pow(10, m);
 			},
-			toggleList() { // 提交订单
-				console.log(this.getList)
+			showCart(){
+				this.isShowList = !this.isShowList;
+			},
+			toggleList(){ // 提交订单
+				let arr = []
+				this.getList.forEach(function(item){
+					arr.push({foodId: item.id,num:item.count})
+				})
+				let strData = JSON.stringify(arr)
+				// console.log(strData)
 				if (this.getList.length) {
-					this.isShowList = !this.isShowList;
-					uni.navigateTo({
-						url: '../orderDetails/orderDetails',
-						animationDuration: 200,
-						animationType: "slide-in-right"
+					// this.isShowList = !this.isShowList;
+					uni.request({
+						url: this.nowUrl + '/foods/shopcar/build',
+						header:{
+							'token': this.token,
+							'content-type': 'application/json'
+						},
+						method:'POST',
+						data: strData,
+						success(res) {
+							// console.log(res.data.data)
+							let dataInfo = JSON.stringify(res.data.data)
+							if(res.data.code == 200){
+								uni.navigateTo({
+									url: '../orderDetails/orderDetails?dataInfo=' + dataInfo,
+									animationDuration: 200,
+									animationType: "slide-in-right"
+								})
+							}else{
+								uni.showToast({
+									title: res.data.msg,
+									duration:1000,
+									icon:'none'
+								})
+								return false
+							}
+						}
 					})
 				}else{
 					uni.showToast({
@@ -128,7 +158,6 @@
 						icon: 'none'
 					})
 				}
-				
 			},
 			delShopcart() {
 				this.$emit('delAll');
@@ -152,7 +181,7 @@
 
 	.shopcart .cartBottom {
 		position: fixed;
-		bottom: 0;
+		bottom: 0px; 
 		left: 0;
 		right: 0;
 		height: 54px;
@@ -263,8 +292,8 @@
 		right: 0;
 		bottom: 0;
 		z-index: 89;
-		opacity: 0.5;
-		background: #fff;
+		opacity: 0.7;
+		background: #000;
 	}
 	.price{
 		margin-top: 10upx;
