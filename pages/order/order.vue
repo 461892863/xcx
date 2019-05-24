@@ -43,6 +43,7 @@
 </template>
 
 <script>
+	import orderType from '../../common/public.js'
 	export default {
 		data() {
 			return {
@@ -53,6 +54,9 @@
 				type: 2,
 				// orderList:[]
 			}
+		},
+		onShow() {
+			orderType.delOrderType = true
 		},
 		onLoad(e) {
 			this.getOrderList(1);

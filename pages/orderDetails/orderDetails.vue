@@ -153,7 +153,6 @@
 					success(res) {
 						console.log(that.orderDetails[0].value, that.orderDetails[2].newValue, that.orderDetails[1].newValue, that.orderDetails[3].newValue, that.orderDetails[4].newValue)
 						// console.log(res)
-						debugger
 						if(res.data.code == 200){
 							uni.navigateTo({
 								url:'../orderSuccess/orderSuccess?theTime='+res.data.data,

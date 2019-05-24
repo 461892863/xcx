@@ -17,9 +17,9 @@
 
 				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)">
 					<text class="listName">{{list.name}}</text>
-					<text class="listMonney">￥{{list.price}}</text>
-					<cartcontrol class="histroyAdd" :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
 					<!-- <image src="../../static/add2.png" mode="aspectFit" @tap.stop="addCart"></image> -->
+					<text class="listMonney">￥{{list.price}}</text>
+					<cartcontrol  :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
 				</view>
 			</scroll-view>
 		</view>
@@ -36,14 +36,14 @@
 				</view>
 			</scroll-view>
 			<!--  @scroll="scroll" -->
-			<scroll-view class="foods-wrapper" scroll-y style="height:100%;padding-bottom:54px;box-sizing: border-box;"
-			 :scroll-top="foodSTop" @scroll="setScrollIndex">
-				<view ref="foodsWrapper" style="height: 100%;overflow: auto;box-sizing: border-box;">
+			
+			<scroll-view class="foods-wrapper" scroll-y style="box-sizing: border-box;"
+			 :scroll-top="foodSTop" @scroll="setScrollIndex" :style="'height:'+height+'px'">
+				<view ref="foodsWrapper" style="overflow: auto;box-sizing: border-box;padding-bottom:650upx;">
 					<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
 						<view class="food-title" style="background: #f3f5f7;color:#666;" v-if="item.foods.length>0">
 							{{item.name}}
 						</view>
-	
 						<view class="food" style="position: relative;border-bottom: 1px #f3f5f7 solid;" v-for="(food, index) in item.foods"
 						 :key="index" @tap="foodDetail(food.id)">
 							<image :src="imgUrl + food.thumbnails" mode="" style="width: 75px;height: 75px;margin-top: 6px;"></image>
@@ -77,6 +77,7 @@
 	import mSearch from '../../components/mehaotian-search.vue'
 	import uniRate from '../../components/uni-rate.vue'
 	import Vue from 'vue'
+	import orderType from '../../common/public.js'
 	// import BScroll from 'better-scroll'
 
 	export default {
@@ -120,7 +121,7 @@
 		},
 		onLoad() {
 			let that = this
-			this.height = Number(uni.getSystemInfoSync().windowHeight) - 210;
+			this.height = Number(uni.getSystemInfoSync().windowHeight) - 55;
 			// console.log(uni.getSystemInfoSync().windowHeight)
 			// uni.setStorage({
 			// 	key: 'token',
@@ -178,6 +179,7 @@
 			},
 		},
 		onShow() {
+			orderType.delOrderType = true
 			this.getDay()
 		},
 		methods: {
@@ -332,8 +334,26 @@
 					}).exec();
 				})
 			},
-			setScrollIndex() { //滚动事件
-				console.log(this.foodSTop)
+			setScrollIndex(e) { //滚动事件
+				// var query = uni.createSelectorQuery();
+				// let foods = query.selectAll('.foods');
+				// let height = 0;
+				// this.$nextTick(function() {
+				// 	foods.fields({
+				// 		size: true,
+				// 		scrollOffset: true
+				// 	},data => {
+				// 			for (let i = 0; i < data.length; i++) {
+				// 				height += parseInt(data[i].height);
+				// 				console.log(height - e.detail.scrollTop)
+				// 				if(0 < height - e.detail.scrollTop < 10){
+				// 					// console.log(i)
+				// 				}
+				// 			//	that.foodSTop = height;
+				// 			}
+				// 			
+				// 	}).exec();
+				// })
 			},
 			foodDetail(id) { // 跳商品详情
 				// console.log(this.dayId)

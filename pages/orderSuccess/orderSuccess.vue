@@ -31,13 +31,11 @@
 		},
 		methods: {
 			toIndex(){
-				orderType.delOrderType = true
 				uni.switchTab({
 					url:'../index/index'
 				})
 			},
 			toOrder(){
-				orderType.delOrderType = true
 				uni.switchTab({
 					url:'../order/order'
 				})

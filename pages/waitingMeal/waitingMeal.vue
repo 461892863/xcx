@@ -236,7 +236,6 @@
 						},
 						method: 'POST',
 						success(res) {
-							debugger
 							// console.log(res)
 							// uni.navigateTo({
 							// 	url: '../index/index'

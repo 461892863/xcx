@@ -60,7 +60,7 @@
 				let result = [];
 				this.goods.forEach((good) => {
 					good.foods.forEach((food) => {
-						console.log(food);
+						// console.log(food);
 						if (food.count) {
 							result.push(food)
 							// console.log('res', JSON.stringify(result))
