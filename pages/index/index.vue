@@ -14,12 +14,11 @@
 				买过的
 			</view>
 			<scroll-view scroll-x='true' scroll-with-animation=true style="height: 100%;white-space: nowrap;">
-
-				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)">
+				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)" >
 					<text class="listName">{{list.name}}</text>
 					<!-- <image src="../../static/add2.png" mode="aspectFit" @tap.stop="addCart"></image> -->
 					<text class="listMonney">￥{{list.price}}</text>
-					<cartcontrol  :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
+					<cartcontrol class="add" :style="carStyle" :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
 				</view>
 			</scroll-view>
 		</view>
@@ -83,6 +82,9 @@
 	export default {
 		data() {
 			return {
+				carStyle:{
+					"direction": 'column'
+				},
 				joinTimes:0,
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				dayCur: -1, //日期选中状态
@@ -226,10 +228,10 @@
 						id: id
 					},
 					success: (res) => {
-						that.buyList = res.data.data
-						for (let i = 0; i < that.buyList.length; i++) {
-							that.buyList[i].count = 0;
+						for (let i = 0; i < res.data.data.length; i++) {
+							res.data.data[i].count = 0;
 						}
+						that.buyList = res.data.data
 						uni.hideLoading()
 					}
 				})
@@ -367,14 +369,20 @@
 				// console.log('ev', JSON.stringify(item))
 				if (item.count >= 0) {
 					item.count++
+					// buyList
+					this.buyList.forEach((food) => {
+						if(item.name == food.name){
+							food.count = item.count
+						}
+					})
 					this.goods.forEach((good) => {
 						good.foods.forEach((food) => {
-							if (item.name == food.name)
+							if (item.name == food.name){
 								food.count = item.count
+							}
 						})
 					})
 					// console.log('c++', JSON.stringify(item))
-
 				} else {
 					//	console.log('add')
 					this.goods.forEach((good) => {
@@ -384,6 +392,14 @@
 							// food.count = 1
 							// console.log('add-shop', JSON.stringify(food))
 						})
+					})
+					
+					this.buyList.forEach((food) => {
+						if (item.name == food.name){
+							Vue.set(food, 'count', 1)
+						}
+						// food.count = 1
+						// console.log('add-shop', JSON.stringify(food))
 					})
 				}
 			},
@@ -396,6 +412,11 @@
 								food.count = item.count
 							// console.log('dec-shop', JSON.stringify(this.foods))
 						})
+					})
+					this.buyList.forEach((food) => {
+						if (item.name == food.name)
+							food.count = item.count
+						// console.log('dec-shop', JSON.stringify(this.foods))
 					})
 				}
 			},
@@ -490,7 +511,6 @@
 
 	.food-btm {
 		justify-content: space-between;
-
 	}
 
 	.food-price {
@@ -515,7 +535,7 @@
 
 	.listData {
 		display: inline-block;
-		width: 180upx;
+		width: 220upx;
 		height: 100upx;
 		border: 1upx solid #ccc;
 		border-radius: 10upx;
@@ -526,27 +546,21 @@
 		font-size: 12px;
 		z-index: 1;
 	}
-
 	.listName {
 		position: absolute;
 		top: 5upx;
 		left: 15upx;
 	}
-
 	.listMonney {
 		position: absolute;
 		bottom: 5upx;
 		left: 15upx;
 	}
-
-	.listData image {
+	.listData .add {
 		position: absolute;
-		width: 30upx;
-		height: 30upx;
-		bottom: 10upx;
+		bottom: 0upx;
 		right: 10upx;
 	}
-
 	.buyLeft {
 		width: 50upx;
 		height: 100upx;

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+                CSS.supports('top: constant(a)'))
+            document.write(
+                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"i]::-webkit-search-cancel-button {
+                display: none;
+            }
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"dingCan","entryPagePath":"pages/login/login.html","page":{"pages/login/login.html":{"window":{"navigationBarTitleText":"开始点餐","usingComponents":{}}},"pages/index/index.html":{"window":{"navigationBarTitleText":"全部","usingComponents":{"shopcart":"/components/shopcart","cartcontrol":"/components/cartcontrol","m-search":"/components/mehaotian-search","uni-rate":"/components/uni-rate"}}},"pages/feedback/feedback.html":{"window":{"navigationBarTitleText":"反馈","usingComponents":{}}},"pages/order/order.html":{"window":{"navigationBarTitleText":"订单","usingComponents":{}}},"pages/orderDetails/orderDetails.html":{"window":{"navigationBarTitleText":"订单详情","usingComponents":{}}},"pages/orderSuccess/orderSuccess.html":{"window":{"navigationBarTitleText":"预约成功","usingComponents":{}}},"pages/foodDetail/foodDetail.html":{"window":{"navigationBarTitleText":"商品详情","usingComponents":{"cartcontrol":"/components/cartcontrol","uni-rate":"/components/uni-rate"}}},"pages/moreAssess/moreAssess.html":{"window":{"navigationBarTitleText":"更多评价","usingComponents":{"uni-rate":"/components/uni-rate"}}},"pages/waitingMeal/waitingMeal.html":{"window":{"navigationBarTitleText":"待取餐","usingComponents":{}}},"pages/confirmMeal/confirmMeal.html":{"window":{"navigationBarTitleText":"取餐成功","usingComponents":{}}},"pages/assess/assess.html":{"window":{"navigationBarTitleText":"商品评价","usingComponents":{"uni-rate":"/components/uni-rate"}}},"pages/AssessSuccess/AssessSuccess.html":{"window":{"navigationBarTitleText":"评价成功","usingComponents":{}}},"pages/waitingOrder/waitingOrder.html":{"window":{"navigationBarTitleText":"等待接单","usingComponents":{}}},"pages/assessOrder/assessOrder.html":{"window":{"navigationBarTitleText":"已评价订单","usingComponents":{"uni-rate":"/components/uni-rate"}}},"pages/myAssess/myAssess.html":{"window":{"navigationBarTitleText":"我的评价","usingComponents":{"uni-rate":"/components/uni-rate"}}},"pages/aleadyPraise/aleadyPraise.html":{"window":{"usingComponents":{}}}},"global":{"window":{"navigationBarTextStyle":"black","navigationBarTitleText":"开始点餐","navigationBarBackgroundColor":"#F8F8F8","backgroundColor":"#F8F8F8"}},"tabBar":{"color":"#000","selectedColor":"#8A6DE9","backgroundColor":"#fff","borderStyle":"black","list":[{"text":"就餐","pagePath":"pages/index/index.html"},{"text":"订单","pagePath":"pages/order/order.html"},{"text":"反馈","pagePath":"pages/feedback/feedback.html"}],"position":"bottom"},"networkTimeout":{"request":60000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/login/login","pages/index/index","pages/feedback/feedback","pages/order/order","pages/orderDetails/orderDetails","pages/orderSuccess/orderSuccess","pages/foodDetail/foodDetail","pages/moreAssess/moreAssess","pages/waitingMeal/waitingMeal","pages/confirmMeal/confirmMeal","pages/assess/assess","pages/AssessSuccess/AssessSuccess","pages/waitingOrder/waitingOrder","pages/assessOrder/assessOrder","pages/myAssess/myAssess","pages/aleadyPraise/aleadyPraise"],"subPackages":[],"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"1.9.9","usingComponents":{}}
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                var wxss = page.replace('.html', '.wxss')
+                if (
+                    typeof __wxAppCode__ !== 'undefined' &&
+                    __wxAppCode__.hasOwnProperty(wxss)
+                ) {
+                    var setCssToHead = __wxAppCode__[wxss]
+                    typeof setCssToHead === 'function' && setCssToHead()
+                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
+                        detail: {
+                            generateFunc: $gwx(page.replace('.html', '.wxml'))
+                        }
+                    }));
+                } else {
+                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+                }
+            };
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

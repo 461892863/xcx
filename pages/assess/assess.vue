@@ -14,6 +14,11 @@
 			</view>
 			<input type="text" placeholder="您的评价将显示在该商品的评价列表" @change="setValue(index,list.value)" value="list.value" v-model="assessData.foods[index].value">
 		</view>
+		<view style="font-size: 0.9em;margin-top: 20upx;">
+			<label class="radio" @tap="setRadio" style="margin-left: 15upx;">
+				<radio checked :value="item.name" :checked="item.checked"/> 匿名提交评价
+			</label>
+		</view>
 		<view class="btns">
 			<button type="primary" @tap="toAssessSuccess()">提交评价</button>
 		</view>
@@ -28,7 +33,11 @@
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				assessData: [],
 				orderId: '',
-				foods: []
+				foods: [],
+				item: {
+					name: 'false',
+					checked: false
+				}
 			}
 		},
 		components:{
@@ -39,6 +48,9 @@
 			this.req(e.id)
 		},
 		methods: {
+			setRadio(){
+				this.item.checked = !this.item.checked
+			},
 			toAssessSuccess(){
 				let that = this
 				// console.log(this.foods)

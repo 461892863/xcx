@@ -1,0 +1,27 @@
+
+.code{
+	width: calc(70%);
+	margin: 40% auto;
+	font-size: 0.9em;
+}
+.phoneInput{
+	background: #fff;
+	width: calc(100% - 30rpx);
+	padding: 20rpx 15rpx;
+	margin: 30rpx auto;
+	border-radius: 15rpx;
+}
+.getCode{
+	width: 150rpx;
+	text-align: center;
+	font-size: 0.7em;
+	padding: 10rpx 5rpx;
+	position: absolute;
+	right: 15rpx;
+	bottom: 160rpx;
+	background: #007AFF;
+	color:#fff;
+	border-radius: 10rpx;
+	z-index: 99;
+}
+
