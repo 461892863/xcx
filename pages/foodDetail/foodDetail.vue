@@ -136,7 +136,6 @@
 				}
 			},
 			moreAssess(id) { // 更多评价
-				console.log(id)
 				uni.navigateTo({
 					url: '../moreAssess/moreAssess?id=' + this.id + '&dayId=' + this.dayId,
 					animationType: 'slide-in-right',

@@ -18,7 +18,7 @@
 					<text class="listName">{{list.name}}</text>
 					<!-- <image src="../../static/add2.png" mode="aspectFit" @tap.stop="addCart"></image> -->
 					<text class="listMonney">￥{{list.price}}</text>
-					<cartcontrol class="add" :style="carStyle" :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
+					<cartcontrol v-if="dataId == selectDay" class="add" :style="carStyle" :food="list" @add="addCart" @dec="decreaseCart"></cartcontrol>
 				</view>
 			</scroll-view>
 		</view>
@@ -63,7 +63,7 @@
 								</view>
 								<view class="food-btm">
 									<text class="food-price">￥{{food.price}}</text>
-									<cartcontrol v-if="item.name!='不可预定'" :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
+									<cartcontrol v-if="dataId == selectDay && item.name !='不可预定'" :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
 								</view>
 							</view>
 						</view>
@@ -111,7 +111,8 @@
 						name: "星期五"
 					}
 				],
-				dataId: '', // 日期id
+				dataId: '', // 当日日期id
+				selectDay: '', //选中日期id
 				category: [], //左侧菜单类别
 				goods: [], //合并后总数据
 				// foods: [],  //右侧数据
@@ -127,7 +128,7 @@
 			uniRate
 		},
 		onLoad() {
-			this.isUserId();
+			// this.isUserId();
 			let that = this
 			this.height = Number(uni.getSystemInfoSync().windowHeight) - 55;
 			// console.log(uni.getSystemInfoSync().windowHeight)
@@ -212,6 +213,7 @@
 							if (item.code == time) {
 								that.dayCur = i
 								that.dataId = item.id
+								that.selectDay = item.id
 								that.getHistory(item.id)
 								that.getCategory(item.id)
 							}
@@ -257,7 +259,6 @@
 					},
 					success: (res) => {
 						that.category = res.data.data
-
 						//	console.log(that.category, id)
 						for (let i = 0, len = that.category.length; i < len; i++) {
 							// console.log(res.data.data[i].categoryName)
@@ -300,6 +301,7 @@
 			setDay(index, id) { //切换日期
 				this.dayCur = index
 				this.goods = []
+				this.selectDay = id
 				this.getHistory(id)
 				this.getCategory(id)
 			},

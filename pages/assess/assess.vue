@@ -8,8 +8,8 @@
 				<view class="right">
 					<view>{{list.name}}</view>
 					<uniRate :value="list.level" :index='index' @change="change" size="20" style="margin: 30upx 0;"></uniRate>
-					<text @tap="setZan(index,1)" :class="{zanActive: foods[index].isLike == 1}">👍 赞</text> 
-					<text style="margin-left: 15upx;" :class="{zanActive: foods[index].isLike == 0}" @tap="setZan(index,0)">👎 踩</text>
+					<text @tap="setZan(index,1)" :class="{zanActive: foods[index].isLike == 1}">👍    </text>
+					<text style="margin-left: 15upx;" :class="{zanActive: foods[index].isLike == 0}" @tap="setZan(index,0)">👎      </text>
 				</view>
 			</view>
 			<input type="text" placeholder="您的评价将显示在该商品的评价列表" @change="setValue(index,list.value)" value="list.value" v-model="assessData.foods[index].value">
@@ -55,8 +55,7 @@
 			},
 			toAssessSuccess(){
 				let that = this
-				debugger
-				if(this.ifChecked == true){
+ 				if(this.ifChecked == true){
 					this.isHidden = 1;
 				}
 				// console.log(this.foods)

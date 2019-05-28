@@ -62,7 +62,6 @@
 			uniRate
 		},
 		onLoad(e) {
-			console.log(e)
 			this.name =e.name
 			this.url = e.url
 			this.id = e.id
@@ -77,7 +76,6 @@
 					},
 					success:(res) => {
 						this.asserssList = res.data.data.list
-						console.log(this.asserssList)
 					}
 				})
 			},

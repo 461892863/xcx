@@ -41,12 +41,16 @@
 					</view>
 			    </view>
 			</view>
+			<loadMore :loadingType="loadingType" :contentText="contentText" ></loadMore>
 		</view>
 	</view>
 </template>
 
 <script>
 	import uniRate from '../../components/uni-rate.vue'
+	import loadMore from '../../components/loadeMore.vue'
+	var _self,timer = null;
+
 	export default {
 		data() {
 			return {
@@ -55,18 +59,38 @@
 				// level:'',
 				isBody:0,
 				pageNumber:1,
-				pageSize:20,
-				footData: []
+				pageSize:1,
+				footData: [],
+				loadingText: '加载中...',
+				loadingType: 0,//定义加载方式 0---contentdown  1---contentrefresh 2---contentnomore
+				contentText: {
+					contentdown:'上拉显示更多',
+					contentrefresh: '正在加载...',
+					contentnomore: '没有更多数据了'
+				}
 			}
 		},
 		components:{
-			uniRate
+			uniRate,
+			loadMore
+		},
+		onReachBottom: function() {
+			//触底的时候请求数据，即为上拉加载更多
+			//为了更加清楚的看到效果，添加了定时器
+			this.pageNumber++
+			if (timer != null) {
+				clearTimeout(timer);
+			}
+			timer = setTimeout(function() {
+				_self.req('');
+			}, 1000);
 		},
 		onLoad(e) {
 			// console.log(e)
+			_self = this
 			this.id = e.id
 			this.dayId = e.dayId
-			this.req('')
+			this.req('') 
 		},
 		methods: {
 			req(level){
@@ -84,10 +108,10 @@
 						pageSize:this.pageSize
 					},
 					success(res) {
-						// console.log(res)
+						console.log(res)
 						that.footData = res.data.data.list
 						that.flag = true
-						console.log(that.footData)
+						// console.log(that.footData)
 						uni.hideLoading()
 					}
 				})

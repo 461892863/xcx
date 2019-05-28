@@ -57,9 +57,9 @@
 		},
 		onShow() {
 			orderType.delOrderType = true
+			this.getOrderList(1);
 		},
 		onLoad(e) {
-			this.getOrderList(1);
 		},
 		methods: {
 			tabFun(index) { //切换tab
