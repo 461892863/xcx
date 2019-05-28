@@ -203,7 +203,7 @@
 
 	.shopcart .cartBottom {
 		position: fixed;
-		bottom: 0px;
+		bottom: 50px;
 		left: 0;
 		right: 0;
 		height: 54px;

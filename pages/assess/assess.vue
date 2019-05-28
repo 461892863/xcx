@@ -16,7 +16,7 @@
 		</view>
 		<view style="font-size: 0.9em;margin-top: 20upx;">
 			<label class="radio" @tap="setRadio" style="margin-left: 15upx;">
-				<radio checked :value="item.name" :checked="item.checked"/> 匿名提交评价
+				<radio checked :value="item.name" :checked="ifChecked"/> 匿名提交评价
 			</label>
 		</view>
 		<view class="btns">
@@ -30,6 +30,8 @@
 	export default {
 		data() {
 			return {
+				ifChecked:false,
+				isHidden:0,
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				assessData: [],
 				orderId: '',
@@ -49,10 +51,14 @@
 		},
 		methods: {
 			setRadio(){
-				this.item.checked = !this.item.checked
+				this.ifChecked = !this.ifChecked
 			},
 			toAssessSuccess(){
 				let that = this
+				debugger
+				if(this.ifChecked == true){
+					this.isHidden = 1;
+				}
 				// console.log(this.foods)
 				uni.request({
 					url:this.nowUrl+ '/foods/comment/saveOrderComment',
@@ -62,7 +68,8 @@
 					method:'POST',
 					data:{
 						orderId: this.orderId,
-						foods: this.foods
+						foods: this.foods,
+						isHidden:this.isHidden,
 					},
 					success(res) {
 						if(res.data.code == 200){

@@ -14,7 +14,7 @@
 				买过的
 			</view>
 			<scroll-view scroll-x='true' scroll-with-animation=true style="height: 100%;white-space: nowrap;">
-				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)" >
+				<view class="listData" v-for="(list, index_) in buyList" :key="index_" @tap="foodDetail(list.id)">
 					<text class="listName">{{list.name}}</text>
 					<!-- <image src="../../static/add2.png" mode="aspectFit" @tap.stop="addCart"></image> -->
 					<text class="listMonney">￥{{list.price}}</text>
@@ -35,9 +35,9 @@
 				</view>
 			</scroll-view>
 			<!--  @scroll="scroll" -->
-			
-			<scroll-view class="foods-wrapper" scroll-y style="box-sizing: border-box;"
-			 :scroll-top="foodSTop" @scroll="setScrollIndex" :style="'height:'+height+'px'">
+
+			<scroll-view class="foods-wrapper" scroll-y style="box-sizing: border-box;" :scroll-top="foodSTop" @scroll="setScrollIndex"
+			 :style="'height:'+height+'px'">
 				<view ref="foodsWrapper" style="overflow: auto;box-sizing: border-box;padding-bottom:650upx;">
 					<view ref="foodList" class="foods" v-for="(item, i) in goods" :key="i">
 						<view class="food-title" style="background: #f3f5f7;color:#666;" v-if="item.foods.length>0">
@@ -49,6 +49,11 @@
 							<view class="food-info">
 								<text style="font-size: 15px;margin-top: 2px;">{{food.name}} <text class="mark" v-if="food.sign">{{food.sign}}</text></text>
 								<uniRate :value="food.level" size="10" disabled="true">{{food.level}}</uniRate>
+								<view style="position: absolute;right:20rpx;top:10rpx;font-size: .8rem;color:#eb1f4f;display: flex;align-items: center;"
+								 v-if="item.name==='不可预定'">
+									<image src="../../static/noFood.png" style="width:50rpx;height:50rpx;"></image>
+									不可预订
+								</view>
 								<!-- 加减 -->
 								<view>
 									<text class="remainder" style="font-size: 14px;margin: 2px 0 4px;">剩余 <text style="font-weight: bold;"><text
@@ -58,7 +63,7 @@
 								</view>
 								<view class="food-btm">
 									<text class="food-price">￥{{food.price}}</text>
-									<cartcontrol :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
+									<cartcontrol v-if="item.name!='不可预定'" :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
 								</view>
 							</view>
 						</view>
@@ -82,10 +87,10 @@
 	export default {
 		data() {
 			return {
-				carStyle:{
+				carStyle: {
 					"direction": 'column'
 				},
-				joinTimes:0,
+				joinTimes: 0,
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				dayCur: -1, //日期选中状态
 				buyList: [], //历史购买
@@ -122,6 +127,7 @@
 			uniRate
 		},
 		onLoad() {
+			this.isUserId();
 			let that = this
 			this.height = Number(uni.getSystemInfoSync().windowHeight) - 55;
 			// console.log(uni.getSystemInfoSync().windowHeight)
@@ -371,13 +377,13 @@
 					item.count++
 					// buyList
 					this.buyList.forEach((food) => {
-						if(item.name == food.name){
+						if (item.name == food.name) {
 							food.count = item.count
 						}
 					})
 					this.goods.forEach((good) => {
 						good.foods.forEach((food) => {
-							if (item.name == food.name){
+							if (item.name == food.name) {
 								food.count = item.count
 							}
 						})
@@ -393,9 +399,9 @@
 							// console.log('add-shop', JSON.stringify(food))
 						})
 					})
-					
+
 					this.buyList.forEach((food) => {
-						if (item.name == food.name){
+						if (item.name == food.name) {
 							Vue.set(food, 'count', 1)
 						}
 						// food.count = 1
@@ -430,6 +436,55 @@
 						}
 					})
 				})
+			},
+			isUserId() {
+				if (this.token == null) {
+					var WX_Code = this.GetQueryString("code");
+					if (WX_Code == "") {
+						var nowUrl = encodeURI(window.location.href.split("#")[0]);
+						window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + this.cropId +
+							'&redirect_uri=' + nowUrl + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
+					} else {
+						Vue.prototype.token = this.GetUserId(WX_Code);
+						if (this.token != "") {
+							window.sessionStorage.setItem('token', this.token);
+						} else {
+							// alert("userid:" + this.WX_UserId);
+						}
+					}
+				}
+			},
+
+			GetQueryString(Paras) {
+				var url = window.location.href.split("#")[0];
+				var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+				var paraObj = {};
+				for (i = 0; j = paraString[i]; i++) {
+					paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+				}
+				var returnValue = paraObj[Paras.toLowerCase()];
+				if (typeof(returnValue) == "undefined") {
+					return "";
+				} else {
+					return returnValue;
+				}
+			},
+			GetUserId(code) {
+				var userId = "";
+				uni.request({
+					url: this.nowUrl + '/wx/getCompanyToken?code=' + code, //服务器端地址
+					method: 'Get',
+					header: {
+						'content-type': 'application/json'
+					},
+					success: (res) => {
+						if (res.data.state == "success") {
+							uni.reLaunch({ //信息更新成功后跳转到小程序首页
+								url: '/pages/index/index'
+							});
+						}
+					}
+				});
 			}
 		}
 	}
@@ -546,21 +601,25 @@
 		font-size: 12px;
 		z-index: 1;
 	}
+
 	.listName {
 		position: absolute;
 		top: 5upx;
 		left: 15upx;
 	}
+
 	.listMonney {
 		position: absolute;
 		bottom: 5upx;
 		left: 15upx;
 	}
+
 	.listData .add {
 		position: absolute;
 		bottom: 0upx;
 		right: 10upx;
 	}
+
 	.buyLeft {
 		width: 50upx;
 		height: 100upx;

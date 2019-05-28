@@ -26,7 +26,7 @@
 				</view>
 				<view class="list" style="flex:7;text-align:left;" @tap="write(list.type,_index)">
 					<block v-if="list.type == 1">
-						<input class="writeInput" type="text" placeholder="list.value" v-model="list.newValue"/>
+						<input class="writeInput" type="text" placeholder="请填写订单备注" v-model="list.newValue"/>
 					</block>
 					<block v-else>
 						<text class="writeInput">{{list.value}}</text>

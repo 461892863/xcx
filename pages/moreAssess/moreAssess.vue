@@ -1,24 +1,24 @@
 <template>
 	<view class="moreAssess" style="overflow: hidden;">
 		<view class="assessMark" style="margin: 20upx 0;">
-			<view class="list">
-				全部({{footData.length}})
+			<view class="list" @tap="req('')">
+				全部
 			</view>
-			<view class="list">
-				满意(1)
+			<view class="list" @tap="req(4)">
+				满意
 			</view>
-			<view class="list">
-				不满意(0)
+			<view class="list" @tap="req()">
+				不满意
 			</view>
 		</view>
 		<view class="assess">
 			<view class="uni-comment-list" v-for="(assess, index) in footData" :key="index">
 			    <view class="uni-comment-face">
-			        <image src="https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png" mode="widthFix"></image>
+			        <image :src="assess.headerPortrait?assess.headerPortrait:'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png'" mode="widthFix"></image>
 			    </view>
 			    <view class="uni-comment-body">	
 			        <view class="uni-comment-top">
-			            <text>匿名用户</text>
+			            <text>{{assess.userName?assess.userName:'匿名用户'}}</text>
 						<uniRate :value="assess.commentLevel" size="10" disabled="true"></uniRate>
 						<block v-if="assess.isLike == 1">
 							<text>👍 赞了该商品</text>
@@ -36,7 +36,7 @@
 					<view style="clear: both;margin: 80upx 0 20upx;">
 						<view class="uni-comment-content">{{assess.body}}</view>
 						<view class="sjhf">
-							<text>商家回复：</text>哈哈哈哈哈哈哈
+							<text>商家回复：</text>{{assess.replay}}
 						</view>
 					</view>
 			    </view>
@@ -52,6 +52,10 @@
 			return {
 				id: '',
 				dayId: '',
+				// level:'',
+				isBody:0,
+				pageNumber:1,
+				pageSize:20,
 				footData: []
 			}
 		},
@@ -62,23 +66,26 @@
 			// console.log(e)
 			this.id = e.id
 			this.dayId = e.dayId
-			this.req()
+			this.req('')
 		},
 		methods: {
-			req(){
+			req(level){
 				let that = this
 				uni.request({
-					url:this.nowUrl + '/foods/find',
+					url:this.nowUrl + '/foods/comment',
 					header:{
 						'token':this.token
 					},
 					data:{
 						id: this.id,
-						weekId: this.dayId
+						level: level,
+						isBody:this.isBody,
+						pageNumber:this.pageNumber,
+						pageSize:this.pageSize
 					},
 					success(res) {
 						// console.log(res)
-						that.footData = res.data.data.comments
+						that.footData = res.data.data.list
 						that.flag = true
 						console.log(that.footData)
 						uni.hideLoading()

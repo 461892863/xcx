@@ -126,7 +126,7 @@
 }
 .listData {
 	display: inline-block;
-	width: 180rpx;
+	width: 220rpx;
 	height: 100rpx;
 	border: 1rpx solid #ccc;
 	border-radius: 10rpx;
@@ -148,11 +148,9 @@
 	bottom: 5rpx;
 	left: 15rpx;
 }
-.listData image {
+.listData .add {
 	position: absolute;
-	width: 30rpx;
-	height: 30rpx;
-	bottom: 10rpx;
+	bottom: 0rpx;
 	right: 10rpx;
 }
 .buyLeft {
