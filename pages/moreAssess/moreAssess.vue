@@ -59,7 +59,7 @@
 				// level:'',
 				isBody:0,
 				pageNumber:1,
-				pageSize:1,
+				pageSize:15,
 				footData: [],
 				loadingText: '加载中...',
 				loadingType: 0,//定义加载方式 0---contentdown  1---contentrefresh 2---contentnomore
@@ -75,15 +75,8 @@
 			loadMore
 		},
 		onReachBottom: function() {
-			//触底的时候请求数据，即为上拉加载更多
-			//为了更加清楚的看到效果，添加了定时器
 			this.pageNumber++
-			if (timer != null) {
-				clearTimeout(timer);
-			}
-			timer = setTimeout(function() {
-				_self.req('');
-			}, 1000);
+			_self.req('');
 		},
 		onLoad(e) {
 			// console.log(e)
@@ -95,6 +88,8 @@
 		methods: {
 			req(level){
 				let that = this
+				that.loadingType = 1
+				uni.showNavigationBarLoading();//显示加载动画
 				uni.request({
 					url:this.nowUrl + '/foods/comment',
 					header:{
@@ -108,9 +103,10 @@
 						pageSize:this.pageSize
 					},
 					success(res) {
-						console.log(res)
 						that.footData = res.data.data.list
 						that.flag = true
+						that.loadingType = 2
+						uni.hideNavigationBarLoading();
 						// console.log(that.footData)
 						uni.hideLoading()
 					}

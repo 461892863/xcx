@@ -46,6 +46,7 @@
             "path" : "pages/moreAssess/moreAssess",
             "style" : {
 				"navigationBarTitleText": "更多评价"
+				// "enablePullDownRefresh": true//就是这个
 			}
         }
         ,{
