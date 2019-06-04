@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "更多评价",
   "usingComponents": {
-    "uni-rate": "/components/uni-rate"
+    "uni-rate": "/components/uni-rate",
+    "load-more": "/components/loadeMore"
   }
 }

@@ -191,10 +191,24 @@
 	font-size: 0.7em;
 	color: #2e2e2e;
 }
+uni-app,
+uni-page-head {
+	display: none;
+}
 .histroyAdd {
-	/* display: inline-block;
-	position: absolute;
+	/* display: inline-block; */
+	/* position: absolute;
 	right: 5upx;
 	bottom: 5upx; */
+}
+.tabbar{
+	width: 50vw;
+	height: 50px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
 }
 

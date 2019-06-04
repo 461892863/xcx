@@ -48,9 +48,9 @@
 	margin: 0rpx 30rpx;
 }
 .introduction {
-	font-size: 0.9em;
+	font-size: 0.8rem;
 	color: rgb(138, 138, 138);
-	margin: 20rpx 10%;
+	margin: 15px;
 }
 .uni-padding-wrap {
 	padding: 30rpx;

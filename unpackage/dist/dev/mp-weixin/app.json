@@ -36,12 +36,9 @@
       {
         "text": "订单",
         "pagePath": "pages/order/order"
-      },
-      {
-        "text": "反馈",
-        "pagePath": "pages/feedback/feedback"
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

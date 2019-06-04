@@ -1,9 +1,10 @@
 <template>
 	<view class="mealBox">
-		<!-- <view class="time">
+		<view class="time">
 			<view class="" style="margin-top: 50%;transform: translateY(-50%);">
 				<text>{{makeTime.split(' ')[1]}}</text></br>
-				<text style="color: #888888;font-size: 0.8em;">取餐时间</text>
+				<text v-if="type == 2" style="color: #888888;font-size: 0.8em;">下单时间</text>
+				<text v-if="type == 4" style="color: #888888;font-size: 0.8em;">取餐时间</text>
 			</view>
 		</view>
 		<view class="title">
@@ -39,8 +40,8 @@
 					订单已完成,欢迎下次光临
 				</view>
 			</block>
-		</view> -->
-		<!-- <view class="btn">
+		</view>
+		<view class="btn">
 
 			<block v-if="type == 0">
 				<button type="primary" @tap="confirmMeal()">取消订单</button>
@@ -54,7 +55,7 @@
 			<block v-if="type == 4">
 				<button type="primary" @tap="confirmMeal()">订单已完成</button>
 			</block>
-		</view> -->
+		</view>
 
 		<view class="orderDetail">
 			<view style="margin: 15upx 0 15upx 15upx;font-weight: bold;font-size: 0.8em;">菜品信息</view>
@@ -73,6 +74,7 @@
 				</view>
 			</view>
 			<view class="money">
+				<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;position: relative;top:10upx" src="../../static/qb.png" mode="aspectFit"></image>
 				合计：￥{{money}}
 			</view>
 			<view style="margin: 15upx 0 15upx 15upx;font-weight: bold;font-size: 0.8em;">订单信息</view>
@@ -109,7 +111,7 @@
 						{{makeTime}}
 					</view>
 				</view>
-				<view class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
+				<view v-if="type == 4" class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
 					<view class="list" style="flex: 3;text-align: left;">
 						<text style="display:block">取餐时间</text>
 					</view>
@@ -117,7 +119,7 @@
 						{{acquiredTime}}
 					</view>
 				</view>
-				<view v-if="remarks" class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
+				<view v-if="type == 2" class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
 					<view class="list" style="flex: 3;text-align: left;">
 						<text style="display:block">订单备注</text>
 					</view>

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "全部",
+  "navigationBarTitleText": "菜单列表",
   "usingComponents": {
     "shopcart": "/components/shopcart",
     "cartcontrol": "/components/cartcontrol",

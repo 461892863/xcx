@@ -1,22 +1,23 @@
 
-.assessList{
+.assessList {
 	width: 100vw;
-	padding: 15rpx;border-bottom: 1rpx solid #888888;
+	padding: 15rpx;
+	border-bottom: 1rpx solid #888888;
 }
-.right .zanActive{
-	color:rgb(255, 202, 62)
+.right .zanActive {
+	color: rgb(255, 202, 62)
 }
-.left{
+.left {
 	-webkit-box-flex: 4;
 	-webkit-flex: 4;
 	    -ms-flex: 4;
 	        flex: 4;
 }
-.left image{
+.left image {
 	width: 100%;
 	height: 100%;
 }
-.right{
+.right {
 	-webkit-box-flex: 6;
 	-webkit-flex: 6;
 	    -ms-flex: 6;
@@ -24,19 +25,19 @@
 	overflow: hidden;
 	margin-left: 20rpx;
 }
-.assessList input{
+.assessList input {
 	padding: 3rpx 0;
 	margin-top: 15rpx;
 }
-.right text{
+.right text {
 	color: rgb(236, 236, 236);
 }
-.btns{
+.btns {
 	text-align: center;
 }
-.btns button{
+.btns button {
 	width: 40vw;
-	background: rgb(149,149,149);
+	background: rgb(149, 149, 149);
 	display: inline-block;
 	margin: 15rpx 15rpx 0;
 }

@@ -73,8 +73,9 @@
 					</view>
 				</view>
 			</scroll-view>
-			<shopcart :goods="goods" @add="addCart" @dec="decreaseCart" @delAll="delAll"></shopcart>
+			<shopcart @allCount='allCount' :goods="goods" @add="addCart" @dec="decreaseCart" @delAll="delAll"></shopcart>
 		</view>
+		<view class="uni-tabbar tabbar" @tap="toOrder" v-show="carCount > 0"></view>
 	</view>
 </template>
 
@@ -93,6 +94,7 @@
 				carStyle: {
 					"direction": 'column'
 				},
+				carCount: 0,
 				joinTimes: 0,
 				imgUrl: 'http://106.15.194.58/images/', //图片接口
 				dayCur: -1, //日期选中状态
@@ -131,13 +133,13 @@
 			mSearch,
 			uniRate
 		},
-
 		onLoad() {
 			sessionStorage.setItem('token', '222b54775luln2b227e5n2247bdb0575')
 			this.token = sessionStorage.getItem('token')
 			let that = this
-			this.getDay()
 			this.height = Number(uni.getSystemInfoSync().windowHeight) - 55;
+			this.isUserId()
+			this.getDay()
 			// console.log(uni.getSystemInfoSync().windowHeight)
 			// uni.setStorage({
 			// 	key: 'token',
@@ -167,19 +169,9 @@
 // 				}
 			},
 			onShow() {
-					this.isUserId()
-					uni.setStorage({
-						key: 'aaa',
-						data: 'hello',
-						success: function() {
-							console.log('success');
-						}
-					});
 					orderType.delOrderType = true
+					
 				},
-				// onShow() {
-				// 	this.getDay()
-				// },
 				computed: {
 					getList() {
 						let result = [];
@@ -190,20 +182,16 @@
 								}
 							})
 						})
-						// console.log('result', result);
 						return result
-
 					},
 					// 获得购物车所有商品数量
 					getAllCount: function(item) {
-						// console.log('item', item)
 						let result = [];
 						let count = 0;
 
 						for (let i = 0; i < this.goods.length; i++) {
 							count = 0;
 							this.goods[i].foods.forEach((food) => {
-
 								// console.log('food',food);
 								if (food.count >= 0) {
 									count += food.count
@@ -224,6 +212,25 @@
 				},
 
 				methods: {
+					allCount(e){
+						this.carCount = e
+					},
+					toOrder(){
+						let that = this
+						uni.showModal({
+							content:'有订单未提交,确认跳转吗?',
+							success(res) {
+								if (res.confirm) {
+									that.delAll()
+									uni.switchTab({
+										url:'../order/order'
+									})
+								} else if (res.cancel) {
+									console.log('用户点击取消');
+								}
+							}
+						})
+					},
 					getDay() { //礼拜
 						let that = this
 						var d = new Date();
@@ -743,5 +750,14 @@
 		/* position: absolute;
 		right: 5upx;
 		bottom: 5upx; */
+	}
+	.tabbar{
+		width: 50vw;
+		height: 50px;
+		box-sizing: border-box;
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		z-index: 999;
 	}
 </style>

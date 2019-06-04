@@ -117,6 +117,7 @@
 					result1 += this.accMul(food.count, food.price)
 					result = result1.toFixed(2);
 				})
+				// this.$emit('allPrice', result)
 				return result
 			}
 		},
