@@ -42,11 +42,12 @@
 				</view>
 			</view>
 		</view>
+		<view class="uni-tabbar tabbar" @tap="toOrder"></view>
 	</view>
 </template>
 
 <script>
-	import orderType from '../../common/public.js'
+	import  {orderType, indexRef} from '../../common/public.js'
 	export default {
 		data() {
 			return {
@@ -62,12 +63,19 @@
 			// sessionStorage.setItem('aaa', '123123order');
 			this.curHdIndex = '0';
 			orderType.delOrderType = true
+			indexRef.indexRef = true
 			this.getOrderList(1);
 		},
 		onLoad(e) {
-			this.token = sessionStorage.getItem('token') 
+			this.token = sessionStorage.getItem('token')
 		},
 		methods: {
+			toOrder() {
+				sessionStorage.setItem('isReload','yes')
+				uni.switchTab({
+					url: '../index/index'
+				})
+			},
 			//删除订单
 			delItem(theId, index) {
 				let that = this;
@@ -399,5 +407,15 @@
 	.fl_r {
 		float: right;
 		font-size: 28rpx;
+	}
+
+	.tabbar {
+		width: 50vw;
+		height: 50px;
+		box-sizing: border-box;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		z-index: 999;
 	}
 </style>
