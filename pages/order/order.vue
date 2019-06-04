@@ -5,7 +5,7 @@
 			<!--图文详情头部-->
 			<view class="tab-left">
 				<view :class="['swiper-tab-list',{'active': curHdIndex=='0'}]" @tap="tabFun(1)" id="tab-hd01">待取餐</view>
-				<view :class="['swiper-tab-list',{'active': curHdIndex=='1'}]" @tap="tabFun(2)" id="tab-hd03">待评价</view>
+				<!-- <view :class="['swiper-tab-list',{'active': curHdIndex=='1'}]" @tap="tabFun(2)" id="tab-hd03">待评价</view> -->
 				<view :class="['swiper-tab-list',{'active': curHdIndex=='2'}]" @tap="tabFun(3)" id="tab-hd04">已完成</view>
 				<view :class="['swiper-tab-list',{'active': curHdIndex=='3'}]" @tap="tabFun(4)" id="tab-hd04">待提交</view>
 			</view>
@@ -23,8 +23,11 @@
 				<view class="">
 					<image class="sh_slt" :src="imgUrl+item.imgUrl"></image>
 				</view>
-				<view class="df_1" style="padding-top: 10px;box-sizing: border-box;">
-					<view class="" style="width: 50%;float: left;">
+				<view class="df_1" style="padding-top: 10px;box-sizing: border-box;position: relative;">
+					<view v-if="item.type!=3&&item.type!=4" @tap.stop="delItem(item.id,i)" style="display: flex;align-items: center;color: red;font-size: 12px;position: absolute;right: 0;top: -3px;">
+						<image style="width:15px;height: 15px;margin-right: 10upx;" src="../../static/del.png" mode=""></image><text>删除</text>
+					</view>
+					<view class="" style="width: 60%;float: left;">
 						<view class="sp_text">
 							<view class="sp_tit ovh1">{{item.time?item.time:'订单未提交'}}</view>
 						</view>
@@ -32,8 +35,8 @@
 							{{item.descript}}
 						</view>
 					</view>
-					<view class="" style="width: 50%;float: left;text-align: right;">
-						<view class="font_12 sp_text" style="text-align: right;">订单详情>></view>
+					<view class="" style="width: 40%;float: left;text-align: right;margin-top: 10px;">
+						<view class="font_12 sp_text" style="text-align: right;color:#aaa;width:100px;"></view>
 						<view class="sp_jg">¥ {{item.price}}</view>
 					</view>
 				</view>
@@ -47,34 +50,85 @@
 	export default {
 		data() {
 			return {
-				imgUrl: 'http://106.15.194.58/images/', //图片接口
+				imgUrl: 'https://sinomach.wxzhixun.com/images/', //图片接口
 				curHdIndex: '0',
 				orderId: '',
 				orderList: [],
-				type: 2,
+				type: 1,
 				// orderList:[]
 			}
 		},
 		onShow() {
+			// sessionStorage.setItem('aaa', '123123order');
+			this.curHdIndex = '0';
 			orderType.delOrderType = true
 			this.getOrderList(1);
 		},
 		onLoad(e) {
+			this.token = sessionStorage.getItem('token') 
 		},
 		methods: {
+			//删除订单
+			delItem(theId, index) {
+				let that = this;
+				uni.showModal({
+					title: '提示',
+					content: '确定删除该订单?',
+					success: function(res) {
+						if (res.confirm) {
+							uni.request({
+								url: that.nowUrl + '/foods/shopcar/remove?id=' + theId,
+								header: {
+									'token': that.token
+								},
+								method: 'POST',
+								success(res) {
+									// console.log(res)
+									// uni.navigateTo({
+									// 	url: '../index/index'
+									// })
+									if (res.data.code == 200) {
+										// that.getOrderList(1);
+										uni.showToast({
+											title: '删除成功',
+											duration: 1500
+										});
+										that.orderList.splice(index, 1);
+									} else {
+										uni.showToast({
+											icon: "none",
+											title: res.data.msg,
+											duration: 1500
+										});
+									}
+
+									// uni.navigateTo({
+									// 	url: '../index/index',
+									// 	animationType: 'slide-in-right',
+									// 	animationDuration: 200
+									// });
+								}
+							})
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				})
+
+			},
 			tabFun(index) { //切换tab
 				this.curHdIndex = index - 1;
 				this.getOrderList(index);
 				//请求数据，替换orderList
 				//	this.orderList = [];
 			},
-			waitingMeal(type,orderId) { //跳待取餐
+			waitingMeal(type, orderId) { //跳待取餐
 				uni.navigateTo({
-					url: '../waitingMeal/waitingMeal?id='+orderId+'&type='+this.type,
+					url: '../waitingMeal/waitingMeal?id=' + orderId + '&type=' + this.type,
 					animationType: 'slide-in-right',
 					animationDuration: 200
 				})
-				
+
 			},
 			/**
 			 * 获取订单列表
@@ -82,19 +136,19 @@
 			 */
 			getOrderList(index) {
 				let type = ''
-				switch (index){
+				switch (index) {
 					case 1:
-					type = 2
-					break
+						type = 2
+						break
 					case 2:
-					type = 3
-					break
+						type = 3
+						break
 					case 3:
-					type = 4
-					break
+						type = 4
+						break
 					case 4:
-					type = 0
-					break
+						type = 0
+						break
 				}
 				uni.showLoading({
 					mask: true
@@ -126,10 +180,12 @@
 	.font_12 {
 		font-size: 12px;
 	}
+
 	.on {
 		color: #dd2727;
 		border-bottom: 5rpx solid #dd2727;
 	}
+
 	.swiper-box {
 		display: block;
 		height: 100%;

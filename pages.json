@@ -9,7 +9,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "全部"
+				"navigationBarTitleText": "菜单列表"
 			}
 		}
 	    ,{
@@ -52,7 +52,7 @@
         ,{
             "path" : "pages/waitingMeal/waitingMeal",
             "style" : {
-            	"navigationBarTitleText": "待取餐"
+            	"navigationBarTitleText": "订单详情"
             }
         }
         ,{
@@ -108,12 +108,6 @@
 			// "iconPath":"static/menu2_1.png",
 			// "selectedIconPath":"static/menu2.png",
 			"pagePath" : "pages/order/order"
-		},
-		{
-			"text":"反馈",
-			// "iconPath":"static/menu4_1.png",
-			// "selectedIconPath":"static/menu4.png",
-			"pagePath" : "pages/feedback/feedback"
 		}]
 	},
 	"globalStyle": {

@@ -9,8 +9,8 @@
 			</view>
 		</view>
 		<view class="btns">
-			<button type="primary" @tap="toOrder()">评价其他订单</button><br>
-			<button type="primary" @tap="toAssessOrder()">查看以评价订单</button>
+			<!-- <button type="primary" @tap="toOrder()">评价其他订单</button><br> -->
+			<button type="primary" @tap="toAssessOrder()">返回首页</button>
 		</view>
 	</view>
 </template>
@@ -24,19 +24,18 @@
 			}
 		},
 		onLoad(e) {
+			this.token = sessionStorage.getItem('token')
 			this.orderId = e.id
 		},
 		methods: {
-			toOrder(){
+			toOrder() {
 				uni.switchTab({
 					url: '../order/order'
 				})
 			},
-			toAssessOrder(){
-				uni.navigateTo({
-					url:'../assessOrder/assessOrder?id='+this.orderId,
-					animationDuration:200,
-					animationType:'slide-in-right'
+			toAssessOrder() {
+				uni.switchTab({
+					url: '../index/index'
 				})
 			}
 		}
@@ -44,35 +43,39 @@
 </script>
 
 <style>
-.success{
-	width: 100vw;
-	text-align: center;
-	justify-content: center;
-	overflow: hidden;
-	margin: 40upx 0;
-}
-.success .image{
-	width: 15vw;
-	height: 15vw;
-	background: url(../../static/success.png) 0 0 no-repeat; 
-	background-size: 100% 100%;
-	display: inline-block;
-	margin-right: 15upx;
-	vertical-align: middle;
-}
-.success .text{
-	display: inline-block;
-	font-size: 0.9em;
-	text-align: left;
-	vertical-align: middle;
-}
-.btns{
-	text-align: center;
-}
-.btns button{
-	width: 45vw;
-	background: rgb(149,149,149);
-	display: inline-block;
-	margin: 15upx 15upx 0;
-}
+	.success {
+		width: 100vw;
+		text-align: center;
+		justify-content: center;
+		overflow: hidden;
+		margin: 40upx 0;
+	}
+
+	.success .image {
+		width: 15vw;
+		height: 15vw;
+		background: url(../../static/success.png) 0 0 no-repeat;
+		background-size: 100% 100%;
+		display: inline-block;
+		margin-right: 15upx;
+		vertical-align: middle;
+	}
+
+	.success .text {
+		display: inline-block;
+		font-size: 0.9em;
+		text-align: left;
+		vertical-align: middle;
+	}
+
+	.btns {
+		text-align: center;
+	}
+
+	.btns button {
+		width: 45vw;
+		background: rgb(149, 149, 149);
+		display: inline-block;
+		margin: 15upx 15upx 0;
+	}
 </style>

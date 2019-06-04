@@ -63,5 +63,9 @@
             "minified" : true
         },
         "usingComponents" : true
+    },
+    "h5" : {
+        "title" : "订餐",
+        "domain" : ""
     }
 }

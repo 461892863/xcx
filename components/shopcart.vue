@@ -2,14 +2,15 @@
 	<view class="shopcart">
 		<!-- @click="toggleList" -->
 		<view class="cartBottom">
-			<view class="carIcon" @tap="showCart">
+			<view class="carIcon">
+				<!-- @tap="showCart" -->
 				<view class="iconBox" :class="getAllCount ? 'active' : '' ">
 					<text class="allcount" v-if="getAllCount">{{getAllCount}}</text>
 					<image src="/static/cart.png" mode="" class="img"></image>
 				</view>
 			</view>
 			<view class="middle">
-				<text class="price" :class="getAllCount ?　'active': ''">待支付￥{{getAllPrice}}</text>
+				<text class="price" :class="getAllCount ?　'active': ''">总金额￥{{getAllPrice}}</text>
 				<!-- <text class="deliveryPrice" style="font-size: 12px;">免配送费|支持自取</text> -->
 			</view>
 			<view class="BtnRight" @tap="toggleList">
@@ -52,6 +53,13 @@
 				isShowList: false,
 			};
 		},
+		onUnload() {
+			
+			if (this.allCount <= 0) {
+				alert(1)
+			}
+		},
+		onLoad() {},
 		components: {
 			cartcontrol
 		},
@@ -88,6 +96,7 @@
 				this.getList.forEach((food) => {
 					result += food.count
 				})
+				this.$emit('allCount', result)
 				return result
 			},
 
@@ -104,9 +113,9 @@
 				// 		result = result1.toFixed(2);
 				// 	})
 				// })
-				this.getList.forEach((food)=>{
+				this.getList.forEach((food) => {
 					result1 += this.accMul(food.count, food.price)
-						result = result1.toFixed(2);
+					result = result1.toFixed(2);
 				})
 				return result
 			}
@@ -135,6 +144,8 @@
 				this.isShowList = !this.isShowList;
 			},
 			toggleList() { // 提交订单
+				this.token = sessionStorage.getItem('token')
+				var that = this
 				let arr = []
 				this.getList.forEach(function(item) {
 					arr.push({
@@ -158,6 +169,7 @@
 							// console.log(res.data.data)
 							let dataInfo = JSON.stringify(res.data.data)
 							if (res.data.code == 200) {
+								that.delShopcart()
 								uni.navigateTo({
 									url: '../orderDetails/orderDetails?dataInfo=' + dataInfo,
 									animationDuration: 200,

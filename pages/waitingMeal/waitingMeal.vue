@@ -1,6 +1,6 @@
 <template>
 	<view class="mealBox">
-		<view class="time">
+		<!-- <view class="time">
 			<view class="" style="margin-top: 50%;transform: translateY(-50%);">
 				<text>{{makeTime.split(' ')[1]}}</text></br>
 				<text style="color: #888888;font-size: 0.8em;">取餐时间</text>
@@ -39,8 +39,8 @@
 					订单已完成,欢迎下次光临
 				</view>
 			</block>
-		</view>
-		<view class="btn">
+		</view> -->
+		<!-- <view class="btn">
 
 			<block v-if="type == 0">
 				<button type="primary" @tap="confirmMeal()">取消订单</button>
@@ -54,15 +54,15 @@
 			<block v-if="type == 4">
 				<button type="primary" @tap="confirmMeal()">订单已完成</button>
 			</block>
-		</view>
+		</view> -->
 
 		<view class="orderDetail">
 			<view style="margin: 15upx 0 15upx 15upx;font-weight: bold;font-size: 0.8em;">菜品信息</view>
 			<view class="detail">
-				<view class="detailList" v-for="(list, index) in detailList" :key="index">
+				<view class="detailList" style="margin-bottom: .5rem;" v-for="(list, index) in detailList" :key="index">
 					<view class="list">
 						<text style="display:block">{{list.name}}</text>
-						<text style="display:block;color: #909090;">{{list.num}}份</text>
+						<!-- <text style="display:block;color: #909090;">{{list.num}}份</text> -->
 					</view>
 					<view class="list" style="color: #909090;">
 						x{{list.num}}
@@ -81,29 +81,45 @@
 					<view class="list" style="flex: 3;text-align: left;">
 						<text style="display:block">订单号</text>
 					</view>
-					<view class="list" style="flex:7;text-align:left;">
-						<text class="writeInput">{{orderNum}}</text>
+					<view class="list" style="flex:7;text-align:right;">
+						{{orderNum}}
 					</view>
 				</view>
 				<view class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
 					<view class="list" style="flex: 3;text-align: left;">
 						<text style="display:block">用餐人数</text>
 					</view>
-					<view class="list" style="flex:7;text-align:left;">
-						<text class="writeInput">{{peopleNum}}</text>
+					<view class="list" style="flex:7;text-align:right;">
+						{{peopleNum}}
 					</view>
 				</view>
 				<view class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
 					<view class="list" style="flex: 3;text-align: left;">
 						<text style="display:block">联系人</text>
 					</view>
-					<view class="list" style="flex:7;text-align:left;">
-						<text class="writeInput">{{userName}} {{mobile}}</text>
+					<view class="list" style="flex:7;text-align:right;">
+						{{userName}} {{mobile}}
 					</view>
 				</view>
 				<view class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
 					<view class="list" style="flex: 3;text-align: left;">
-						<text style="display:block">备注</text>
+						<text style="display:block">预定时间</text>
+					</view>
+					<view class="list" style="flex:7;text-align:right;">
+						{{makeTime}}
+					</view>
+				</view>
+				<view class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
+					<view class="list" style="flex: 3;text-align: left;">
+						<text style="display:block">取餐时间</text>
+					</view>
+					<view class="list" style="flex:7;text-align:right;">
+						{{acquiredTime}}
+					</view>
+				</view>
+				<view v-if="remarks" class="detailList toRight" style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
+					<view class="list" style="flex: 3;text-align: left;">
+						<text style="display:block">订单备注</text>
 					</view>
 					<view class="list" style="flex:7;text-align:left;">
 						<text class="writeInput">{{remarks}}</text>
@@ -119,7 +135,9 @@
 		data() {
 			return {
 				type: '',
-				imgUrl: 'http://106.15.194.58/images/', //图片接口
+				// makeTime:"",
+				acquiredTime:'',
+				imgUrl: 'https://sinomach.wxzhixun.com/images/', //图片接口
 				detailList: [{
 						name: '西红柿炒蛋',
 						num: 2,
@@ -184,6 +202,7 @@
 			}
 		},
 		onLoad(e) {
+			this.token = sessionStorage.getItem('token')
 			this.orderId = e.id;
 			console.log(e)
 			this.type = e.type
@@ -244,7 +263,7 @@
 								uni.switchTab({
 									url: '../order/order'
 								});
-							}else{
+							} else {
 								uni.showToast('删除失败')
 							}
 
@@ -279,6 +298,7 @@
 						} else {
 							this.makeTime = '! 订单未完成';
 						}
+						this.acquiredTime = res.data.data.acquiredTime
 						if (res.data.data.remarks) {
 							this.remarks = res.data.data.remarks;
 						}
@@ -352,8 +372,9 @@
 	.list {
 		flex: 1;
 		text-align: center;
-		color: #000;
+		color: #333;
 		font-size: 0.8em;
+		padding-right:.3rem;
 	}
 
 	.money {
@@ -365,7 +386,7 @@
 	}
 
 	.toRight {
-		background: url(../../static/r.png) 95% 50% no-repeat;
+		/* background: url(../../static/r.png) 95% 50% no-repeat; */
 		background-size: auto 50%;
 	}
 

@@ -49,21 +49,24 @@
 							<view class="food-info">
 								<text style="font-size: 15px;margin-top: 2px;">{{food.name}} <text class="mark" v-if="food.sign">{{food.sign}}</text></text>
 								<uniRate :value="food.level" size="10" disabled="true">{{food.level}}</uniRate>
-								<view style="position: absolute;right:20rpx;top:10rpx;font-size: .8rem;color:#eb1f4f;display: flex;align-items: center;"
-								 v-if="item.name==='不可预定'">
+								<view style="position: absolute;right:20rpx;top:50rpx;font-size: .9rem;color:#eb1f4f;display: flex;align-items: center;"
+								 v-if="food.notReserve ==='1'">
 									<image src="../../static/noFood.png" style="width:50rpx;height:50rpx;"></image>
-									不可预订
+									非预定菜品
 								</view>
 								<!-- 加减 -->
 								<view>
-									<text class="remainder" style="font-size: 14px;margin: 2px 0 4px;">剩余 <text style="font-weight: bold;"><text
-											 style="color:red;font-size: 16px;"> {{food.limitNum-food.count}}</text></text>
+
+									<text v-if="food.notReserve ==='0'" class="remainder" style="font-size: 14px;margin: 2px 0 4px;">剩余
+										<text style="font-weight: bold;">
+											<text style="color:red;font-size: 16px;"> {{food.limitNum-food.count}}</text></text>
 										{{food.unit}}</text>
-									<text style="font-size: 12px;margin: 2px 0 4px;">售出 <text>{{food.sellNum}}</text> {{food.unit}}</text>
+									<text v-if="dataId == selectDay && food.notReserve ==='0'" style="font-size: 12px;margin: 2px 0 4px;">售出 <text>{{food.sellNum}}</text>
+										{{food.unit}}</text>
 								</view>
 								<view class="food-btm">
 									<text class="food-price">￥{{food.price}}</text>
-									<cartcontrol v-if="dataId == selectDay && item.name !='不可预定'" :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
+									<cartcontrol v-if="dataId == selectDay && food.notReserve ==='0'" :food="food" @add="addCart" @dec="decreaseCart"></cartcontrol>
 								</view>
 							</view>
 						</view>
@@ -118,7 +121,8 @@
 				// foods: [],  //右侧数据
 				height: 0,
 				foodSTop: 0,
-				currentIndex: 0
+				currentIndex: 0,
+				cropId: 'wwfe021789e015d145',
 			}
 		},
 		components: {
@@ -127,9 +131,12 @@
 			mSearch,
 			uniRate
 		},
+
 		onLoad() {
-			// this.isUserId();
+			// sessionStorage.setItem('token', '9fc9nac2e9ndl48b777cf1fc7a2cff4n')
+			this.token = sessionStorage.getItem('token')
 			let that = this
+			// this.getDay()
 			this.height = Number(uni.getSystemInfoSync().windowHeight) - 55;
 			// console.log(uni.getSystemInfoSync().windowHeight)
 			// uni.setStorage({
@@ -145,351 +152,411 @@
 			// });
 
 		},
-		computed: {
-			getList() {
-				let result = [];
-				this.goods.forEach((good) => {
-					good.foods.forEach((food) => {
-						if (food.count) {
-							result.push(food)
-						}
-					})
-				})
-				// console.log('result', result);
-				return result
-
+		onHide() {
+// 			if (this.getAllCount > 0) {
+// 				uni.showModal({
+// 						title: '提示',
+// 						content: '确定删除该评论吗?',
+// 						success: function(res) {
+// 							if (res.confirm) {
+// 								
+// 							} else if () {
+// 
+// 							}
+// 						})
+// 				}
 			},
-			// 获得购物车所有商品数量
-			getAllCount: function(item) {
-				// console.log('item', item)
-				let result = [];
-				let count = 0;
-
-				for (let i = 0; i < this.goods.length; i++) {
-					count = 0;
-					this.goods[i].foods.forEach((food) => {
-
-						// console.log('food',food);
-						if (food.count >= 0) {
-							count += food.count
-							Vue.set(this.goods[i], 'count', count)
+			onShow() {
+					this.isUserId()
+					uni.setStorage({
+						key: 'aaa',
+						data: 'hello',
+						success: function() {
+							console.log('success');
 						}
-					})
-					// console.log('result', count);
-					result.push(count)
-				}
+					});
+					orderType.delOrderType = true
+				},
+				// onShow() {
+				// 	this.getDay()
+				// },
+				computed: {
+					getList() {
+						let result = [];
+						this.goods.forEach((good) => {
+							good.foods.forEach((food) => {
+								if (food.count) {
+									result.push(food)
+								}
+							})
+						})
+						// console.log('result', result);
+						return result
 
-				result.sort(function(a, b) {
-					return a - b;
-				})
-				count = result[result.length - 1]
-				// console.log('result', count);
-				return count;
-			},
-		},
-		onShow() {
-			orderType.delOrderType = true
-			this.getDay()
-		},
-		methods: {
-			getDay() { //礼拜
-				let that = this
-				var d = new Date();
-				var ye = d.getFullYear();
-				var mo = (d.getMonth() + 1).toString().padStart(2, '0');
-				var da = d.getDate().toString().padStart(2, '0');
-				var time = ye + '-' + mo + '-' + da;
-				uni.request({
-					url: this.nowUrl + '/foods/index/queryWeek',
-					header: {
-						'token': this.token
 					},
-					data: {
-						date: time
+					// 获得购物车所有商品数量
+					getAllCount: function(item) {
+						// console.log('item', item)
+						let result = [];
+						let count = 0;
+
+						for (let i = 0; i < this.goods.length; i++) {
+							count = 0;
+							this.goods[i].foods.forEach((food) => {
+
+								// console.log('food',food);
+								if (food.count >= 0) {
+									count += food.count
+									Vue.set(this.goods[i], 'count', count)
+								}
+							})
+							// console.log('result', count);
+							result.push(count)
+						}
+
+						result.sort(function(a, b) {
+							return a - b;
+						})
+						count = result[result.length - 1]
+						// console.log('result', count);
+						return count;
 					},
-					success: (res) => {
-						that.worship = res.data.data
-						that.worship.forEach(function(item, i) {
-							if (item.code == time) {
-								that.dayCur = i
-								that.dataId = item.id
-								that.selectDay = item.id
-								that.getHistory(item.id)
-								that.getCategory(item.id)
+				},
+
+				methods: {
+					getDay() { //礼拜
+						let that = this
+						var d = new Date();
+						var ye = d.getFullYear();
+						var mo = (d.getMonth() + 1).toString().padStart(2, '0');
+						var da = d.getDate().toString().padStart(2, '0');
+						var time = ye + '-' + mo + '-' + da;
+						uni.request({
+							url: this.nowUrl + '/foods/index/queryWeek',
+							header: {
+								'token': this.token
+							},
+							data: {
+								date: time
+							},
+							success: (res) => {
+								that.worship = res.data.data
+								that.worship.forEach(function(item, i) {
+									if (item.code == time) {
+										that.dayCur = i
+										that.dataId = item.id
+										that.selectDay = item.id
+										that.getHistory(item.id)
+										that.getCategory(item.id)
+									} else {
+										uni.showToast({
+											content: '未处于正确的订餐时间',
+											duration: 1500
+										})
+									}
+								})
 							}
 						})
-					}
-				})
-			},
-			getHistory(id) { // 历史购买
-				let that = this
-				that.dayId = id
-				uni.showLoading({
-					mask: true
-				})
-				uni.request({
-					url: this.nowUrl + '/foods/index/queryHistory',
-					header: {
-						'token': this.token
 					},
-					data: {
-						id: id
-					},
-					success: (res) => {
-						for (let i = 0; i < res.data.data.length; i++) {
-							res.data.data[i].count = 0;
-						}
-						that.buyList = res.data.data
-						uni.hideLoading()
-					}
-				})
-			},
-			getCategory(id, value = "") { //菜单类别
-				let that = this
-				uni.showLoading({
-					mask: true
-				})
-				uni.request({
-					url: this.nowUrl + '/foods/index/queryCategory',
-					header: {
-						'token': this.token
-					},
-					data: {
-						id: id
-					},
-					success: (res) => {
-						that.category = res.data.data
-						//	console.log(that.category, id)
-						for (let i = 0, len = that.category.length; i < len; i++) {
-							// console.log(res.data.data[i].categoryName)
-							that.goods.push({
-								name: res.data.data[i].categoryName,
-								foods: []
-							}) //合并数据
-							that.getFoods(id, i, that.category[i].categoryId, value)
-						}
-						// console.log(that.foods)
-						uni.hideLoading()
-					}
-				})
-			},
-			search(value) {
-				this.getCategory(this.dataId, value)
-			},
-			getFoods(id, i, categoryId, value) {
-				let that = this
-				uni.request({
-					url: this.nowUrl + '/foods/index/queryTableFoods',
-					header: {
-						'token': this.token
-					},
-					data: {
-						dateId: id,
-						categoryId: categoryId,
-						foodName: value //搜索值
-					},
-					success(res) {
-						// console.log(res)
-						for (let j = 0, len = res.data.data.length; j < res.data.data.length; j++) {
-							res.data.data[j].count = 0
-						}
-						that.goods[i].foods = res.data.data
-						// console.log(that.goods)
-					}
-				})
-			},
-			setDay(index, id) { //切换日期
-				this.dayCur = index
-				this.goods = []
-				this.selectDay = id
-				this.getHistory(id)
-				this.getCategory(id)
-			},
-			// 点击侧边栏
-			select(index) {
-				if (this.goods[index].foods.length == 0) {
-					uni.showToast({
-						title: '暂无' + this.goods[index].name + '菜品',
-						mask: true,
-						icon: 'none',
-						duration: 1000
-					})
-				} else {
-					this.currentIndex = index;
-				}
-				// console.log(this.goods[index].foods)
-				this.setScrollH(index);
-			},
-			// 设置点击侧边栏右边滚动的高度
-			setScrollH: function(index) {
-				var that = this;
-				let height = 0;
-				var query = uni.createSelectorQuery();
-				// console.log('query',query);
-				let foods = query.selectAll('.foods');
-				// console.log('foods', foods);
-				this.$nextTick(function() {
-					foods.fields({
-						size: true
-					}, data => {
-						if (index == 0) {
-							that.foodSTop = 0;
-						}
-						for (let i = 0; i < index; i++) {
-							height += parseInt(data[i].height);
-							// console.log('fh', foods);
-							that.foodSTop = height;
-							// console.log(that.foodSTop)
-						}
-					}).exec();
-				})
-			},
-			setScrollIndex(e) { //滚动事件
-				// var query = uni.createSelectorQuery();
-				// let foods = query.selectAll('.foods');
-				// let height = 0;
-				// this.$nextTick(function() {
-				// 	foods.fields({
-				// 		size: true,
-				// 		scrollOffset: true
-				// 	},data => {
-				// 			for (let i = 0; i < data.length; i++) {
-				// 				height += parseInt(data[i].height);
-				// 				console.log(height - e.detail.scrollTop)
-				// 				if(0 < height - e.detail.scrollTop < 10){
-				// 					// console.log(i)
-				// 				}
-				// 			//	that.foodSTop = height;
-				// 			}
-				// 			
-				// 	}).exec();
-				// })
-			},
-			foodDetail(id) { // 跳商品详情
-				// console.log(this.dayId)
-				uni.navigateTo({
-					url: '../foodDetail/foodDetail?id=' + id + '&dayId=' + this.dayId,
-					animationType: 'slide-in-right',
-					animationDuration: 200
-				})
-			},
-			addCart: function(item) { // 加
-				// console.log('ev', JSON.stringify(item))
-				if (item.count >= 0) {
-					item.count++
-					// buyList
-					this.buyList.forEach((food) => {
-						if (item.name == food.name) {
-							food.count = item.count
-						}
-					})
-					this.goods.forEach((good) => {
-						good.foods.forEach((food) => {
-							if (item.name == food.name) {
-								food.count = item.count
+					getHistory(id) { // 历史购买
+						let that = this
+						that.dayId = id
+						uni.showLoading({
+							mask: true
+						})
+						uni.request({
+							url: this.nowUrl + '/foods/index/queryHistory',
+							header: {
+								'token': this.token
+							},
+							data: {
+								id: id
+							},
+							success: (res) => {
+								uni.hideLoading()
+								if (res.data.data) {
+									for (let i = 0; i < res.data.data.length; i++) {
+										res.data.data[i].count = 0;
+									}
+									that.buyList = res.data.data
+								}
+
 							}
 						})
-					})
-					// console.log('c++', JSON.stringify(item))
-				} else {
-					//	console.log('add')
-					this.goods.forEach((good) => {
-						good.foods.forEach((food) => {
-							if (item.name == food.name)
-								Vue.set(food, 'count', 1)
-							// food.count = 1
-							// console.log('add-shop', JSON.stringify(food))
+					},
+					getCategory(id, value = "") { //菜单类别
+						let that = this
+						uni.showLoading({
+							mask: true
 						})
-					})
+						uni.request({
+							url: this.nowUrl + '/foods/index/queryCategory',
+							header: {
+								'token': this.token
+							},
+							data: {
+								id: id
+							},
+							success: (res) => {
+								that.category = res.data.data
+								//	console.log(that.category, id)
+								for (let i = 0, len = that.category.length; i < len; i++) {
+									// console.log(res.data.data[i].categoryName)
+									that.goods.push({
+										name: res.data.data[i].categoryName,
+										foods: []
+									}) //合并数据
+									that.getFoods(id, i, that.category[i].categoryId, value)
+								}
+								// console.log(that.foods)
+								uni.hideLoading()
+							}
+						})
+					},
+					search(value) {
+						this.getCategory(this.dayId, value)
+					},
 
-					this.buyList.forEach((food) => {
-						if (item.name == food.name) {
-							Vue.set(food, 'count', 1)
-						}
-						// food.count = 1
-						// console.log('add-shop', JSON.stringify(food))
-					})
-				}
-			},
-			decreaseCart(item) { //减
-				if (item.count) {
-					item.count--
-					this.goods.forEach((good) => {
-						good.foods.forEach((food) => {
-							if (item.name == food.name)
-								food.count = item.count
-							// console.log('dec-shop', JSON.stringify(this.foods))
+					getFoods(id, i, categoryId, value) {
+						let that = this
+						uni.request({
+							url: this.nowUrl + '/foods/index/queryTableFoods',
+							header: {
+								'token': this.token
+							},
+							data: {
+								dateId: id,
+								categoryId: categoryId,
+								foodName: value //搜索值
+							},
+							success(res) {
+								// console.log(res)
+								for (let j = 0, len = res.data.data.length; j < res.data.data.length; j++) {
+									res.data.data[j].count = 0
+								}
+								that.goods[i].foods = res.data.data
+								// console.log(that.goods)
+							}
 						})
-					})
-					this.buyList.forEach((food) => {
-						if (item.name == food.name)
-							food.count = item.count
-						// console.log('dec-shop', JSON.stringify(this.foods))
-					})
-				}
-			},
-			// 清空购物车
-			delAll() {
-				this.goods.forEach((good) => {
-					good.foods.forEach((food) => {
-						if (food.count) {
-							food.count = 0
-							// console.log(JSON.stringify(food));
-						}
-					})
-				})
-			},
-			isUserId() {
-				if (this.token == null) {
-					var WX_Code = this.GetQueryString("code");
-					if (WX_Code == "") {
-						var nowUrl = encodeURI(window.location.href.split("#")[0]);
-						window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + this.cropId +
-							'&redirect_uri=' + nowUrl + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
-					} else {
-						Vue.prototype.token = this.GetUserId(WX_Code);
-						if (this.token != "") {
-							window.sessionStorage.setItem('token', this.token);
+					},
+					setDay(index, id) { //切换日期
+						this.dayCur = index
+						this.goods = []
+						this.selectDay = id
+						this.getHistory(id)
+						this.getCategory(id)
+					},
+					// 点击侧边栏
+					select(index) {
+						if (this.goods[index].foods.length == 0) {
+							uni.showToast({
+								title: '暂无' + this.goods[index].name + '菜品',
+								mask: true,
+								icon: 'none',
+								duration: 1000
+							})
 						} else {
-							// alert("userid:" + this.WX_UserId);
+							this.currentIndex = index;
 						}
-					}
-				}
-			},
-
-			GetQueryString(Paras) {
-				var url = window.location.href.split("#")[0];
-				var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
-				var paraObj = {};
-				for (i = 0; j = paraString[i]; i++) {
-					paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
-				}
-				var returnValue = paraObj[Paras.toLowerCase()];
-				if (typeof(returnValue) == "undefined") {
-					return "";
-				} else {
-					return returnValue;
-				}
-			},
-			GetUserId(code) {
-				var userId = "";
-				uni.request({
-					url: this.nowUrl + '/wx/getCompanyToken?code=' + code, //服务器端地址
-					method: 'Get',
-					header: {
-						'content-type': 'application/json'
+						// console.log(this.goods[index].foods)
+						this.setScrollH(index);
 					},
-					success: (res) => {
-						if (res.data.state == "success") {
-							uni.reLaunch({ //信息更新成功后跳转到小程序首页
-								url: '/pages/index/index'
-							});
+					// 设置点击侧边栏右边滚动的高度
+					setScrollH: function(index) {
+						var that = this;
+						let height = 0;
+						var query = uni.createSelectorQuery();
+						// console.log('query',query);
+						let foods = query.selectAll('.foods');
+						// console.log('foods', foods);
+						this.$nextTick(function() {
+							foods.fields({
+								size: true
+							}, data => {
+								if (index == 0) {
+									that.foodSTop = 0;
+								}
+								for (let i = 0; i < index; i++) {
+									height += parseInt(data[i].height);
+									// console.log('fh', foods);
+									that.foodSTop = height;
+									// console.log(that.foodSTop)
+								}
+							}).exec();
+						})
+					},
+					setScrollIndex(e) { //滚动事件
+						// var query = uni.createSelectorQuery();
+						// let foods = query.selectAll('.foods');
+						// let height = 0;
+						// this.$nextTick(function() {
+						// 	foods.fields({
+						// 		size: true,
+						// 		scrollOffset: true
+						// 	},data => {
+						// 			for (let i = 0; i < data.length; i++) {
+						// 				height += parseInt(data[i].height);
+						// 				console.log(height - e.detail.scrollTop)
+						// 				if(0 < height - e.detail.scrollTop < 10){
+						// 					// console.log(i)
+						// 				}
+						// 			//	that.foodSTop = height;
+						// 			}
+						// 			
+						// 	}).exec();
+						// })
+					},
+					foodDetail(id) { // 跳商品详情
+						// console.log(this.dayId)
+						uni.navigateTo({
+							url: '../foodDetail/foodDetail?id=' + id + '&dayId=' + this.dayId,
+							animationType: 'slide-in-right',
+							animationDuration: 200
+						})
+					},
+					addCart: function(item) { // 加
+						// console.log('ev', JSON.stringify(item))
+						if (item.count >= 0) {
+							item.count++
+							// buyList
+							this.buyList.forEach((food) => {
+								if (item.name == food.name) {
+									food.count = item.count
+								}
+							})
+							this.goods.forEach((good) => {
+								good.foods.forEach((food) => {
+									if (item.name == food.name) {
+										food.count = item.count
+									}
+								})
+							})
+							// console.log('c++', JSON.stringify(item))
+						} else {
+							//	console.log('add')
+							this.goods.forEach((good) => {
+								good.foods.forEach((food) => {
+									if (item.name == food.name)
+										Vue.set(food, 'count', 1)
+									// food.count = 1
+									// console.log('add-shop', JSON.stringify(food))
+								})
+							})
+
+							this.buyList.forEach((food) => {
+								if (item.name == food.name) {
+									Vue.set(food, 'count', 1)
+								}
+								// food.count = 1
+								// console.log('add-shop', JSON.stringify(food))
+							})
 						}
+					},
+					decreaseCart(item) { //减
+						if (item.count) {
+							item.count--
+							this.goods.forEach((good) => {
+								good.foods.forEach((food) => {
+									if (item.name == food.name)
+										food.count = item.count
+									// console.log('dec-shop', JSON.stringify(this.foods))
+								})
+							})
+							this.buyList.forEach((food) => {
+								if (item.name == food.name)
+									food.count = item.count
+								// console.log('dec-shop', JSON.stringify(this.foods))
+							})
+						}
+					},
+					// 清空购物车
+					delAll() {
+						this.goods.forEach((good) => {
+							good.foods.forEach((food) => {
+								if (food.count) {
+									food.count = 0
+									// console.log(JSON.stringify(food));
+								}
+							})
+						})
+					},
+					isUserId() {
+						// alert('token:' + this.token)
+						if (this.token == null || this.token == 'undefined' || this.token == undefined) {
+							var WX_Code = this.GetQueryString("code");
+							// alert('code:' + WX_Code)
+							var nowUrl = window.location.href.split("#")[0];
+							// alert('nowUrl:' + nowUrl)
+							if (WX_Code == "" || WX_Code == null || WX_Code == undefined) {
+
+								window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + this.cropId +
+									'&redirect_uri=' + nowUrl + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
+							} else {
+								// alert('wxcode:' + WX_Code)
+								this.GetUserId(WX_Code);
+								// alert('获取的token:' + this.token)
+								if (this.token != "") {
+									window.sessionStorage.setItem('token', this.token);
+								} else {
+									// alert("userid:" + this.WX_UserId);
+								}
+							}
+						}
+					},
+
+					GetQueryString(Paras) {
+						var reg = new RegExp('(^|&)' + Paras + '=([^&]*)(&|$)');
+						var r = window.location.search.substr(1).match(reg);
+						if (r != null) return decodeURIComponent(r[2]);
+						return null;
+						// var url = window.location.href.split("#")[0];
+						// var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+						// var paraObj = {};
+						// debugger
+						// for (let i = 0;  j = paraString[i]; i++) {
+						// 	paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+						// }
+						// var returnValue = paraObj[Paras.toLowerCase()];
+						// if (typeof(returnValue) == "undefined") {
+						// 	return "";
+						// } else {
+						// 	return returnValue;
+						// }
+					},
+					GetUserId(code) {
+						var userId = "";
+						var that = this;
+						// alert('token请求地址:' + this.nowUrl + '/wx/getCompanyToken?code=' + code + '&mark=0')
+						uni.request({
+							url: this.nowUrl + '/wx/getCompanyToken?code=' + code + '&mark=0', //服务器端地址
+							method: 'POST',
+							header: {
+								'content-type': 'application/json'
+							},
+							success: (res) => {
+								if (res.data.code == 200) {
+									userId = res.data.data;
+									// resolve(res.data.data)
+									that.token = res.data.data
+									sessionStorage.setItem('token', that.token);
+									// alert('token0: ' + res.data.data)
+									that.getDay()
+
+								} else {
+									// alert(res.data.code);
+								}
+							},
+							fail() {
+								alert('请求失败');
+							}
+						});
+
+
+						// alert('token1: ' + userId)
+						return userId;
 					}
-				});
-			}
+				}
 		}
-	}
 </script>
 
 <style>
@@ -665,9 +732,15 @@
 		color: #2e2e2e;
 	}
 
+
+	uni-app,
+	uni-page-head {
+		display: none;
+	}
+
 	.histroyAdd {
-		/* display: inline-block;
-		position: absolute;
+		/* display: inline-block; */
+		/* position: absolute;
 		right: 5upx;
 		bottom: 5upx; */
 	}

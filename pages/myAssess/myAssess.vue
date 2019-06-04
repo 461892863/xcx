@@ -3,9 +3,9 @@
 		<view class="assessList">
 			<view class="footImg">
 				<swiper class="swiper" indicator-dots=true indicator-color="#ccc" indicator-active-color="#fff">
-					 <swiper-item>
-						 <image src="../../static/niu.jpg" mode='aspectFill'></image>
-					 </swiper-item>
+					<swiper-item>
+						<image src="../../static/niu.jpg" mode='aspectFill'></image>
+					</swiper-item>
 				</swiper>
 			</view>
 			<view class="" style="display: flex;min-height: 100upx;width: 100vw;text-align: center;font-weight: bold;border-bottom: 2upx solid #CCCCCC;line-height: 100upx;">
@@ -23,7 +23,8 @@
 							</block>
 						</view>
 						<text style="margin-left: 20upx;"> 用户 </text>
-						<uniRate :value="lis.commentLevel" size="10" style="margin: 30upx 0;display: inline-block;position: relative;right: -15upx;top: -20upx;" disabled="true"></uniRate>
+						<uniRate :value="lis.commentLevel" size="10" style="margin: 30upx 0;display: inline-block;position: relative;right: -15upx;top: -20upx;"
+						 disabled="true"></uniRate>
 						<view style="color: #ccc;position: absolute;right: 45upx;font-size: 0.7em;display: inline-block;line-height: 50upx;">{{lis.commentDate}}</view>
 					</view>
 					<view style="clear: both;margin: 0 0 30upx;">
@@ -58,32 +59,34 @@
 				asserssList: []
 			}
 		},
-		components:{
+		components: {
 			uniRate
 		},
 		onLoad(e) {
-			this.name =e.name
+			
+			this.token = sessionStorage.getItem('token')
+			this.name = e.name
 			this.url = e.url
 			this.id = e.id
 			this.req()
 		},
 		methods: {
-			req(){
+			req() {
 				uni.request({
-					url:this.nowUrl + '/foods/comment?id='+this.id,
-					header:{
-						'token':this.token
+					url: this.nowUrl + '/foods/comment?id=' + this.id,
+					header: {
+						'token': this.token
 					},
-					success:(res) => {
+					success: (res) => {
 						this.asserssList = res.data.data.list
 					}
 				})
 			},
-			toAssessSuccess(){
+			toAssessSuccess() {
 				uni.navigateTo({
-					url:'../AssessSuccess/AssessSuccess',
-					animationDuration:200,
-					animationType:'slide-in-right'
+					url: '../AssessSuccess/AssessSuccess',
+					animationDuration: 200,
+					animationType: 'slide-in-right'
 				})
 			}
 		}
@@ -91,72 +94,86 @@
 </script>
 
 <style>
-.footImg{
-	width: 100vw;
-	height: 40vh;
-}
-.swiper{
-	height: 100%;
-}
-.swiper image{
-	width: 100%;
-	height: 100%;
-}
-.assessList{
-	width: 100vw;border-bottom: 1upx solid #888888;
-	padding:  15upx 0;
-}
-.left{
-	flex: 4;
-	margin-left:15upx ;
-}
-.left image{
-	width: 100%;
-	height: 100%;
-}
-.right{
-	flex: 6;
-	overflow: hidden;
-	margin-left: 20upx;
-	margin-right: 15upx;
-}
-.assessList input{
-	padding: 3upx 0;
-	margin-top: 15upx;
-}
-.right text{
-	color: #ccc;
-}
-.btns{
-	text-align: center;
-}
-.btns button{
-	width: 40vw;
-	background: rgb(149,149,149);
-	display: inline-block;
-	margin: 15upx 15upx 0;
-}
-.sjhf{
-	width:90vw;
-	padding: 15upx;
-	background: rgba(238, 227, 227, 1);
-	clear: both;
-	margin: 0 auto;
-	border-radius: 5upx;
-	position: relative;
-	font-size: 0.8em;
-}
-.sjhf text{
-	color: #007AFF;
-}
-.sjhf:after{
-	content:"";
-	position:absolute;
-	top: -15upx;
-	left:15upx; 
-	border: 20upx solid transparent;
-	border-bottom-color: rgba(238, 227, 227, 1);
-	border-top:0; 
-	margin:0 0 0upx 0px;
-}
+	.footImg {
+		width: 100vw;
+		height: 40vh;
+	}
+
+	.swiper {
+		height: 100%;
+	}
+
+	.swiper image {
+		width: 100%;
+		height: 100%;
+	}
+
+	.assessList {
+		width: 100vw;
+		border-bottom: 1upx solid #888888;
+		padding: 15upx 0;
+	}
+
+	.left {
+		flex: 4;
+		margin-left: 15upx;
+	}
+
+	.left image {
+		width: 100%;
+		height: 100%;
+	}
+
+	.right {
+		flex: 6;
+		overflow: hidden;
+		margin-left: 20upx;
+		margin-right: 15upx;
+	}
+
+	.assessList input {
+		padding: 3upx 0;
+		margin-top: 15upx;
+	}
+
+	.right text {
+		color: #ccc;
+	}
+
+	.btns {
+		text-align: center;
+	}
+
+	.btns button {
+		width: 40vw;
+		background: rgb(149, 149, 149);
+		display: inline-block;
+		margin: 15upx 15upx 0;
+	}
+
+	.sjhf {
+		width: 90vw;
+		padding: 15upx;
+		background: rgba(238, 227, 227, 1);
+		clear: both;
+		margin: 0 auto;
+		border-radius: 5upx;
+		position: relative;
+		font-size: 0.8em;
+	}
+
+	.sjhf text {
+		color: #007AFF;
+	}
+
+	.sjhf:after {
+		content: "";
+		position: absolute;
+		top: -15upx;
+		left: 15upx;
+		border: 20upx solid transparent;
+		border-bottom-color: rgba(238, 227, 227, 1);
+		border-top: 0;
+		margin: 0 0 0upx 0px;
+	}
 </style>

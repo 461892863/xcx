@@ -56,8 +56,8 @@ exports.install = function (Vue) {
   //  let url = 'http://yanzhiyoudao.gkybi.com.cn' //ip
   Vue.prototype.nowUrl = 'http://106.15.194.58:8093'; //接口ip
   // Vue.prototype.nowUrl = 'https://result.eolinker.com';  //接口地址
-  // Vue.prototype.token = '12366666666'; //接口地址
-  Vue.prototype.token = window.sessionStorage.getItem('token'); //token
+  Vue.prototype.token = '12366666666'; //接口地址
+  // Vue.prototype.token = window.sessionStorage.getItem('token'); //token
   Vue.prototype.imgUrl = 'http://106.15.194.58/images/'; //图片接口
 };
 

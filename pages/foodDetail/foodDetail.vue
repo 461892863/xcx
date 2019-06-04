@@ -17,6 +17,7 @@
 			<view class="score">
 				<uniRate style="display:inline-block;" v-if="flag" :value="getLevel()" size="15" disabled="true"></uniRate> <text>{{footData.level}}</text>
 			</view>
+			<view @tap="toPraise();" style="position:absolute;right: 1rem;border-radius: .2rem;padding: .3rem;background: #0A98D5;color:#fff;">评价菜品</view>
 			<view class="price">
 				<text style="font-weight: bold;font-size: 1.3em;">￥{{footData.price}}</text> <text class="mark" v-if="footData.sign">{{footData.sign}}</text>
 				<!-- <cartcontrol style="display: inline-block;float: right;margin: 5upx 20upx 0 0;" :food="food" @add="addCart()" @dec="decreaseCart"></cartcontrol> -->
@@ -29,29 +30,37 @@
 			<text class="moreAssess" @tap="moreAssess(footData.id)">查看更多评价 ></text>
 			<view class="uni-comment-list" v-for="(assess, index) in footData.comments" :key="index">
 				<view class="uni-comment-face">
-					<image src="https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png" mode="widthFix"></image>
+					<image :src="assess.headerPortrait?assess.headerPortrait:'https://img-cdn-qiniu.dcloud.net.cn/uniapp/images/uni@2x.png'"
+					 mode="widthFix"></image>
 				</view>
-				<view class="uni-comment-body">
+				<view class="uni-comment-body" style="position: relative;">
 					<view class="uni-comment-top">
-						<text>匿名用户</text>
-						<uniRate :value="assess.commentLevel" size="10" disabled="true"></uniRate>
+						<text>{{assess.userName?assess.userName:'匿名用户'}}</text>
+						<uniRate :value="assess.commentLevel" style="margin-bottom:.5rem;" size="10" disabled="true"></uniRate>
 						<block v-if="assess.isLike == 1">
-							<text>👍 赞了该商品</text>
+							<view style="display: flex;align-items: center;color:#999;">
+								<image style="width:1rem;height:1rem;margin-right: 10upx;" src="../../static/good.png" mode=""></image>赞了该商品
+							</view>
 						</block>
-						<block v-else-if="assess.isLike == 0">
-							<text>👍 赞了该商品</text>
+						<block v-else-if="assess.isLike == 0" >
+							<view style="display: flex;align-items: center;color:#999;">
+								<image style="width:1rem;height:1rem;margin-right: 10upx;" src="../../static/nogood.png" mode=""></image>踩了该商品
+							</view>
 						</block>
 						<block v-else>
 							<text></text>
 						</block>
 					</view>
+					<!-- 	<view style="position: absolute;bottom: .5rem;right: .5rem;">
+						<image style="width:15px;height: 15px;margin-right: 10upx;" src="../../static/del.png" mode=""></image>
+					</view> -->
 					<view class="uni-comment-date">
-						<text style="color: rgb(165,165,165);">{{assess.commentDate}}</text>
+						<text  style="color:#666">{{assess.commentDate}}</text>
 					</view>
 					<view style="clear: both;margin: 80upx 0 20upx;">
 						<view class="uni-comment-content">{{assess.body}}</view>
-						<view class="sjhf">
-							<text>商家回复：</text>assess.replay
+						<view v-if="assess.replay" class="sjhf">
+							<text>商家回复：</text>{{assess.replay}}
 						</view>
 					</view>
 				</view>
@@ -66,7 +75,7 @@
 	export default {
 		data() {
 			return {
-				imgUrl: 'http://106.15.194.58/images/', //图片接口
+				imgUrl: 'https://sinomach.wxzhixun.com/images/', //图片接口
 				footData: {},
 				flag: false,
 				id: '',
@@ -87,12 +96,24 @@
 			uniRate
 		},
 		onLoad(e) {
+			this.token = sessionStorage.getItem('token')
 			// console.log(e)
 			this.id = e.id
 			this.dayId = e.dayId
 			this.init(e.id, e.dayId)
 		},
 		methods: {
+			//去评价
+			toPraise() {
+				var foodName = this.footData.name
+				var imgPic = this.imgUrl + this.footData.imgUrl
+				uni.navigateTo({
+					url: '../assess/assess?foodId=' + this.id + '&foodName=' + foodName + '&imgPic=' + imgPic,
+					animationType: 'slide-in-right',
+					animationDuration: 200
+				});
+			},
+
 			getLevel() { // 评星
 				// console.log(this.footData.level)
 				return this.footData.level
@@ -112,7 +133,7 @@
 						weekId: dayId
 					},
 					success(res) {
-						// console.log(res)
+						console.log(res)
 						that.footData = res.data.data
 						that.flag = true
 						// console.log(that.footData)
@@ -206,9 +227,9 @@
 	}
 
 	.introduction {
-		font-size: 0.9em;
+		font-size: 0.8rem;
 		color: rgb(138, 138, 138);
-		margin: 20upx 10%;
+		margin: 15px;
 	}
 
 	.uni-padding-wrap {
