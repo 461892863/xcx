@@ -39,12 +39,12 @@
 						<uniRate :value="assess.commentLevel" style="margin-bottom:.5rem;" size="10" disabled="true"></uniRate>
 						<block v-if="assess.isLike == 1">
 							<view style="display: flex;align-items: center;color:#999;">
-								<image style="width:1rem;height:1rem;margin-right: 10upx;" src="../../static/good.png" mode=""></image>赞了该商品
+								<image style="width:1rem;height:1rem;margin-right: 10upx;" src="../../static/goodActive.png" mode=""></image>赞了该商品
 							</view>
 						</block>
 						<block v-else-if="assess.isLike == 0" >
 							<view style="display: flex;align-items: center;color:#999;">
-								<image style="width:1rem;height:1rem;margin-right: 10upx;" src="../../static/nogood.png" mode=""></image>踩了该商品
+								<image style="width:1rem;height:1rem;margin-right: 10upx;" src="../../static/nogoodActive.png" mode=""></image>踩了该商品
 							</view>
 						</block>
 						<block v-else>

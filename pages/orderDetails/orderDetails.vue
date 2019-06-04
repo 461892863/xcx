@@ -20,14 +20,15 @@
 		</view>
 		<view style="margin: 40upx 0 15upx 15upx;font-weight: bold;font-size: 0.8em;">订单信息</view>
 		<view class="detail" style="border: 0;max-height: 35vh;">
-			<view class="detailList" :class="{toRight:list.type == 1}" v-for="(list, _index) in orderDetails" :key="_index"
+			<view class="detailList" :class="{toRight:list.type == 1,lastList:list.name == '订单备注'}" v-for="(list, _index) in orderDetails" :key="_index"
 			 style="border-top:1upx solid #c6c6c6;padding: 20upx 0;">
 				<view class="list" style="flex: 3;text-align: left;">
 					<text style="display:block">{{list.name}}</text>
 				</view>
-				<view class="list" style="flex:7;text-align:left;" @tap="write(list.type,_index)">
-					<block v-if="list.type == 1">
-						<input class="writeInput"  type="text" :placeholder="'请填写'+list.name" v-model="list.newValue" />
+				<view class="list" style="flex:7;text-align:left;" @tap="write(list.type,_index)" :class="{writer:list.type == 0}">
+					<block v-if="list.type == 0 || list.type == 1">
+						<input class="writeInput" type="text" :placeholder="'请填写'+list.name" v-model="list.newValue" maxlength="20"/>
+						<text style="position: absolute;left: 130upx;top: 18upx;"  v-if="list.type == 0">({{list.newValue.length}}/20字)</text>
 					</block>
 					<block v-else>
 						<text class="writeInput">{{list.value}}</text>
@@ -75,7 +76,7 @@
 						name: '订单备注',
 						value: '请输入备注信息',
 						newValue: '',
-						type: '1'
+						type: '0'
 					}
 				],
 				orderInfo: null
@@ -130,11 +131,11 @@
 			},
 			write(type, index) { //输入框
 				let that = this
-				if (type == 1) {
-					console.log(index)
-					//	that.orderDetails[index].newValue
-					// console.log(that.orderDetails)
-				}
+				// if (type == 1) {
+				// 	console.log(index)
+				// 	//	that.orderDetails[index].newValue
+				// 	// console.log(that.orderDetails)
+				// }
 			},
 			success() { // 成功即跳转
 				// console.log(this.orderDetails)
@@ -180,8 +181,8 @@
 <style>
 	.detail {
 		padding: 10upx 15upx;
-		border-top: 6upx solid #c6c6c6;
-		border-bottom: 6upx solid #c6c6c6;
+		border-top: 4upx solid #c6c6c6;
+		border-bottom: 4upx solid #c6c6c6;
 		max-height: 35vh;
 		overflow-y: auto;
 	}
@@ -189,7 +190,10 @@
 	.detailList {
 		display: flex;
 	}
-
+	.lastList{
+		display: block;
+		position: relative;
+	}
 	.list {
 		flex: 1;
 		text-align: center;
@@ -209,7 +213,10 @@
 		background: url(../../static/r.png) 95% 50% no-repeat;
 		background-size: auto 50%;
 	}
-
+	.writer{
+		background: url(../../static/r.png) 95% 50% no-repeat;
+		background-size: auto 70%;
+	}
 	.btn {
 		width: 40vw;
 		padding: 0;
@@ -226,5 +233,8 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+	.writer .writeInput{
+		width: 100%;padding: 10upx 0;
 	}
 </style>

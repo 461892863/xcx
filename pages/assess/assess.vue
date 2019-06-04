@@ -2,7 +2,7 @@
 	<view class="assess">
 		<view class="assessList">
 			<view class="" style="display: flex;height: 200upx;">
-				<view class="left">
+				<view class="left" style="border-radius: 15upx;overflow: hidden;">
 					<image :src="imgPic" mode="aspectFill"></image>
 				</view>
 				<view class="right">
@@ -10,10 +10,21 @@
 					<uniRate :value="level" @change="change" size="20" style="margin: 30upx 0;"></uniRate>
 					<view style="display: flex;color: #f1f1f1;">
 						<view style="display: flex;align-items: center;" @tap="setZan(1)" :class="{zanActive: isLike == 1}">
-							<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/good.png" mode=""></image>赞
+							<block v-if="isLike == 1">
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/goodActive.png" mode=""></image>
+							</block>
+							<block v-else>
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/good.png" mode=""></image>
+							</block>赞
 						</view>
 						<view style="display: flex;align-items: center;margin-left: 25upx;" :class="{zanActive: isLike == 0}" @tap="setZan(0)">
-							<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/nogood.png" mode=""></image>踩
+							<block v-if="isLike == 0">
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/nogoodActive.png" mode=""></image>
+							</block>
+							<block v-else>
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/nogood.png" mode=""></image>
+							</block>
+						踩
 						</view>
 					</view>
 

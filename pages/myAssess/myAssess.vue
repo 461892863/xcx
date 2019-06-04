@@ -29,11 +29,15 @@
 					</view>
 					<view style="clear: both;margin: 0 0 30upx;">
 						<text style="margin-left: 15upx;">{{lis.body}}</text>
-						<block v-if="lis.isLike == 1">
-							<text style="float: right;margin-right: 30upx;">👍</text>
+						<block v-if="assess.isLike == 1">
+							<view style="display: flex;align-items: center;margin-top:10upx">
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/goodActive.png" mode=""></image>赞了该商品
+							</view>
 						</block>
-						<block v-else-if="lis.isLike == 0">
-							<text style="float: right;margin-right: 30upx;">👎</text>
+						<block v-else-if="assess.isLike == 0">
+							<view style="display: flex;align-items: center;margin-top:10upx">
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/nogoodActive.png" mode=""></image>踩了该商品
+							</view>
 						</block>
 						<block v-else>
 							<text style="float: right;margin-right: 30upx;"></text>

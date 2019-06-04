@@ -133,10 +133,10 @@
 		},
 
 		onLoad() {
-			// sessionStorage.setItem('token', '9fc9nac2e9ndl48b777cf1fc7a2cff4n')
+			sessionStorage.setItem('token', '222b54775luln2b227e5n2247bdb0575')
 			this.token = sessionStorage.getItem('token')
 			let that = this
-			// this.getDay()
+			this.getDay()
 			this.height = Number(uni.getSystemInfoSync().windowHeight) - 55;
 			// console.log(uni.getSystemInfoSync().windowHeight)
 			// uni.setStorage({

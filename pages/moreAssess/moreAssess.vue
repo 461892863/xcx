@@ -28,13 +28,13 @@
 						<text>{{assess.userName?assess.userName:'匿名用户'}}</text>
 						<uniRate :value="assess.commentLevel" size="10" disabled="true"></uniRate>
 						<block v-if="assess.isLike == 1">
-							<view style="display: flex;align-items: center;">
-								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/good.png" mode=""></image>赞了该商品
+							<view style="display: flex;align-items: center;margin-top:10upx">
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/goodActive.png" mode=""></image>赞了该商品
 							</view>
 						</block>
 						<block v-else-if="assess.isLike == 0">
-							<view style="display: flex;align-items: center;margin-left: 25upx;">
-								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/nogood.png" mode=""></image>踩
+							<view style="display: flex;align-items: center;margin-top:10upx">
+								<image style="width:1.2rem;height:1.2rem;margin-right: 10upx;" src="../../static/nogoodActive.png" mode=""></image>踩了该商品
 							</view>
 						</block>
 						<block v-else>
